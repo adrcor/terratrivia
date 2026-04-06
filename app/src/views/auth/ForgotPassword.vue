@@ -1,0 +1,76 @@
+<template>
+  <div class="flex flex-col items-center justify-center gap-2">
+    <template v-if="!submitted">
+      <UForm
+        class="flex w-84 flex-col items-center justify-center gap-2 rounded-lg"
+        :schema="schema"
+        :state="state"
+        @submit="onSubmit"
+      >
+        <h1 class="weight-bold text-2xl">forgot password</h1>
+        <UFormField label="email" name="email" class="w-full">
+          <UInput v-model="state.email" placeholder="email" class="w-full" />
+          <template #error="{ error }">
+            <ErrorMessage :message="error" />
+          </template>
+        </UFormField>
+        <div class="flex w-full flex-row items-center justify-between">
+          <Link to="/login" label="login" icon="anron-gestalt:log-in" />
+          <UButton
+            type="submit"
+            color="neutral"
+            variant="solid"
+            label="send reset link"
+          />
+        </div>
+      </UForm>
+      <ErrorMessage :message="errorMsg" />
+    </template>
+    <template v-else>
+      <h1 class="weight-bold text-2xl">check your email</h1>
+      <p>if an account exists for that email, we sent a password reset link.</p>
+      <Link to="/login" label="back to login" icon="anron-gestalt:log-in" />
+    </template>
+  </div>
+</template>
+
+<script setup lang="ts">
+import ErrorMessage from "@/components/ErrorMessage.vue";
+import Link from "@/components/Link.vue";
+import { useAuthStore } from "@/stores/auth";
+import UButton from "@nuxt/ui/components/Button.vue";
+import UForm from "@nuxt/ui/components/Form.vue";
+import UFormField from "@nuxt/ui/components/FormField.vue";
+import UInput from "@nuxt/ui/components/Input.vue";
+import { reactive, ref } from "vue";
+import { z } from "zod";
+
+const auth = useAuthStore();
+const schema = z.object({
+  email: z.email("invalid email"),
+});
+
+type Schema = z.infer<typeof schema>;
+
+const state = reactive<Partial<Schema>>({
+  email: undefined,
+});
+
+const errorMsg = ref("");
+const submitted = ref(false);
+
+async function onSubmit() {
+  const result = await auth.requestPasswordReset(
+    state.email ?? "",
+    "/reset-password",
+  );
+  result.match(
+    () => {
+      submitted.value = true;
+    },
+    (error) => {
+      errorMsg.value = error.message.split(": ")[1] ?? "";
+    },
+  );
+}
+</script>
