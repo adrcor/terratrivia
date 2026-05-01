@@ -1,0 +1,20 @@
+services:
+  # Used by Atlas (`atlas migrate diff`, `atlas schema diff`) as a throwaway
+  # dev database for computing schema diffs locally. Atlas creates and drops
+  # temp databases inside this server on each run. Not used in production.
+  postgres-atlas:
+    image: postgres:16
+    container_name: pg-atlas
+    environment:
+      POSTGRES_USER: atlas
+      POSTGRES_PASSWORD: atlas
+      POSTGRES_DB: atlas
+    ports:
+      - "5678:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atlas -d atlas"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
