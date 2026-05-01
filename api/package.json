@@ -4,8 +4,12 @@
     "dev": "bun run --hot cmd/api.ts",
     "check": "bunx tsc --noEmit",
     "format": "prettier --write ./src",
-    "db:drop": "bun cmd/db/drop.ts",
-    "db:migrate": "bun cmd/db/init.ts"
+    "db:drop": "bun cmd/drop_db.ts",
+    "db:migrate": "bun db/migrate.ts",
+    "db:generate": "atlas migrate diff --env local -c file://db/atlas.hcl",
+    "db:diff": "atlas schema diff --from 'file://db/migrations?format=atlas' --to 'file://db/schema.sql' --env local -c file://db/atlas.hcl",
+    "db:hash": "atlas migrate hash --env local -c file://db/atlas.hcl",
+    "db:validate": "atlas migrate validate --env local -c file://db/atlas.hcl"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",
