@@ -1,7 +1,7 @@
 import { withAuth, withDatabase } from "./middlewares";
 import { newMiddleware, serve } from "./utils";
 import { auth, type Session, type User } from "@/auth";
-import { APP_URL } from "@/env";
+import { APP_URL, VERSION } from "@/env";
 import { getCountries } from "@/modules/geo";
 import { getHighscores, getResultById, getResults, postResult } from "@/modules/trial";
 import { type Context, Hono } from "hono";
@@ -30,6 +30,10 @@ function newApi() {
           credentials: true,
         }),
       )
+
+      .get("/", (h: Context) => {
+        return h.text(`terratrivia ${VERSION}`);
+      })      
 
       // geo routes
       .get("/geo/countries", (h: Context) => {
