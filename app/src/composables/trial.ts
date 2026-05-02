@@ -157,8 +157,8 @@ export function useTrial(): Trial {
       cca2: country.cca2,
       answer: answer.answer,
       valid: answer.valid,
-      reactionTime: answer.reactionTime,
-      typingTime: answer.typingTime,
+      reaction_time: answer.reaction_time,
+      typing_time: answer.typing_time,
     });
 
     if (indexPair.value === countries.value.length) {

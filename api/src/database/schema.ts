@@ -1,5 +1,8 @@
 import type { Generated, Insertable, Selectable, Updateable } from "kysely";
 
+export type Region = "af" | "am" | "as" | "eu" | "oc" | "world";
+export type Mode = "capitals" | "flags";
+
 export interface TrialAnswer {
   country: string;
   cca2: string;
@@ -26,8 +29,8 @@ export type UserUpdate = Updateable<UserTable>;
 export interface TrialResultsTable {
   id: string;
   id_user: string | null;
-  region: string;
-  mode: string;
+  region: Region;
+  mode: Mode;
   length: number;
   correct: number;
   time: number;
@@ -41,9 +44,9 @@ export type TrialResultUpdate = Updateable<TrialResultsTable>;
 
 export interface TrialHighscoresTable {
   id_user: string;
-  region: string;
-  mode: string;
-  id_result: string | null;
+  region: Region;
+  mode: Mode;
+  id_result: string;
   length: number;
   correct: number;
   time: number;

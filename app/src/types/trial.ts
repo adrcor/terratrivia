@@ -35,8 +35,8 @@ export interface Country {
 export interface InputAnswer {
   answer: string;
   valid: boolean;
-  reactionTime: number; // ms
-  typingTime: number; // ms
+  reaction_time: number; // ms
+  typing_time: number; // ms
 }
 
 export interface TrialAnswer {
@@ -44,8 +44,8 @@ export interface TrialAnswer {
   cca2: string;
   answer: string;
   valid: boolean;
-  reactionTime: number; // ms
-  typingTime: number; // ms
+  reaction_time: number; // ms
+  typing_time: number; // ms
 }
 
 export interface TrialResultLocal {
@@ -64,7 +64,7 @@ export interface TrialResultSmall {
   correct: number;
   length: number;
   time: number;
-  created: Date;
+  created: string;
 }
 
 export interface TrialResult extends TrialResultSmall {
@@ -72,11 +72,11 @@ export interface TrialResult extends TrialResultSmall {
 }
 
 export interface TrialHighscore {
-  idUser: string;
+  id_user: string;
   region: Region;
   mode: Mode;
 
-  idResult: string;
+  id_result: string;
   correct: number;
   length: number;
   time: number;

@@ -50,18 +50,18 @@
           :cca2="answer.cca2"
           :percent="
             {
-              reaction: ilerp(REACTION_LOW, REACTION_HIGH, answer.reactionTime),
+              reaction: ilerp(REACTION_LOW, REACTION_HIGH, answer.reaction_time),
               typing: ilerp(
                 -WPM_HIGH,
                 -WPM_LOW,
-                -wpm(answer.typingTime, answer.answer.length),
+                -wpm(answer.typing_time, answer.answer.length),
               ),
               total:
-                (ilerp(REACTION_LOW, REACTION_HIGH, answer.reactionTime) +
+                (ilerp(REACTION_LOW, REACTION_HIGH, answer.reaction_time) +
                   ilerp(
                     -WPM_HIGH,
                     -WPM_LOW,
-                    -wpm(answer.typingTime, answer.answer.length),
+                    -wpm(answer.typing_time, answer.answer.length),
                   )) /
                 2,
             }[keyMetric]
@@ -166,18 +166,18 @@ const validAnswers = computed(() => {
     .sort((a, b) => {
       switch (keyMetric.value) {
         case "reaction":
-          return a.reactionTime - b.reactionTime;
+          return a.reaction_time - b.reaction_time;
         case "typing":
           return (
-            -wpm(a.typingTime, a.answer.length) +
-            wpm(b.typingTime, b.answer.length)
+            -wpm(a.typing_time, a.answer.length) +
+            wpm(b.typing_time, b.answer.length)
           );
         case "total":
           return (
-            ilerp(REACTION_LOW, REACTION_HIGH, a.reactionTime) +
-            ilerp(-WPM_HIGH, -WPM_LOW, -wpm(a.typingTime, a.answer.length)) -
-            (ilerp(REACTION_LOW, REACTION_HIGH, b.reactionTime) +
-              ilerp(-WPM_HIGH, -WPM_LOW, -wpm(b.typingTime, b.answer.length)))
+            ilerp(REACTION_LOW, REACTION_HIGH, a.reaction_time) +
+            ilerp(-WPM_HIGH, -WPM_LOW, -wpm(a.typing_time, a.answer.length)) -
+            (ilerp(REACTION_LOW, REACTION_HIGH, b.reaction_time) +
+              ilerp(-WPM_HIGH, -WPM_LOW, -wpm(b.typing_time, b.answer.length)))
           );
       }
     });
@@ -185,17 +185,17 @@ const validAnswers = computed(() => {
 });
 
 // const totalTypingTime = computed(() => {
-//   return validAnswers.value?.reduce((acc, a) => acc + a.typingTime, 0) || 0;
+//   return validAnswers.value?.reduce((acc, a) => acc + a.typing_time, 0) || 0;
 // });
 
 // const totalReactionTime = computed(() => {
-//   return validAnswers.value?.reduce((acc, a) => acc + a.reactionTime, 0) || 0;
+//   return validAnswers.value?.reduce((acc, a) => acc + a.reaction_time, 0) || 0;
 // });
 
 // const maxTotalTime = computed(() => {
 //   return Math.min(
 //     validAnswers.value?.reduce(
-//       (acc, a) => Math.max(acc, a.reactionTime + a.typingTime),
+//       (acc, a) => Math.max(acc, a.reaction_time + a.typing_time),
 //       0,
 //     ) || 10000,
 //     10000,
@@ -209,17 +209,17 @@ function tooltip(answer: TrialAnswer) {
   } else {
     firstLine = `${answer.country} -> ${answer.answer}`;
   }
-  const reactionPct = ilerp(REACTION_LOW, REACTION_HIGH, answer.reactionTime);
+  const reactionPct = ilerp(REACTION_LOW, REACTION_HIGH, answer.reaction_time);
   const typingPct = ilerp(
     -WPM_HIGH,
     -WPM_LOW,
-    -wpm(answer.typingTime, answer.answer.length),
+    -wpm(answer.typing_time, answer.answer.length),
   );
   const totalPct = (reactionPct + typingPct) / 2;
   return `${firstLine}
-  reaction - ${formatTime(answer.reactionTime)}s | ${Math.round((1 - reactionPct) * 100)}%
-  typing - ${wpm(answer.typingTime, answer.answer.length)}wpm | ${Math.round((1 - typingPct) * 100)}%
-  total - ${formatTime(answer.reactionTime + answer.typingTime)}s | ${Math.round((1 - totalPct) * 100)}%`;
+  reaction - ${formatTime(answer.reaction_time)}s | ${Math.round((1 - reactionPct) * 100)}%
+  typing - ${wpm(answer.typing_time, answer.answer.length)}wpm | ${Math.round((1 - typingPct) * 100)}%
+  total - ${formatTime(answer.reaction_time + answer.typing_time)}s | ${Math.round((1 - totalPct) * 100)}%`;
 }
 
 function tooltipFailed(answer: TrialAnswer) {

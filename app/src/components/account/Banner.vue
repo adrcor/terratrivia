@@ -20,7 +20,7 @@
           :numerator="highscore.numerator"
           :denominator="highscore.denominator"
           :time="highscore.time"
-          :to="highscore.idResult"
+          :to="highscore.id_result"
         />
       </div>
     </div>
@@ -47,7 +47,7 @@
           :numerator="highscore.numerator"
           :denominator="highscore.denominator"
           :time="highscore.time"
-          :to="highscore.idResult"
+          :to="highscore.id_result"
         />
       </div>
     </div>
@@ -68,7 +68,7 @@ interface Highscore {
   numerator: number;
   denominator: number;
   time: number;
-  idResult: string | null;
+  id_result: string | null;
 }
 
 const totalLength = regions.reduce(
@@ -101,7 +101,7 @@ const capitalHighscores = computed<Array<Highscore>>(() => {
         numerator: 0,
         denominator: regionLengths[region],
         time: 0,
-        idResult: null,
+        id_result: null,
       };
     }
     return {
@@ -109,7 +109,7 @@ const capitalHighscores = computed<Array<Highscore>>(() => {
       numerator: highscore.correct,
       denominator: regionLengths[region],
       time: highscore.time,
-      idResult: highscore.idResult,
+      id_result: highscore.id_result,
     };
   });
 });
@@ -139,7 +139,7 @@ const flagHighscores = computed<Array<Highscore>>(() => {
         numerator: 0,
         denominator: regionLengths[region],
         time: 0,
-        idResult: null,
+        id_result: null,
       };
     }
     return {
@@ -147,7 +147,7 @@ const flagHighscores = computed<Array<Highscore>>(() => {
       numerator: highscore.correct,
       denominator: regionLengths[region],
       time: highscore.time,
-      idResult: highscore.idResult,
+      id_result: highscore.id_result,
     };
   });
 });

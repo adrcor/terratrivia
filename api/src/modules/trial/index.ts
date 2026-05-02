@@ -1,6 +1,6 @@
 import type { User } from "@/auth";
 import type { Database } from "@/database/database";
-import type { TrialResult } from "@/database/schema";
+import type { Mode, Region, TrialResult } from "@/database/schema";
 import { Er } from "@/utils/er";
 import { generateId } from "@/utils/id";
 import type { Context } from "hono";
@@ -22,7 +22,7 @@ const trialAnswerSchema = z.object({
 });
 
 const newTrialResultSchema = z.object({
-  region: z.enum(["world", "as", "af", "eu", "na", "oc", "sa"]),
+  region: z.enum(["af", "am", "as", "eu", "oc", "world"]),
   mode: z.enum(["capitals", "flags"]),
   length: z.int().min(1),
   correct: z.int().min(0),
@@ -77,7 +77,7 @@ function getAllResults(
   );
 }
 
-function getHighscore(db: Kysely<Database>, idUser: string, region: string, mode: string) {
+function getHighscore(db: Kysely<Database>, idUser: string, region: Region, mode: Mode) {
   return ResultAsync.fromPromise(
     db
       .selectFrom("trial_highscores")
