@@ -23,7 +23,7 @@ export const useTrialStore = defineStore("store", () => {
   const highscores = useLocalStorage<Array<TrialHighscore>>("highscores", []);
   const latest = ref<TrialResult | TrialResultLocal | null>(null);
 
-  const cacheResults: Record<string, TrialResult> = {};
+  let cacheResults: Record<string, TrialResult> = {};
 
   function isNewHighscore(result: TrialResult): boolean {
     const current = highscores.value.find(
@@ -80,15 +80,24 @@ export const useTrialStore = defineStore("store", () => {
       });
   }
 
+  function clear(): void {
+    results.value = [];
+    highscores.value = [];
+    latest.value = null;
+    cacheResults = {};
+  }
+
   return {
-    highscores,
-    latest,
     mode,
     region,
+    results,
+    highscores,
+    latest,
 
     postResult,
     getResult,
     syncResults,
     syncHighscores,
+    clear,
   };
 });

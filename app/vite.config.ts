@@ -24,6 +24,15 @@ export default defineConfig({
                 trigger: "data-[state=active]:text-toned",
               },
             },
+            {
+              color: "neutral",
+              variant: "link",
+              class: {
+                indicator: "bg-neutral-400",
+                trigger:
+                  "data-[state=active]:text-toned data-[state=inactive]:text-muted",
+              },
+            },
           ],
         },
       },
