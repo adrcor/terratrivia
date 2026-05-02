@@ -36,9 +36,6 @@ export const useGeoStore = defineStore("geo", () => {
     if (region === "world") {
       return ok(countries.value);
     }
-    if (region === "debug") {
-      return ok(countries.value.filter((c) => c.region === "eu").slice(0, 10));
-    }
     return ok(countries.value.filter((c) => c.region === region));
   }
 

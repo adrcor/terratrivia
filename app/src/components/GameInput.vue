@@ -62,8 +62,8 @@ watch(message, (newVal: string) => {
     const inputResult: InputAnswer = {
       answer: props.expected,
       valid: !hint.value,
-      reactionTime: reactionTime,
-      typingTime: totalTime - reactionTime,
+      reaction_time: reactionTime,
+      typing_time: totalTime - reactionTime,
     };
     emit("answer", inputResult);
   }

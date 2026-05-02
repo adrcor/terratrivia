@@ -15,16 +15,16 @@
 import { computed } from "vue";
 
 const reactionPercentage = computed(() => {
-  return Math.floor((props.reactionTime / props.maxTotalTime) * 100);
+  return Math.floor((props.reaction_time / props.maxTotalTime) * 100);
 });
 
 const typingPercentage = computed(() => {
-  return Math.floor((props.typingTime / props.maxTotalTime) * 100);
+  return Math.floor((props.typing_time / props.maxTotalTime) * 100);
 });
 
 const props = defineProps<{
-  reactionTime: number;
-  typingTime: number;
+  reaction_time: number;
+  typing_time: number;
   maxTotalTime: number;
 }>();
 </script>

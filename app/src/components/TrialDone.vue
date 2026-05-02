@@ -68,7 +68,7 @@ const reactionTable = computed<TableEntry[]>(() => {
       .map((answer) => ({
         prompt: answer.country,
         expected: answer.answer,
-        value: answer.reactionTime,
+        value: answer.reaction_time,
         cca2: answer.cca2,
       }))
       .sort((a, b) => a.value - b.value);
@@ -83,7 +83,7 @@ const cpmTable = computed<TableEntry[]>(() => {
         prompt: answer.country,
         expected: answer.answer,
         value: Math.round(
-          ((60000 / answer.typingTime) * answer.answer.length) / 5,
+          ((60000 / answer.typing_time) * answer.answer.length) / 5,
         ),
         cca2: answer.cca2,
       }))
