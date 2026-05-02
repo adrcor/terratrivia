@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import type { InputAnswer } from "@/types/trial";
+import type { InputAnswer } from "@/types/common";
 import { onMounted, ref, watch } from "vue";
 
 const message = ref("");

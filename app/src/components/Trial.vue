@@ -52,8 +52,9 @@ import TrialResult from "@/components/trial/TrialResult.vue";
 import { useTimer } from "@/composables/timer";
 import { useTrial } from "@/composables/trial";
 import { useGeoStore } from "@/stores/geo";
+import { useSettingsStore } from "@/stores/settings";
 import { useTrialStore } from "@/stores/trial";
-import type { InputAnswer } from "@/types/trial";
+import type { InputAnswer } from "@/types/common";
 import { onMounted, onUnmounted } from "vue";
 
 const geo = useGeoStore();
@@ -61,6 +62,7 @@ const geo = useGeoStore();
 const timer = useTimer();
 const trial = useTrial();
 const trialStore = useTrialStore();
+const settings = useSettingsStore();
 
 onMounted(async () => {
   geo.sync();
@@ -89,7 +91,7 @@ async function start() {
     return;
   }
   reset();
-  const result = await trial.start(trialStore.mode, trialStore.region);
+  const result = await trial.start(settings.mode, settings.region);
   if (result.isOk()) {
     timer.start();
   }

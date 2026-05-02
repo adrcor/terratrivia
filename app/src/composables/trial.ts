@@ -1,14 +1,8 @@
 import { useGeoStore } from "@/stores/geo";
 import { useStatusStore } from "@/stores/status";
 import { useTrialStore } from "@/stores/trial";
-import type {
-  InputAnswer,
-  Pair,
-  Region,
-  Mode,
-  TrialAnswer,
-  Country,
-} from "@/types/trial";
+import type { InputAnswer, Pair, Region, Mode, Country } from "@/types/common";
+import type { TrialAnswer } from "@/types/trial";
 import { err, ok, ResultAsync, type Result } from "neverthrow";
 import { computed, ref, type Ref } from "vue";
 

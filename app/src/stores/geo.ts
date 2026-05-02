@@ -1,5 +1,5 @@
 import { useApi } from "@/composables/api";
-import type { Country, Region } from "@/types/trial";
+import type { Country, Region } from "@/types/common";
 import { fromApi } from "@/utils/api";
 import { useLocalStorage } from "@vueuse/core";
 import { err, ok, type Result } from "neverthrow";

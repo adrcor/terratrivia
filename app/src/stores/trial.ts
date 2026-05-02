@@ -2,8 +2,6 @@ import { useApi } from "@/composables/api";
 import type {
   TrialResultLocal,
   TrialResult,
-  Region,
-  Mode,
   TrialHighscore,
   TrialResultSmall,
 } from "@/types/trial";
@@ -16,9 +14,6 @@ import { ref } from "vue";
 const apiClient = useApi();
 
 export const useTrialStore = defineStore("store", () => {
-  const mode = useLocalStorage<Mode>("mode", "capitals");
-  const region = useLocalStorage<Region>("region", "af");
-
   const results = useLocalStorage<Array<TrialResultSmall>>("results", []);
   const highscores = useLocalStorage<Array<TrialHighscore>>("highscores", []);
   const latest = ref<TrialResult | TrialResultLocal | null>(null);
@@ -88,8 +83,6 @@ export const useTrialStore = defineStore("store", () => {
   }
 
   return {
-    mode,
-    region,
     results,
     highscores,
     latest,
