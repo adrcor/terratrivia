@@ -27,7 +27,7 @@ CREATE TABLE trial_results (
 	time integer NOT NULL, -- ms
 	answers jsonb NOT NULL, -- array of {country, capital, short, valid, reaction_time, typing_time}
 
-	created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	created timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE trial_highscores (
