@@ -70,9 +70,13 @@ function getResult(db: Kysely<Database>, id: string): ResultAsync<TrialResult, E
 function getAllResults(
   db: Kysely<Database>,
   idUser: string,
-): ResultAsync<TrialResult[], Er<"db_error">> {
+): ResultAsync<Omit<TrialResult, "answers">[], Er<"db_error">> {
   return ResultAsync.fromPromise(
-    db.selectFrom("trial_results").selectAll().where("id_user", "=", idUser).execute(),
+    db
+      .selectFrom("trial_results")
+      .select(["id", "id_user", "region", "mode", "length", "correct", "time", "created"])
+      .where("id_user", "=", idUser)
+      .execute(),
     () => Er.new("db_error", "Failed to fetch trial results"),
   );
 }

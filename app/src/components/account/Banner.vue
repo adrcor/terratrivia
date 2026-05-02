@@ -59,7 +59,7 @@ import Highscore from "./Highscore.vue";
 import { useTrialStore } from "@/stores/trial";
 import type { Region } from "@/types/trial";
 import { regionLengths, regions } from "@/types/trial";
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 
 const trialStore = useTrialStore();
 
@@ -150,9 +150,5 @@ const flagHighscores = computed<Array<Highscore>>(() => {
       id_result: highscore.id_result,
     };
   });
-});
-
-onMounted(async () => {
-  await trialStore.syncHighscores();
 });
 </script>

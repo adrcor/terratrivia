@@ -5,64 +5,79 @@ import type {
   Region,
   Mode,
   TrialHighscore,
+  TrialResultSmall,
 } from "@/types/trial";
-import { regions } from "@/types/trial";
 import { fromApi } from "@/utils/api";
 import { useLocalStorage } from "@vueuse/core";
-import { type ResultAsync } from "neverthrow";
+import { okAsync, type ResultAsync } from "neverthrow";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
 const apiClient = useApi();
 
 export const useTrialStore = defineStore("store", () => {
+  const mode = useLocalStorage<Mode>("mode", "capitals");
+  const region = useLocalStorage<Region>("region", "af");
+
+  const results = useLocalStorage<Array<TrialResultSmall>>("results", []);
   const highscores = useLocalStorage<Array<TrialHighscore>>("highscores", []);
   const latest = ref<TrialResult | TrialResultLocal | null>(null);
 
-  const mode = useLocalStorage<Mode>("mode", "capitals");
-  const region = useLocalStorage<Region>("region", "am");
-  if (!regions.includes(region.value)) {
-    region.value = "am";
+  const cacheResults: Record<string, TrialResult> = {};
+
+  function isNewHighscore(result: TrialResult): boolean {
+    const current = highscores.value.find(
+      (h) => h.region === result.region && h.mode === result.mode,
+    );
+    return (
+      !current ||
+      current.correct < result.correct ||
+      (current?.correct === result.correct && current?.time > result.time)
+    );
   }
 
-  function newResult(
+  function postResult(
     result: TrialResultLocal,
   ): ResultAsync<TrialResult, string> {
     latest.value = result;
 
     return fromApi(apiClient.trial.results.$post({ json: result }))
       .mapErr((e) => "trial.newResult: " + e.message)
-      .map((data) => {
-        const apiResult = data;
-        latest.value = apiResult;
-
-        const current = highscores.value.find(
-          (h) => h.region === apiResult.region && h.mode === apiResult.mode,
-        );
-        const isNew =
-          !current ||
-          current.correct < apiResult.correct ||
-          (current.correct === apiResult.correct &&
-            current.time > apiResult.time);
-
-        if (isNew) {
+      .andTee((data) => {
+        latest.value = data;
+        results.value.push(data);
+        cacheResults[data.id] = data;
+        if (isNewHighscore(data)) {
           syncHighscores();
         }
-
-        return apiResult;
       });
   }
 
   function getResult(id: string): ResultAsync<TrialResult, string> {
-    return fromApi(
-      apiClient.trial.results[":id"].$get({ param: { id } }),
-    ).mapErr((e) => "trial.getResult: " + e.message);
+    if (cacheResults[id]) {
+      return okAsync(cacheResults[id]);
+    }
+    return fromApi(apiClient.trial.results[":id"].$get({ param: { id } }))
+      .mapErr((e) => "trial.getResult: " + e.message)
+      .andTee((data) => {
+        cacheResults[id] = data;
+      });
+  }
+
+  function syncResults(): ResultAsync<Array<TrialResultSmall>, string> {
+    return fromApi(apiClient.trial.results.$get())
+      .mapErr((e) => "trial.getResults: " + e.message)
+      .andTee((data) => {
+        results.value = data;
+      });
   }
 
   function syncHighscores(): ResultAsync<Array<TrialHighscore>, string> {
-    return fromApi(apiClient.trial.highscores.$get()).mapErr(
-      (e) => "trial.syncHighscores: " + e.message,
-    );
+    return fromApi(apiClient.trial.highscores.$get())
+      .mapErr((e) => "trial.syncHighscores: " + e.message)
+      .andTee((data) => {
+        highscores.value = data;
+      });
   }
 
   return {
@@ -71,8 +86,9 @@ export const useTrialStore = defineStore("store", () => {
     mode,
     region,
 
-    newResult,
+    postResult,
     getResult,
+    syncResults,
     syncHighscores,
   };
 });
