@@ -33,7 +33,7 @@ function newApi() {
 
       .get("/", (h: Context) => {
         return h.text(`terratrivia ${VERSION}`);
-      })      
+      })
 
       // geo routes
       .get("/geo/countries", (h: Context) => {
