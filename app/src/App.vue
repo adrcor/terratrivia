@@ -21,13 +21,19 @@
 </template>
 
 <script setup lang="ts">
+import { useTrialStore } from "./stores/trial";
 import NavigationBar from "@/components/navigation/NavigationBar.vue";
 import { useAuthStore } from "@/stores/auth";
 import Footer from "@/views/Footer.vue";
 import UApp from "@nuxt/ui/components/App.vue";
 import { onMounted } from "vue";
 
-onMounted(() => {
-  useAuthStore().sync();
+const authStore = useAuthStore();
+const trialStore = useTrialStore();
+
+onMounted(async () => {
+  await authStore.sync();
+  trialStore.syncHighscores();
+  trialStore.syncResults();
 });
 </script>

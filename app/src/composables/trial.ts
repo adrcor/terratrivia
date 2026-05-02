@@ -170,7 +170,7 @@ export function useTrial(): Trial {
   function done(): Result<boolean, string> {
     useStatusStore().running = false;
     status.value = "done";
-    useTrialStore().newResult({
+    useTrialStore().postResult({
       region: region.value as Region,
       mode: mode.value as Mode,
       correct: metrics.value.correct,

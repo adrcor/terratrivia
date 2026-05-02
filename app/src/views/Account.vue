@@ -1,13 +1,35 @@
 <template>
-  <div class="flex w-full flex-col items-center gap-2">
-    <h1 class="weight-bold mb-2 text-2xl">trial highscores</h1>
-    <Banner />
-    <h1 class="weight-bold mt-16 mb-2 text-2xl">account</h1>
-    <Settings />
+  <div class="flex w-full flex-1 flex-col items-center gap-8">
+    <UTabs
+      :items="tabs"
+      v-model="
+        // syntax highlighting workaround
+        activeTab as Tab
+      "
+      variant="link"
+      size="xl"
+      color="neutral"
+    />
+    <Banner v-if="activeTab === 'highscores'" />
+    <History v-if="activeTab === 'history'" />
+    <Settings v-if="activeTab === 'settings'" />
   </div>
 </template>
 
 <script setup lang="ts">
 import Banner from "@/components/account/Banner.vue";
+import History from "@/components/account/History.vue";
 import Settings from "@/components/account/Settings.vue";
+import UTabs from "@nuxt/ui/components/Tabs.vue";
+import { ref } from "vue";
+
+type Tab = "highscores" | "history" | "settings";
+
+const tabs = [
+  { label: "highscores", value: "highscores" as Tab },
+  { label: "history", value: "history" as Tab },
+  { label: "settings", value: "settings" as Tab },
+];
+
+const activeTab = ref<Tab>("highscores");
 </script>
