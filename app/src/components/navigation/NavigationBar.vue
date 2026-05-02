@@ -5,6 +5,7 @@
   >
     <HomeButton />
     <div class="flex flex-row items-center justify-between gap-8">
+      <Link to="/practice" icon="anron-gestalt:planet" label="practice"></Link>
       <Link
         v-if="auth.id"
         to="/account"
@@ -22,6 +23,7 @@
     <HomeButton />
 
     <div class="flex flex-row items-center justify-between gap-8">
+      <Link to="/practice" icon="anron-gestalt:planet"></Link>
       <Link v-if="auth.id" to="/account" icon="anron-gestalt:user"></Link>
       <Link v-else to="/login" icon="anron-gestalt:log-in"></Link>
     </div>

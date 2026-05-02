@@ -1,6 +1,6 @@
 {
   "prefix": "anron-gestalt",
-  "lastModified": 1777700617,
+  "lastModified": 1777735377,
   "icons": {
     "code": {
       "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"m8 6-6 6m6 6-4-4m12-8 4 4m2 2-6 6\"/>"
@@ -16,6 +16,9 @@
     },
     "log-in": {
       "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M14 2h1.6c2.24 0 3.36 0 4.216.436a4 4 0 011.748 1.748C22 5.04 22 6.16 22 8.4V10m-8 12h1.6c2.24 0 3.36 0 4.216-.436a4 4 0 001.748-1.748C22 18.96 22 17.84 22 15.6V14M2 12h12l-4-4m1.5 6.5L10 16\"/>"
+    },
+    "planet": {
+      "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M20.81 10.153C22.295 8.462 22.94 6.947 22.392 6s-2.181-1.147-4.39-.706m2.808 4.859C19.294 11.88 16.9 13.79 14 15.464q-.502.29-1 .557m7.81-5.868Q21 11.049 21 12a9 9 0 01-17.81 1.847m17.62-3.694a9 9 0 00-2.807-4.859m0 0A9 9 0 003.19 13.847m0 0C1.705 15.538 1.06 17.054 1.608 18 2.38 19.34 5.33 19.185 9 17.835\"/>"
     },
     "user": {
       "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M14.5 22h2.3a3.2 3.2 0 003.2-3.2v0a4.8 4.8 0 00-4.8-4.8H8.8A4.8 4.8 0 004 18.8v0A3.2 3.2 0 007.2 22h2.3M16 6a4 4 0 11-8 0 4 4 0 018 0\"/>"
