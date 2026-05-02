@@ -1,14 +1,7 @@
 export type Region = "af" | "am" | "as" | "eu" | "oc" | "world";
 export type Mode = "capitals" | "flags";
 export const modes: Mode[] = ["capitals", "flags"];
-export const regions: Region[] = [
-  "af",
-  "am",
-  "as",
-  "eu",
-  "oc",
-  "world",
-];
+export const regions: Region[] = ["af", "am", "as", "eu", "oc", "world"];
 
 export const regionLengths: Record<Region, number> = {
   af: 54,

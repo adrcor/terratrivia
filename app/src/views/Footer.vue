@@ -10,8 +10,8 @@
       size="sm"
     />
     <Link
-      icon="anron-gestalt:github"
-      label="github"
+      icon="anron-gestalt:code"
+      :label="VERSION"
       to="https://github.com/adrcor/terratrivia"
       size="sm"
     />
@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import Link from "@/components/Link.vue";
+import { VERSION } from "@/env";
 import { useStatusStore } from "@/stores/status";
 
 const status = useStatusStore();

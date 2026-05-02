@@ -50,7 +50,11 @@
           :cca2="answer.cca2"
           :percent="
             {
-              reaction: ilerp(REACTION_LOW, REACTION_HIGH, answer.reaction_time),
+              reaction: ilerp(
+                REACTION_LOW,
+                REACTION_HIGH,
+                answer.reaction_time,
+              ),
               typing: ilerp(
                 -WPM_HIGH,
                 -WPM_LOW,
