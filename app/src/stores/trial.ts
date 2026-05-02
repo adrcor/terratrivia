@@ -6,7 +6,7 @@ import type {
   Mode,
   TrialHighscore,
 } from "@/types/trial";
-import { selectableRegions } from "@/types/trial";
+import { regions } from "@/types/trial";
 import { fromApi } from "@/utils/api";
 import { useLocalStorage } from "@vueuse/core";
 import { type ResultAsync } from "neverthrow";
@@ -21,7 +21,7 @@ export const useTrialStore = defineStore("store", () => {
 
   const mode = useLocalStorage<Mode>("mode", "capitals");
   const region = useLocalStorage<Region>("region", "am");
-  if (!selectableRegions.includes(region.value)) {
+  if (!regions.includes(region.value)) {
     region.value = "am";
   }
 

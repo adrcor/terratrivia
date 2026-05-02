@@ -1,6 +1,4 @@
-import { DEBUG } from "@/env";
-
-export type Region = "af" | "am" | "as" | "eu" | "oc" | "world" | "debug";
+export type Region = "af" | "am" | "as" | "eu" | "oc" | "world";
 export type Mode = "capitals" | "flags";
 export const modes: Mode[] = ["capitals", "flags"];
 export const regions: Region[] = [
@@ -10,12 +8,7 @@ export const regions: Region[] = [
   "eu",
   "oc",
   "world",
-  "debug",
 ];
-
-export const selectableRegions: ReadonlyArray<Region> = DEBUG
-  ? regions
-  : regions.filter((r) => r !== "debug");
 
 export const regionLengths: Record<Region, number> = {
   af: 54,
@@ -24,7 +17,6 @@ export const regionLengths: Record<Region, number> = {
   eu: 45,
   oc: 14,
   world: 195,
-  debug: 10,
 };
 
 export interface Pair {

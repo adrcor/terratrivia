@@ -58,7 +58,7 @@
 import Highscore from "./Highscore.vue";
 import { useTrialStore } from "@/stores/trial";
 import type { Region } from "@/types/trial";
-import { regionLengths, selectableRegions } from "@/types/trial";
+import { regionLengths, regions } from "@/types/trial";
 import { computed, onMounted } from "vue";
 
 const trialStore = useTrialStore();
@@ -71,7 +71,7 @@ interface Highscore {
   idResult: string | null;
 }
 
-const totalLength = selectableRegions.reduce(
+const totalLength = regions.reduce(
   (acc, region) => acc + regionLengths[region],
   0,
 );
@@ -84,14 +84,14 @@ const totalCapitalCorrect = computed(() => {
 
 const totalCapitalTime = computed(() => {
   const filtered = trialStore.highscores.filter((h) => h.mode === "capitals");
-  if (filtered.length != selectableRegions.length) {
+  if (filtered.length != regions.length) {
     return 0;
   }
   return filtered.reduce((acc, h) => acc + h.time, 0) / filtered.length;
 });
 
 const capitalHighscores = computed<Array<Highscore>>(() => {
-  return selectableRegions.map((region) => {
+  return regions.map((region) => {
     const highscore = trialStore.highscores.find(
       (h) => h.mode === "capitals" && h.region === region,
     );
@@ -122,14 +122,14 @@ const totalFlagCorrect = computed(() => {
 
 const totalFlagTime = computed(() => {
   const filtered = trialStore.highscores.filter((h) => h.mode === "flags");
-  if (filtered.length != selectableRegions.length) {
+  if (filtered.length != regions.length) {
     return 0;
   }
   return filtered.reduce((acc, h) => acc + h.time, 0) / filtered.length;
 });
 
 const flagHighscores = computed<Array<Highscore>>(() => {
-  return selectableRegions.map((region) => {
+  return regions.map((region) => {
     const highscore = trialStore.highscores.find(
       (h) => h.mode === "flags" && h.region === region,
     );

@@ -50,19 +50,14 @@
 
 <script setup lang="ts">
 import { useTrialStore } from "@/stores/trial";
-import {
-  modes,
-  selectableRegions,
-  type Mode,
-  type Region,
-} from "@/types/trial";
+import { modes, regions, type Mode, type Region } from "@/types/trial";
 import UTabs from "@nuxt/ui/components/Tabs.vue";
 import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { onMounted, onUnmounted } from "vue";
 
 const trialStore = useTrialStore();
 const modeItems = modes.map((m) => ({ label: m, value: m }));
-const regionItems = selectableRegions.map((r) => ({ label: r, value: r }));
+const regionItems = regions.map((r) => ({ label: r, value: r }));
 
 const props = defineProps<{
   show: boolean;
@@ -100,9 +95,7 @@ function nextRegion() {
   if (!props.show) {
     return;
   }
-  const index = selectableRegions.indexOf(trialStore.region);
-  trialStore.region = selectableRegions[
-    (index + 1) % selectableRegions.length
-  ] as Region;
+  const index = regions.indexOf(trialStore.region);
+  trialStore.region = regions[(index + 1) % regions.length] as Region;
 }
 </script>
