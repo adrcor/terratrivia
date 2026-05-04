@@ -1,5 +1,3 @@
-
-
 export type Region = "af" | "am" | "as" | "eu" | "oc" | "world";
 export type Mode = "capitals" | "flags";
 export const modes: Mode[] = ["capitals", "flags"];
