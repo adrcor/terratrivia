@@ -3,7 +3,7 @@
     <div
       :class="[
         'flex flex-col items-center',
-        'min-h-screen',
+        'min-h-screen select-none',
         'weight-default bg-neutral-950 pl-4 font-mono text-white',
       ]"
     >

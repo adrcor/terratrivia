@@ -4,8 +4,8 @@ import { ilerp } from "@/utils/lerp";
 
 const WPM_LOW = 30;
 const WPM_HIGH = 150;
-const REACTION_LOW = 500;
-const REACTION_HIGH = 2000;
+const REACTION_LOW = 700;
+const REACTION_HIGH = 2100;
 
 export function ilerpReactionTime(reactionTime: number) {
   return ilerp(-REACTION_HIGH, -REACTION_LOW, -reactionTime);
@@ -21,9 +21,9 @@ export function scoreTotal(score: CountryScore) {
   }
   const reactionPct = ilerpReactionTime(score.reaction_time);
   const typingPct = ilerpWpm(wpm(score.typing_time, score.answer.length));
-  const out = Math.floor((reactionPct + typingPct) * 50);
+  const out = (reactionPct + typingPct) * 50;
   if (score.count < 4) {
-    return out / (5 - score.count);
+    return Math.floor(out / (5 - score.count));
   }
-  return out;
+  return Math.floor(out);
 }
