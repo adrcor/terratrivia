@@ -4,13 +4,15 @@ import type {
   CountryScore,
   PracticeAnswer,
   PracticeState,
+  PracticeStats,
   UnitState,
 } from "@/types/practice";
+import { wpm } from "@/utils/cpm";
 import { weightedPick } from "@/utils/random";
 import { scoreTotal } from "@/utils/score";
 import { useLocalStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
-import { type Ref } from "vue";
+import { ref, type Ref } from "vue";
 
 const VALID_THRESHOLD = 80;
 const DISCOVERED_COUNT = 5;
@@ -40,6 +42,7 @@ function newUnitState(region: Region): UnitState {
   return {
     region: "world",
     mode: "capitals",
+    count: 0,
     discovered: 5,
     validated: 0,
     list: countries,
@@ -50,10 +53,13 @@ function newUnitState(region: Region): UnitState {
 export const usePracticeStore = defineStore("practice", () => {
   const state = useLocalStorage<PracticeState>("practice", {});
 
+  const stats = ref<PracticeStats | null>(null);
+
   function get(mode: Mode, region: Region): UnitState {
     if (!state.value[`${mode}:${region}`]) {
       state.value[`${mode}:${region}`] = newUnitState(region);
     }
+    setStats(state.value[`${mode}:${region}`]!);
     return state.value[`${mode}:${region}`]!;
   }
 
@@ -97,8 +103,10 @@ export const usePracticeStore = defineStore("practice", () => {
       );
       score.count++;
     }
+    unit.count++;
     answers.length = 0;
     _updateScores(mode, region);
+    stats.value = _computeStats(unit);
   }
 
   function _updateScores(mode: Mode, region: Region): void {
@@ -117,11 +125,51 @@ export const usePracticeStore = defineStore("practice", () => {
     unit.discovered = Math.max(unit.discovered, validCount + DISCOVERED_COUNT);
   }
 
+  function _computeStats(unit: UnitState): PracticeStats {
+    const stats: PracticeStats = {
+      validated: 0,
+      completed: 0,
+      average_reaction_time: 0,
+      average_wpm: 0,
+    };
+    let denominator = 0;
+    for (const score of Object.values(unit.scores)) {
+      if (score.count === 0) {
+        continue;
+      }
+      denominator += 1;
+      const scoreValue = scoreTotal(score);
+      if (scoreValue >= VALID_THRESHOLD) {
+        stats.validated++;
+      }
+      if (scoreValue === 100) {
+        stats.completed++;
+      }
+      stats.average_reaction_time += score.reaction_time;
+      stats.average_wpm += wpm(score.typing_time, score.answer.length);
+    }
+    stats.average_reaction_time /= denominator;
+    stats.average_wpm /= denominator;
+    return stats;
+  }
+
+  function setStats(unit: UnitState): void {
+    const newStats = _computeStats(unit);
+    stats.value = newStats;
+  }
+
+  function reset(mode: Mode, region: Region): void {
+    state.value[`${mode}:${region}`] = newUnitState(region);
+    setStats(state.value[`${mode}:${region}`]!);
+  }
+
   return {
     state,
+    stats,
 
     get,
     getShuffledCountries,
     pushAnswers,
+    reset,
   };
 });

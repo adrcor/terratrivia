@@ -12,6 +12,7 @@ export interface CountryScore {
 export interface UnitState {
   region: Region;
   mode: Mode;
+  count: number;
   discovered: number;
   validated: number;
   list: Array<Country>;
@@ -25,4 +26,11 @@ export interface PracticeAnswer {
   reaction_time: number;
   typing_time: number;
   valid: boolean;
+}
+
+export interface PracticeStats {
+  validated: number;
+  completed: number;
+  average_reaction_time: number;
+  average_wpm: number;
 }

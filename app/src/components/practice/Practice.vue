@@ -6,6 +6,7 @@
       class="flex min-w-96 flex-col items-center justify-center gap-2"
     >
       <TrialOptions class="mb-4" :show="true" />
+      <PracticeMetrics :practice="practice" />
       <State :unit="practice.state.value" />
     </div>
     <div
@@ -26,6 +27,7 @@
 import FadeTransition from "@/components/FadeTransition.vue";
 import GameInput from "@/components/GameInput.vue";
 import TrialOptions from "@/components/TrialOptions.vue";
+import PracticeMetrics from "@/components/practice/PracticeMetrics.vue";
 import Prompt from "@/components/practice/Prompt.vue";
 import State from "@/components/practice/State.vue";
 import { usePractice } from "@/composables/practice";
