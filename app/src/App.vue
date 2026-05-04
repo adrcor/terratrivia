@@ -21,10 +21,10 @@
 </template>
 
 <script setup lang="ts">
-import { useGeoStore } from "@/stores/geo";
-import { useTrialStore } from "@/stores/trial";
 import NavigationBar from "@/components/navigation/NavigationBar.vue";
 import { useAuthStore } from "@/stores/auth";
+import { useGeoStore } from "@/stores/geo";
+import { useTrialStore } from "@/stores/trial";
 import Footer from "@/views/Footer.vue";
 import UApp from "@nuxt/ui/components/App.vue";
 import { onMounted } from "vue";

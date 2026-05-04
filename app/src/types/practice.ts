@@ -1,6 +1,5 @@
 import type { Country, Mode, Region } from "./common";
 
-
 export interface CountryScore {
   country: string;
   cca2: string;
@@ -20,7 +19,6 @@ export interface UnitState {
 }
 
 export type PracticeState = Partial<Record<`${Mode}:${Region}`, UnitState>>;
-
 
 export interface PracticeAnswer {
   cca2: string;

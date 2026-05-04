@@ -1,5 +1,5 @@
-import { wpm } from "@/utils/cpm";
 import type { CountryScore } from "../types/practice";
+import { wpm } from "@/utils/cpm";
 import { ilerp } from "@/utils/lerp";
 
 const WPM_LOW = 30;
@@ -23,7 +23,7 @@ export function scoreTotal(score: CountryScore) {
   const typingPct = ilerpWpm(wpm(score.typing_time, score.answer.length));
   const out = Math.floor((reactionPct + typingPct) * 50);
   if (score.count < 4) {
-    return out / (5 - score.count)
+    return out / (5 - score.count);
   }
-  return out
+  return out;
 }

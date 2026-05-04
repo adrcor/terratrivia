@@ -14,9 +14,9 @@
 
 <script setup lang="ts">
 import GameInput from "@/components/GameInput.vue";
+import TrialOptions from "@/components/TrialOptions.vue";
 import Prompt from "@/components/practice/Prompt.vue";
 import State from "@/components/practice/State.vue";
-import TrialOptions from "@/components/TrialOptions.vue";
 import { usePractice } from "@/composables/practice";
 import type { InputAnswer } from "@/types/common";
 import { onMounted, onUnmounted } from "vue";

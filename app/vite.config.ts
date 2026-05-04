@@ -21,7 +21,8 @@ export default defineConfig({
               class: {
                 list: "bg-neutral-900/60",
                 indicator: "bg-transparent",
-                trigger: "data-[state=active]:text-default data-[state=inactive]:text-dimmed",
+                trigger:
+                  "data-[state=active]:text-default data-[state=inactive]:text-dimmed",
               },
             },
             {

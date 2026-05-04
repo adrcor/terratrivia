@@ -1,6 +1,6 @@
 <template>
   <div
-    class="m-1 flex size-8 flex-col items-center justify-center select-none rounded-xs"
+    class="m-1 flex size-8 flex-col items-center justify-center rounded-xs select-none"
     :style="{ backgroundColor: color }"
   >
     {{ props.cca2.toLowerCase() }}

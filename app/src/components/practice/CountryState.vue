@@ -43,7 +43,7 @@ const color = computed(() => {
   }
   if (score < 80) {
     const pct = (score / 80) * 100;
-    return `color-mix(in oklch, var(--color-emerald-700) ${Math.max(30,pct)}%, transparent)`;
+    return `color-mix(in oklch, var(--color-emerald-700) ${Math.max(30, pct)}%, transparent)`;
   }
   const pct = ((score - 80) / 20) * 100;
   return `color-mix(in oklch, var(--color-primary-800) ${100 - pct}%, var(--color-primary-700) ${pct}%)`;
@@ -54,7 +54,9 @@ const tooltip = computed(() => {
   const reactionPct = Math.floor(
     ilerpReactionTime(props.score.reaction_time) * 100,
   );
-  const typingPct = Math.floor(ilerpWpm(wpm(props.score.typing_time, props.score.answer.length)) * 100);
+  const typingPct = Math.floor(
+    ilerpWpm(wpm(props.score.typing_time, props.score.answer.length)) * 100,
+  );
   const totalPct = scoreTotal(props.score);
   return `${firstLine}
   reaction - ${formatTime(props.score.reaction_time)}s | ${reactionPct}%

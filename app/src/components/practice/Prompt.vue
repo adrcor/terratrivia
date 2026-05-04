@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Practice } from '@/composables/practice';
-import { useSettingsStore } from '@/stores/settings';
+import type { Practice } from "@/composables/practice";
+import { useSettingsStore } from "@/stores/settings";
 
 const settings = useSettingsStore();
 
