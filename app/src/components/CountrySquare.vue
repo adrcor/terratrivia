@@ -1,6 +1,6 @@
 <template>
   <div
-    class="m-1 flex size-8 flex-col items-center justify-center select-none"
+    class="m-1 flex size-8 flex-col items-center justify-center select-none rounded-xs"
     :style="{ backgroundColor: color }"
   >
     {{ props.cca2.toLowerCase() }}
@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { hexaToRGB, mixLinearRGB } from "@/utils/rgb";
 import { computed } from "vue";
 
 const props = defineProps<{
@@ -17,9 +16,10 @@ const props = defineProps<{
 }>();
 
 const color = computed(() => {
-  const green = "#15803d";
-  const red = "#991b1b";
-  const color = mixLinearRGB(hexaToRGB(green), hexaToRGB(red), props.percent);
-  return `rgba(${Math.floor(color.r * 255)}, ${Math.floor(color.g * 255)}, ${Math.floor(color.b * 255)}, 1)`;
+  const score = Math.floor((1 - props.percent) * 100);
+  if (score == 100) {
+    return "var(--color-primary-600)";
+  }
+  return `color-mix(in oklch, var(--color-orange-800) ${100 - score}%, var(--color-emerald-700) ${score}%)`;
 });
 </script>

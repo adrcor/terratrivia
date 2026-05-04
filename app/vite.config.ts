@@ -20,8 +20,8 @@ export default defineConfig({
               variant: "pill",
               class: {
                 list: "bg-neutral-900/60",
-                indicator: "bg-neutral-800",
-                trigger: "data-[state=active]:text-toned",
+                indicator: "bg-transparent",
+                trigger: "data-[state=active]:text-default data-[state=inactive]:text-dimmed",
               },
             },
             {

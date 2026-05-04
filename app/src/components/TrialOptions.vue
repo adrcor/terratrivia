@@ -3,7 +3,7 @@
     class="flex flex-col items-center gap-2 transition-opacity duration-300"
     :class="{ 'opacity-0': !show }"
   >
-    <div class="flex flex-col items-center gap-4">
+    <div class="flex flex-row items-center gap-4">
       <UTooltip
         text="mode"
         :kbds="['m']"

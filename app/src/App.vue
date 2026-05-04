@@ -21,7 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import { useTrialStore } from "./stores/trial";
+import { useGeoStore } from "@/stores/geo";
+import { useTrialStore } from "@/stores/trial";
 import NavigationBar from "@/components/navigation/NavigationBar.vue";
 import { useAuthStore } from "@/stores/auth";
 import Footer from "@/views/Footer.vue";
@@ -30,9 +31,11 @@ import { onMounted } from "vue";
 
 const authStore = useAuthStore();
 const trialStore = useTrialStore();
+const geoStore = useGeoStore();
 
 onMounted(async () => {
   await authStore.sync();
+  geoStore.sync();
   trialStore.syncHighscores();
   trialStore.syncResults();
 });
