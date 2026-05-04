@@ -1,21 +1,29 @@
 <template>
-  <div
-    v-if="practice.status.value === 'idle'"
-    class="flex min-w-96 flex-col items-center justify-center gap-2"
-  >
-    <TrialOptions class="mb-4" :show="true" />
-    <State :unit="practice.state.value" />
-  </div>
-  <div v-else class="flex min-w-96 flex-col items-center justify-center gap-2">
-    <Prompt :practice="practice" />
-    <GameInput
-      :expected="practice.pair.value?.expected || ''"
-      @answer="onAnswer"
-    />
-  </div>
+  <FadeTransition>
+    <div
+      v-if="practice.status.value === 'idle'"
+      key="idle"
+      class="flex min-w-96 flex-col items-center justify-center gap-2"
+    >
+      <TrialOptions class="mb-4" :show="true" />
+      <State :unit="practice.state.value" />
+    </div>
+    <div
+      v-else
+      key="active"
+      class="flex min-w-96 flex-col items-center justify-center gap-2"
+    >
+      <Prompt :practice="practice" />
+      <GameInput
+        :expected="practice.pair.value?.expected || ''"
+        @answer="onAnswer"
+      />
+    </div>
+  </FadeTransition>
 </template>
 
 <script setup lang="ts">
+import FadeTransition from "@/components/FadeTransition.vue";
 import GameInput from "@/components/GameInput.vue";
 import TrialOptions from "@/components/TrialOptions.vue";
 import Prompt from "@/components/practice/Prompt.vue";
