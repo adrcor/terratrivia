@@ -45,7 +45,7 @@ function newUnitState(region: Region): UnitState {
     count: 0,
     discovered: 5,
     validated: 0,
-    list: countries,
+    countries: countries.map((c) => c.cca2),
     scores: scores,
   };
 }
@@ -64,8 +64,11 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function getShuffledCountries(mode: Mode, region: Region) {
+    const geoStore = useGeoStore();
     const unit = get(mode, region);
-    const pool = unit.list.slice(0, unit.discovered);
+    const pool = unit.countries
+      .slice(0, unit.discovered)
+      .map((cca2) => geoStore.mapCountry[cca2]);
     const windowSize = Math.min(3, pool.length - 1);
     const result: Array<Country> = [];
     const recent: Array<string> = [];

@@ -1,4 +1,4 @@
-import type { Country, Mode, Region } from "./common";
+import type { Mode, Region } from "./common";
 
 export interface CountryScore {
   country: string;
@@ -15,7 +15,7 @@ export interface UnitState {
   count: number;
   discovered: number;
   validated: number;
-  list: Array<Country>;
+  countries: Array<string>;
   scores: Record<string, CountryScore>;
 }
 

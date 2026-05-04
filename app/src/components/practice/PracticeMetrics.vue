@@ -7,12 +7,12 @@
     />
     <SingleMetric
       icon="anron-gestalt:verified"
-      :label="`${practice.state.value.validated}/${practice.state.value.list.length}`"
+      :label="`${practice.state.value.validated}/${practice.state.value.countries.length}`"
       tooltip="validated countries"
     />
     <SingleMetric
       icon="anron-gestalt:lightning"
-      :label="`${practiceStore.stats?.completed ?? 0}/${practice.state.value.list.length}`"
+      :label="`${practiceStore.stats?.completed ?? 0}/${practice.state.value.countries.length}`"
       tooltip="completed countries"
     />
     <SingleMetric
