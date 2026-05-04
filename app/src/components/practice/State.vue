@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap items-center justify-center">
+  <div class="flex h-40 flex-wrap content-start justify-center overflow-y-auto">
     <CountryState
       v-for="(country, index) in unit.list"
       :key="country.cca2"
