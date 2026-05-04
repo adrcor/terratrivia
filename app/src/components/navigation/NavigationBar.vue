@@ -37,15 +37,16 @@ import { useAuthStore } from "@/stores/auth";
 import { useStatusStore } from "@/stores/status";
 import { useWindowSize } from "@vueuse/core";
 import { onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const auth = useAuthStore();
 const status = useStatusStore();
 const router = useRouter();
+const route = useRoute()
 const { width } = useWindowSize();
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === "Escape" && !status.running) {
+  if (e.key === "Escape" && !status.running && route.name != "practice") {
     router.push("/");
   }
 }
