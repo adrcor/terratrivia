@@ -42,7 +42,7 @@ import { useRoute, useRouter } from "vue-router";
 const auth = useAuthStore();
 const status = useStatusStore();
 const router = useRouter();
-const route = useRoute()
+const route = useRoute();
 const { width } = useWindowSize();
 
 function onKeydown(e: KeyboardEvent) {

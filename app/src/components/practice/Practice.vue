@@ -1,9 +1,12 @@
 <template>
   <div
-    class="flex min-w-96 flex-col items-center justify-center gap-2 text-white"
+    v-if="practice.status.value === 'idle'"
+    class="flex min-w-96 flex-col items-center justify-center gap-2"
   >
-    <TrialOptions :show="practice.status.value === 'idle'" class="mb-4" />
+    <TrialOptions class="mb-4" :show="true" />
     <State :unit="practice.state.value" />
+  </div>
+  <div v-else class="flex min-w-96 flex-col items-center justify-center gap-2">
     <Prompt :practice="practice" />
     <GameInput
       :expected="practice.pair.value?.expected || ''"
@@ -59,6 +62,11 @@ function reset() {
 }
 
 function onAnswer(answer: InputAnswer) {
-  practice.answer(answer);
+  const result = practice.answer(answer);
+  if (result.isErr()) {
+    console.error(result.error);
+  } else if (result.value) {
+    reset();
+  }
 }
 </script>

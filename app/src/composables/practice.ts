@@ -18,7 +18,7 @@ export interface Practice {
 
   start: () => ResultAsync<null, string>;
   reset: () => void;
-  answer: (answer: InputAnswer) => void;
+  answer: (answer: InputAnswer) => Result<boolean, string>;
 }
 
 export function usePractice(): Practice {
@@ -54,15 +54,22 @@ export function usePractice(): Practice {
 
     return ResultAsync.fromSafePromise(
       (async () => {
-        while (countdown.value! > 0) {
+        while (status.value == "countdown" && countdown.value! > 0) {
           await new Promise((resolve) => setTimeout(resolve, 500));
           countdown.value!--;
         }
       })(),
-    ).andThen(() => realStart());
+    ).andThen(() => {
+      if (status.value == "countdown") {
+        return realStart();
+      } else {
+        return ok(null);
+      }
+    });
   }
 
   function realStart(): Result<null, string> {
+    console.log("realStart");
     const result = pairCursor.start();
     if (result.isErr()) {
       return err(result.error);
