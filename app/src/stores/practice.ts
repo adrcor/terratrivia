@@ -19,6 +19,7 @@ import { fromApi } from "@/utils/api";
 import { wpm } from "@/utils/cpm";
 import { weightedPick } from "@/utils/random";
 import { score } from "@/utils/score";
+import { notifyError, notifySuccess } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref, type Ref } from "vue";
@@ -123,7 +124,10 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function _postUnit(unit: PracticeUnit) {
-    return fromApi(apiClient.practice.units.$post({ json: unit }));
+    return fromApi(apiClient.practice.units.$post({ json: unit })).mapErr((e) => {
+      notifyError(e, "failed to save progress");
+      return e;
+    });
   }
 
   function _deleteUnit(mode: Mode, region: Region) {
@@ -131,6 +135,9 @@ export const usePracticeStore = defineStore("practice", () => {
       apiClient.practice.units[":region"][":mode"].$delete({
         param: { region: region, mode: mode },
       }),
+    ).match(
+      () => notifySuccess("practice reset"),
+      (e) => notifyError(e, "failed to reset practice"),
     );
   }
 
@@ -184,12 +191,18 @@ export const usePracticeStore = defineStore("practice", () => {
     summary.value = null;
   }
 
-  function sync(): void {
-    fromApi(apiClient.practice.units.$get()).map((data) => {
-      for (const unit of data) {
-        units.value[`${unit.mode}:${unit.region}`] = unit;
-      }
-    });
+  function sync() {
+    units.value = {}
+    return fromApi(apiClient.practice.units.$get())
+      .map((data) => {
+        for (const unit of data) {
+          units.value[`${unit.mode}:${unit.region}`] = unit;
+        }
+      })
+      .mapErr((e) => {
+        notifyError(e, "failed to load practice");
+        return e;
+      });
   }
 
   return {

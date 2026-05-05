@@ -115,7 +115,7 @@ export function postPracticeUnit(
 ): ResultAsync<PracticeUnit, Er<"db_error" | "validation_error" | "sync_error">> {
   return toAsync(zodParse(practiceUnitSchema, ctx.practiceUnit)).andThen((parsed) =>
     selectPracticeUnit(ctx.db, ctx.user.id, parsed.region, parsed.mode).andThen((current) => {
-      if (current && parsed.count !== current.count + 1) {
+      if (parsed.count !== (current?.count ?? 0) + 1) {
         return errAsync(Er.new("sync_error", "Practice unit count mismatch"));
       }
       return insertPracticeUnit(ctx.db, ctx.user.id, parsed);
@@ -129,10 +129,10 @@ export function getAllPracticeUnits(ctx: PracticeCtx): ResultAsync<PracticeUnit[
 
 export function deletePracticeUnit(
   ctx: PracticeCtx & { region: unknown; mode: unknown },
-): ResultAsync<void, Er<"db_error" | "validation_error">> {
+): ResultAsync<Record<string, never>, Er<"db_error" | "validation_error">> {
   const region = toAsync(zodParse(regionSchema, ctx.region));
   const mode = toAsync(zodParse(modeSchema, ctx.mode));
   return ResultAsync.combine([region, mode]).andThen(([region, mode]) => {
-    return _deletePracticeUnit(ctx.db, ctx.user.id, region, mode);
+    return _deletePracticeUnit(ctx.db, ctx.user.id, region, mode).map(() => ({}));
   });
 }
