@@ -3,14 +3,14 @@ import { usePracticeStore } from "@/stores/practice";
 import { useSettingsStore } from "@/stores/settings";
 import { useStatusStore } from "@/stores/status";
 import type { Country, InputAnswer, Pair } from "@/types/common";
-import type { PracticeAnswer, UnitState } from "@/types/practice";
+import type { PracticeAnswer, PracticeUnit } from "@/types/practice";
 import { err, errAsync, ok, Result, ResultAsync } from "neverthrow";
 import { computed, ref, type Ref } from "vue";
 
 export type PracticeStatus = "idle" | "countdown" | "running";
 
 export interface Practice {
-  state: Ref<UnitState>;
+  unit: Ref<PracticeUnit>;
   status: Ref<PracticeStatus>;
   countdown: Ref<number | null>;
   pair: Ref<Pair | null>;
@@ -31,7 +31,7 @@ export function usePractice(): Practice {
   const settings = useSettingsStore();
   const statusStore = useStatusStore();
 
-  const state = computed(() =>
+  const unit = computed(() =>
     practiceStore.get(settings.mode, settings.region),
   );
   const answers = ref<Array<PracticeAnswer>>([]);
@@ -69,7 +69,6 @@ export function usePractice(): Practice {
   }
 
   function realStart(): Result<null, string> {
-    console.log("realStart");
     const result = pairCursor.start();
     if (result.isErr()) {
       return err(result.error);
@@ -112,7 +111,7 @@ export function usePractice(): Practice {
   }
 
   return {
-    state,
+    unit,
     status,
     countdown,
     country: pairCursor.country,

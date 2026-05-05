@@ -1,6 +1,6 @@
 import {
   VALID_THRESHOLD,
-  DISCOVERED_COUNT,
+  NEW_DISCOVER_COUNT,
   REACTION_INVALID,
   WPM_INVALID,
   EXPONENTIAL_WEIGHT,
@@ -8,33 +8,33 @@ import {
 import { useGeoStore } from "./geo";
 import type { Country, Mode, Region } from "@/types/common";
 import type {
-  CountryScore,
+  CountryStats,
   PracticeAnswer,
-  PracticeState,
-  PracticeStats,
-  UnitState,
+  PracticeUnit,
+  PracticeUnits,
+  UnitSummary,
 } from "@/types/practice";
 import { wpm } from "@/utils/cpm";
 import { weightedPick } from "@/utils/random";
-import { scoreTotal } from "@/utils/score";
+import { score } from "@/utils/score";
 import { useLocalStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref, type Ref } from "vue";
 
 export interface PracticeStore {
-  state: Ref<PracticeState>;
+  units: Ref<PracticeUnits>;
 }
 
-function newUnitState(region: Region): UnitState {
+function newPracticeUnit(region: Region): PracticeUnit {
   const geoStore = useGeoStore();
   const countries = geoStore
     .getCountries(region)
     ._unsafeUnwrap()
     .sort((a: Country, b: Country) => a.cca2.localeCompare(b.cca2));
-  const scores: Record<string, CountryScore> = {};
+  const countryStats: Record<string, CountryStats> = {};
 
   for (const country of countries) {
-    scores[country.cca2] = {
+    countryStats[country.cca2] = {
       country: country.name,
       cca2: country.cca2,
       answer: country.capital,
@@ -49,21 +49,21 @@ function newUnitState(region: Region): UnitState {
     count: 0,
     discovered: 5,
     countries: countries.map((c) => c.cca2),
-    scores: scores,
+    countryStats: countryStats,
   };
 }
 
 export const usePracticeStore = defineStore("practice", () => {
-  const state = useLocalStorage<PracticeState>("practice", {});
+  const units = useLocalStorage<PracticeUnits>("practice", {});
 
-  const stats = ref<PracticeStats | null>(null);
+  const summary = ref<UnitSummary | null>(null);
 
-  function get(mode: Mode, region: Region): UnitState {
-    if (!state.value[`${mode}:${region}`]) {
-      state.value[`${mode}:${region}`] = newUnitState(region);
+  function get(mode: Mode, region: Region): PracticeUnit {
+    if (!units.value[`${mode}:${region}`]) {
+      units.value[`${mode}:${region}`] = newPracticeUnit(region);
     }
-    setStats(state.value[`${mode}:${region}`]!);
-    return state.value[`${mode}:${region}`]!;
+    _computeSummary(units.value[`${mode}:${region}`]!);
+    return units.value[`${mode}:${region}`]!;
   }
 
   function getShuffledCountries(mode: Mode, region: Region) {
@@ -79,7 +79,7 @@ export const usePracticeStore = defineStore("practice", () => {
     for (let i = 0; i < 10; i++) {
       const candidates = pool.filter((c) => !recent.includes(c.cca2));
       const weights = candidates.map(
-        (c) => 20 - 0.19 * scoreTotal(unit.scores[c.cca2]),
+        (c) => 20 - 0.19 * score(unit.countryStats[c.cca2]),
       );
       const picked = weightedPick(candidates, weights);
       result.push(picked);
@@ -96,45 +96,30 @@ export const usePracticeStore = defineStore("practice", () => {
   ): void {
     const unit = get(mode, region);
     for (const answer of answers) {
-      const score = unit.scores[answer.cca2];
-      const weight = Math.min(score.count, EXPONENTIAL_WEIGHT);
+      const stats = unit.countryStats[answer.cca2];
+      const weight = Math.min(stats.count, EXPONENTIAL_WEIGHT);
 
       const reaction_time = answer.valid
         ? Math.min(answer.reaction_time, REACTION_INVALID)
         : REACTION_INVALID;
       const answerWpm = answer.valid
-        ? wpm(answer.typing_time, score.answer.length)
+        ? wpm(answer.typing_time, stats.answer.length)
         : WPM_INVALID;
 
-      score.reaction_time = Math.floor(
-        (score.reaction_time * weight + reaction_time) / (weight + 1),
+      stats.reaction_time = Math.floor(
+        (stats.reaction_time * weight + reaction_time) / (weight + 1),
       );
-      score.wpm = Math.floor((score.wpm * weight + answerWpm) / (weight + 1));
-      score.count++;
+      stats.wpm = Math.floor((stats.wpm * weight + answerWpm) / (weight + 1));
+      stats.count++;
     }
     unit.count++;
     answers.length = 0;
-    _updateScores(mode, region);
-    stats.value = _computeStats(unit);
+
+    _computeSummary(unit);
   }
 
-  function _updateScores(mode: Mode, region: Region): void {
-    const unit = get(mode, region);
-    let validCount = 0;
-    for (const score of Object.values(unit.scores)) {
-      if (score.count === 0) {
-        continue;
-      }
-      const value = scoreTotal(score);
-      if (value >= VALID_THRESHOLD) {
-        validCount++;
-      }
-    }
-    unit.discovered = Math.max(unit.discovered, validCount + DISCOVERED_COUNT);
-  }
-
-  function _computeStats(unit: UnitState): PracticeStats {
-    const stats: PracticeStats = {
+  function _computeSummary(unit: PracticeUnit): UnitSummary {
+    const newSummary: UnitSummary = {
       validated: 0,
       completed: 0,
       average_score: 0,
@@ -142,50 +127,50 @@ export const usePracticeStore = defineStore("practice", () => {
       average_wpm: 0,
     };
     let denominator = 0;
-    for (const score of Object.values(unit.scores)) {
-      if (score.count === 0) {
+    for (const stats of Object.values(unit.countryStats)) {
+      if (stats.count === 0) {
         continue;
       }
       denominator += 1;
-      const scoreValue = scoreTotal(score);
-      if (scoreValue >= VALID_THRESHOLD) {
-        stats.validated++;
+      const value = score(stats);
+      if (value >= VALID_THRESHOLD) {
+        newSummary.validated++;
       }
-      if (scoreValue === 100) {
-        stats.completed++;
+      if (value === 100) {
+        newSummary.completed++;
       }
-      stats.average_score += scoreValue;
-      stats.average_reaction_time += score.reaction_time;
-      stats.average_wpm += score.wpm;
+      newSummary.average_score += value;
+      newSummary.average_reaction_time += stats.reaction_time;
+      newSummary.average_wpm += stats.wpm;
     }
     if (denominator > 0) {
-      stats.average_reaction_time /= denominator;
-      stats.average_wpm /= denominator;
-      stats.average_score /= unit.countries.length;
+      newSummary.average_reaction_time /= denominator;
+      newSummary.average_wpm /= denominator;
+      newSummary.average_score /= unit.countries.length;
     }
-    return stats;
-  }
-
-  function setStats(unit: UnitState): void {
-    const newStats = _computeStats(unit);
-    stats.value = newStats;
+    unit.discovered = Math.max(
+      unit.discovered,
+      newSummary.validated + NEW_DISCOVER_COUNT,
+    );
+    summary.value = newSummary;
+    return newSummary;
   }
 
   function reset(mode: Mode, region: Region): void {
-    state.value[`${mode}:${region}`] = newUnitState(region);
-    setStats(state.value[`${mode}:${region}`]!);
+    units.value[`${mode}:${region}`] = newPracticeUnit(region);
+    _computeSummary(units.value[`${mode}:${region}`]!);
   }
 
   function clear(): void {
-    state.value = {};
-    stats.value = null;
+    units.value = {};
+    summary.value = null;
   }
 
   function sync(): void {}
 
   return {
-    state,
-    stats,
+    units,
+    summary,
 
     get,
     getShuffledCountries,

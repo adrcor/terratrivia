@@ -1,5 +1,5 @@
 export const VALID_THRESHOLD = 50;
-export const DISCOVERED_COUNT = 5;
+export const NEW_DISCOVER_COUNT = 5;
 
 export const WPM_FLOOR = 30;
 export const WPM_TARGET = 150;

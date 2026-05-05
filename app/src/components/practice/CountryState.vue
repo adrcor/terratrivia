@@ -17,7 +17,7 @@
       >
         <div class="flex w-full flex-row justify-around gap-4 px-2">
           <span>{{ country.name }}</span>
-          <span>({{ score.count }}) {{ scoreTotal(score) }}%</span>
+          <span>({{ stats.count }}) {{ score(stats) }}%</span>
         </div>
         <div class="flex flex-row gap-4">
           <div
@@ -53,30 +53,30 @@
 <script setup lang="ts">
 import { VALID_THRESHOLD } from "@/stores/constants";
 import type { Country } from "@/types/common";
-import type { CountryScore } from "@/types/practice";
-import { ilerpReactionTime, ilerpWpm, scoreTotal } from "@/utils/score";
+import type { CountryStats } from "@/types/practice";
+import { ilerpReactionTime, ilerpWpm, score } from "@/utils/score";
 import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { computed } from "vue";
 
 const props = defineProps<{
   country: Country;
-  score: CountryScore;
+  stats: CountryStats;
   discovered: boolean;
 }>();
 
-function getColor(score: number) {
-  if (score == 100) {
+function getColor(value: number) {
+  if (value == 100) {
     return "var(--color-primary-600)";
   }
-  if (score == 0) {
+  if (value == 0) {
     return "var(--color-neutral-600)";
   }
-  if (score < VALID_THRESHOLD) {
-    const pct = (score / VALID_THRESHOLD) * 100;
+  if (value < VALID_THRESHOLD) {
+    const pct = (value / VALID_THRESHOLD) * 100;
     return `color-mix(in oklch, var(--color-emerald-700) ${Math.max(20, pct)}%, transparent)`;
   }
   const pct = Math.floor(
-    ((score - VALID_THRESHOLD) / (100 - VALID_THRESHOLD)) * 100,
+    ((value - VALID_THRESHOLD) / (100 - VALID_THRESHOLD)) * 100,
   );
   return `color-mix(in oklch, var(--color-primary-800) ${100 - pct}%, var(--color-primary-700) ${pct}%)`;
 }
@@ -85,7 +85,7 @@ const color = computed(() => {
   if (!props.discovered) {
     return "var(--color-neutral-800)";
   }
-  return getColor(scoreTotal(props.score));
+  return getColor(score(props.stats));
 });
 
 interface DisplayScore {
@@ -94,28 +94,28 @@ interface DisplayScore {
 }
 
 const reactionScore = computed<DisplayScore>(() => {
-  if (props.score.count == 0) {
+  if (props.stats.count == 0) {
     return {
       value: "0s",
       score: 0,
     };
   }
   return {
-    value: formatTime(props.score.reaction_time),
-    score: Math.floor(ilerpReactionTime(props.score.reaction_time) * 100),
+    value: formatTime(props.stats.reaction_time),
+    score: Math.floor(ilerpReactionTime(props.stats.reaction_time) * 100),
   };
 });
 
 const typingScore = computed<DisplayScore>(() => {
-  if (props.score.count == 0) {
+  if (props.stats.count == 0) {
     return {
       value: "0wpm",
       score: 0,
     };
   }
   return {
-    value: `${props.score.wpm}wpm`,
-    score: Math.floor(ilerpWpm(props.score.wpm) * 100),
+    value: `${props.stats.wpm}wpm`,
+    score: Math.floor(ilerpWpm(props.stats.wpm) * 100),
   };
 });
 

@@ -2,32 +2,32 @@
   <div class="flex w-full flex-row items-center justify-center gap-8">
     <SingleMetric
       icon="anron-gestalt:hashtag"
-      :label="`${practice.state.value.count}`"
+      :label="`${practice.unit.value.count}`"
       tooltip="completed tests"
     />
     <SingleMetric
       icon="anron-gestalt:verified"
-      :label="`${practiceStore.stats?.validated ?? 0}/${practice.state.value.countries.length}`"
+      :label="`${practiceStore.summary?.validated ?? 0}/${practice.unit.value.countries.length}`"
       tooltip="validated countries"
     />
     <SingleMetric
       icon="anron-gestalt:lightning"
-      :label="`${practiceStore.stats?.completed ?? 0}/${practice.state.value.countries.length}`"
+      :label="`${practiceStore.summary?.completed ?? 0}/${practice.unit.value.countries.length}`"
       tooltip="completed countries"
     />
     <SingleMetric
       icon="anron-gestalt:atom"
-      :label="`${(practiceStore.stats?.average_score ?? 0).toFixed(1)}%`"
+      :label="`${(practiceStore.summary?.average_score ?? 0).toFixed(1)}%`"
       tooltip="global score"
     />
     <SingleMetric
       icon="anron-gestalt:speed"
-      :label="`${Math.floor(practiceStore.stats?.average_reaction_time ?? 0)}ms`"
+      :label="`${Math.floor(practiceStore.summary?.average_reaction_time ?? 0)}ms`"
       tooltip="average reaction time"
     />
     <SingleMetric
       icon="anron-gestalt:keyboard"
-      :label="`${Math.floor(practiceStore.stats?.average_wpm ?? 0)}wpm`"
+      :label="`${Math.floor(practiceStore.summary?.average_wpm ?? 0)}wpm`"
       tooltip="average typing speed"
     />
   </div>

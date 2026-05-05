@@ -1,6 +1,6 @@
 import type { Mode, Region } from "./common";
 
-export interface CountryScore {
+export interface CountryStats {
   country: string;
   cca2: string;
   answer: string;
@@ -9,16 +9,16 @@ export interface CountryScore {
   count: number;
 }
 
-export interface UnitState {
+export interface PracticeUnit {
   region: Region;
   mode: Mode;
   count: number;
   discovered: number;
   countries: Array<string>;
-  scores: Record<string, CountryScore>;
+  countryStats: Record<string, CountryStats>;
 }
 
-export type PracticeState = Partial<Record<`${Mode}:${Region}`, UnitState>>;
+export type PracticeUnits = Partial<Record<`${Mode}:${Region}`, PracticeUnit>>;
 
 export interface PracticeAnswer {
   cca2: string;
@@ -27,7 +27,7 @@ export interface PracticeAnswer {
   valid: boolean;
 }
 
-export interface PracticeStats {
+export interface UnitSummary {
   validated: number;
   completed: number;
   average_score: number;

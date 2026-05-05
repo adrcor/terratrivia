@@ -4,7 +4,7 @@
       v-for="(cca2, index) in unit.countries"
       :key="cca2"
       :country="geoStore.mapCountry[cca2]"
-      :score="unit.scores[cca2]"
+      :stats="unit.countryStats[cca2]"
       :discovered="index < unit.discovered"
     />
   </div>
@@ -13,11 +13,11 @@
 <script setup lang="ts">
 import CountryState from "@/components/practice/CountryState.vue";
 import { useGeoStore } from "@/stores/geo";
-import type { UnitState } from "@/types/practice";
+import type { PracticeUnit } from "@/types/practice";
 
 const geoStore = useGeoStore();
 
 const props = defineProps<{
-  unit: UnitState;
+  unit: PracticeUnit;
 }>();
 </script>
