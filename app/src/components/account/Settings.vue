@@ -28,15 +28,6 @@
           >reset region + mode</UButton
         >
       </div>
-      <div class="flex flex-row justify-between gap-2">
-        <h3 class="weight-bold text-muted text-lg">sign out</h3>
-        <UButton
-          label="sign out"
-          color="error"
-          variant="solid"
-          @click="onLogout"
-        />
-      </div>
     </div>
     <USeparator />
   </div>
