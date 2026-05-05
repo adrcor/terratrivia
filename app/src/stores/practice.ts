@@ -6,6 +6,7 @@ import {
   EXPONENTIAL_WEIGHT,
 } from "./constants";
 import { useGeoStore } from "./geo";
+import { useApi } from "@/composables/api";
 import type { Country, Mode, Region } from "@/types/common";
 import type {
   CountryStats,
@@ -14,6 +15,7 @@ import type {
   PracticeUnits,
   UnitSummary,
 } from "@/types/practice";
+import { fromApi } from "@/utils/api";
 import { wpm } from "@/utils/cpm";
 import { weightedPick } from "@/utils/random";
 import { score } from "@/utils/score";
@@ -25,7 +27,7 @@ export interface PracticeStore {
   units: Ref<PracticeUnits>;
 }
 
-function newPracticeUnit(region: Region): PracticeUnit {
+function newPracticeUnit(mode: Mode, region: Region): PracticeUnit {
   const geoStore = useGeoStore();
   const countries = geoStore
     .getCountries(region)
@@ -44,14 +46,16 @@ function newPracticeUnit(region: Region): PracticeUnit {
     };
   }
   return {
-    region: "world",
-    mode: "capitals",
+    region: region,
+    mode: mode,
     count: 0,
     discovered: 5,
     countries: countries.map((c) => c.cca2),
     countryStats: countryStats,
   };
 }
+
+const apiClient = useApi();
 
 export const usePracticeStore = defineStore("practice", () => {
   const units = useLocalStorage<PracticeUnits>("practice", {});
@@ -60,7 +64,7 @@ export const usePracticeStore = defineStore("practice", () => {
 
   function get(mode: Mode, region: Region): PracticeUnit {
     if (!units.value[`${mode}:${region}`]) {
-      units.value[`${mode}:${region}`] = newPracticeUnit(region);
+      units.value[`${mode}:${region}`] = newPracticeUnit(mode, region);
     }
     _computeSummary(units.value[`${mode}:${region}`]!);
     return units.value[`${mode}:${region}`]!;
@@ -116,6 +120,19 @@ export const usePracticeStore = defineStore("practice", () => {
     answers.length = 0;
 
     _computeSummary(unit);
+    _postUnit(unit);
+  }
+
+  function _postUnit(unit: PracticeUnit) {
+    return fromApi(apiClient.practice.units.$post({ json: unit }));
+  }
+
+  function _deleteUnit(mode: Mode, region: Region) {
+    return fromApi(
+      apiClient.practice.units[":region"][":mode"].$delete({
+        param: { region: region, mode: mode },
+      }),
+    );
   }
 
   function _computeSummary(unit: PracticeUnit): UnitSummary {
@@ -157,8 +174,10 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function reset(mode: Mode, region: Region): void {
-    units.value[`${mode}:${region}`] = newPracticeUnit(region);
-    _computeSummary(units.value[`${mode}:${region}`]!);
+    const emptyUnit = newPracticeUnit(mode, region);
+    units.value[`${mode}:${region}`] = emptyUnit;
+    _computeSummary(emptyUnit);
+    _deleteUnit(mode, region);
   }
 
   function clear(): void {
@@ -166,7 +185,13 @@ export const usePracticeStore = defineStore("practice", () => {
     summary.value = null;
   }
 
-  function sync(): void {}
+  function sync(): void {
+    fromApi(apiClient.practice.units.$get()).map((data) => {
+      for (const unit of data) {
+        units.value[`${unit.mode}:${unit.region}`] = unit;
+      }
+    });
+  }
 
   return {
     units,

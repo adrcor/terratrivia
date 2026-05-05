@@ -90,7 +90,7 @@ function getHighscore(db: Kysely<Database>, idUser: string, region: Region, mode
       .where("region", "=", region)
       .where("mode", "=", mode)
       .executeTakeFirst(),
-    () => Er.new("db_error" as const, "Failed to fetch highscore"),
+    () => Er.new("db_error", "Failed to fetch highscore"),
   );
 }
 
@@ -127,7 +127,7 @@ function setHighscore(
 function getAllHighscores(db: Kysely<Database>, idUser: string) {
   return ResultAsync.fromPromise(
     db.selectFrom("trial_highscores").selectAll().where("id_user", "=", idUser).execute(),
-    () => Er.new("db_error" as const, "Failed to fetch highscores"),
+    () => Er.new("db_error", "Failed to fetch highscores"),
   );
 }
 
