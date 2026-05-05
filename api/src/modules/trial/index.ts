@@ -60,9 +60,9 @@ function addResult(
   );
 }
 
-function getResult(db: Kysely<Database>, id: string): ResultAsync<TrialResult, Er<"not_found">> {
+function getResult(db: Kysely<Database>, idUser: string, id: string): ResultAsync<TrialResult, Er<"not_found">> {
   return ResultAsync.fromPromise(
-    db.selectFrom("trial_results").selectAll().where("id", "=", id).executeTakeFirstOrThrow(),
+    db.selectFrom("trial_results").selectAll().where("id_user", "=", idUser).where("id", "=", id).executeTakeFirstOrThrow(),
     () => Er.new("not_found", "Trial result not found"),
   );
 }
@@ -160,7 +160,7 @@ export function postResult(ctx: TrialCtx) {
 }
 
 export function getResultById(ctx: TrialCtx & { id: string }) {
-  return getResult(ctx.db, ctx.id);
+  return getResult(ctx.db, ctx.user.id, ctx.id);
 }
 
 export function getResults(ctx: TrialCtx) {
