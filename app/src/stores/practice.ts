@@ -1,3 +1,10 @@
+import {
+  VALID_THRESHOLD,
+  DISCOVERED_COUNT,
+  REACTION_INVALID,
+  WRITING_TIME_INVALID,
+  EXPONENTIAL_WEIGHT,
+} from "./constants";
 import { useGeoStore } from "./geo";
 import type { Country, Mode, Region } from "@/types/common";
 import type {
@@ -13,9 +20,6 @@ import { scoreTotal } from "@/utils/score";
 import { useLocalStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref, type Ref } from "vue";
-
-const VALID_THRESHOLD = 80;
-const DISCOVERED_COUNT = 5;
 
 export interface PracticeStore {
   state: Ref<PracticeState>;
@@ -94,9 +98,14 @@ export const usePracticeStore = defineStore("practice", () => {
     const unit = get(mode, region);
     for (const answer of answers) {
       const score = unit.scores[answer.cca2];
-      const weight = Math.min(score.count, 5);
-      const reaction_time = answer.valid ? answer.reaction_time : 5000;
-      const typing_time = answer.valid ? answer.typing_time : 5000;
+      const weight = Math.min(score.count, EXPONENTIAL_WEIGHT);
+
+      const reaction_time = answer.valid
+        ? Math.min(answer.reaction_time, REACTION_INVALID)
+        : REACTION_INVALID;
+      const typing_time = answer.valid
+        ? Math.min(answer.typing_time, WRITING_TIME_INVALID)
+        : WRITING_TIME_INVALID;
 
       score.reaction_time = Math.floor(
         (score.reaction_time * weight + reaction_time) / (weight + 1),
@@ -151,8 +160,10 @@ export const usePracticeStore = defineStore("practice", () => {
       stats.average_reaction_time += score.reaction_time;
       stats.average_wpm += wpm(score.typing_time, score.answer.length);
     }
-    stats.average_reaction_time /= denominator;
-    stats.average_wpm /= denominator;
+    if (denominator > 0) {
+      stats.average_reaction_time /= denominator;
+      stats.average_wpm /= denominator;
+    }
     return stats;
   }
 

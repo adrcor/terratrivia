@@ -51,20 +51,20 @@
           :percent="
             {
               reaction: ilerp(
-                REACTION_LOW,
-                REACTION_HIGH,
+                REACTION_TARGET,
+                REACTION_FLOOR,
                 answer.reaction_time,
               ),
               typing: ilerp(
-                -WPM_HIGH,
-                -WPM_LOW,
+                -WPM_TARGET,
+                -WPM_FLOOR,
                 -wpm(answer.typing_time, answer.answer.length),
               ),
               total:
-                (ilerp(REACTION_LOW, REACTION_HIGH, answer.reaction_time) +
+                (ilerp(REACTION_TARGET, REACTION_FLOOR, answer.reaction_time) +
                   ilerp(
-                    -WPM_HIGH,
-                    -WPM_LOW,
+                    -WPM_TARGET,
+                    -WPM_FLOOR,
                     -wpm(answer.typing_time, answer.answer.length),
                   )) /
                 2,
@@ -111,6 +111,12 @@
 import CountrySquare from "@/components/CountrySquare.vue";
 import Spinner from "@/components/Spinner.vue";
 import { useAuthStore } from "@/stores/auth";
+import {
+  REACTION_FLOOR,
+  REACTION_TARGET,
+  WPM_TARGET,
+  WPM_FLOOR,
+} from "@/stores/constants";
 import { useGeoStore } from "@/stores/geo";
 import type { TrialAnswer, TrialResult, TrialResultLocal } from "@/types/trial";
 import { wpm } from "@/utils/cpm";
@@ -120,11 +126,6 @@ import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 
 type KeyMetric = "total" | "reaction" | "typing";
-
-const WPM_LOW = 30;
-const WPM_HIGH = 150;
-const REACTION_LOW = 500;
-const REACTION_HIGH = 2000;
 
 const geoStore = useGeoStore();
 const auth = useAuthStore();
@@ -178,10 +179,18 @@ const validAnswers = computed(() => {
           );
         case "total":
           return (
-            ilerp(REACTION_LOW, REACTION_HIGH, a.reaction_time) +
-            ilerp(-WPM_HIGH, -WPM_LOW, -wpm(a.typing_time, a.answer.length)) -
-            (ilerp(REACTION_LOW, REACTION_HIGH, b.reaction_time) +
-              ilerp(-WPM_HIGH, -WPM_LOW, -wpm(b.typing_time, b.answer.length)))
+            ilerp(REACTION_TARGET, REACTION_FLOOR, a.reaction_time) +
+            ilerp(
+              -WPM_TARGET,
+              -WPM_FLOOR,
+              -wpm(a.typing_time, a.answer.length),
+            ) -
+            (ilerp(REACTION_TARGET, REACTION_FLOOR, b.reaction_time) +
+              ilerp(
+                -WPM_TARGET,
+                -WPM_FLOOR,
+                -wpm(b.typing_time, b.answer.length),
+              ))
           );
       }
     });
@@ -213,10 +222,14 @@ function tooltip(answer: TrialAnswer) {
   } else {
     firstLine = `${answer.country} -> ${answer.answer}`;
   }
-  const reactionPct = ilerp(REACTION_LOW, REACTION_HIGH, answer.reaction_time);
+  const reactionPct = ilerp(
+    REACTION_TARGET,
+    REACTION_FLOOR,
+    answer.reaction_time,
+  );
   const typingPct = ilerp(
-    -WPM_HIGH,
-    -WPM_LOW,
+    -WPM_TARGET,
+    -WPM_FLOOR,
     -wpm(answer.typing_time, answer.answer.length),
   );
   const totalPct = (reactionPct + typingPct) / 2;

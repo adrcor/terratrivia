@@ -1,18 +1,19 @@
 import type { CountryScore } from "../types/practice";
+import {
+  REACTION_FLOOR,
+  REACTION_TARGET,
+  WPM_TARGET,
+  WPM_FLOOR,
+} from "@/stores/constants";
 import { wpm } from "@/utils/cpm";
 import { ilerp } from "@/utils/lerp";
 
-const WPM_LOW = 30;
-const WPM_HIGH = 150;
-const REACTION_LOW = 700;
-const REACTION_HIGH = 2100;
-
 export function ilerpReactionTime(reactionTime: number) {
-  return ilerp(-REACTION_HIGH, -REACTION_LOW, -reactionTime);
+  return ilerp(-REACTION_FLOOR, -REACTION_TARGET, -reactionTime);
 }
 
 export function ilerpWpm(wpm: number) {
-  return ilerp(WPM_LOW, WPM_HIGH, wpm);
+  return ilerp(WPM_FLOOR, WPM_TARGET, wpm);
 }
 
 export function scoreTotal(score: CountryScore) {
