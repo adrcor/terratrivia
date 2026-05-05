@@ -5,6 +5,7 @@
     "check": "bunx tsc --noEmit",
     "format": "prettier --write ./src",
     "db:drop": "bun cmd/drop_db.ts",
+    "db:down": "bun db/down.ts",
     "db:migrate": "bun db/migrate.ts",
     "db:generate": "atlas migrate diff --env local -c file://db/atlas.hcl",
     "db:diff": "atlas schema diff --from 'file://db/migrations?format=atlas' --to 'file://db/schema.sql' --env local -c file://db/atlas.hcl",

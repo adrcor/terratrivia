@@ -2,23 +2,18 @@ import { useApi } from "@/composables/api";
 import type {
   TrialResultLocal,
   TrialResult,
-  Region,
-  Mode,
   TrialHighscore,
   TrialResultSmall,
 } from "@/types/trial";
 import { fromApi } from "@/utils/api";
+import { notifyError } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
-import { okAsync, type ResultAsync } from "neverthrow";
+import { okAsync } from "neverthrow";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-const apiClient = useApi();
-
 export const useTrialStore = defineStore("store", () => {
-  const mode = useLocalStorage<Mode>("mode", "capitals");
-  const region = useLocalStorage<Region>("region", "af");
-
+  const apiClient = useApi();
   const results = useLocalStorage<Array<TrialResultSmall>>("results", []);
   const highscores = useLocalStorage<Array<TrialHighscore>>("highscores", []);
   const latest = ref<TrialResult | TrialResultLocal | null>(null);
@@ -36,13 +31,10 @@ export const useTrialStore = defineStore("store", () => {
     );
   }
 
-  function postResult(
-    result: TrialResultLocal,
-  ): ResultAsync<TrialResult, string> {
+  function postResult(result: TrialResultLocal) {
     latest.value = result;
 
     return fromApi(apiClient.trial.results.$post({ json: result }))
-      .mapErr((e) => "trial.newResult: " + e.message)
       .andTee((data) => {
         latest.value = data;
         results.value.push(data);
@@ -50,33 +42,46 @@ export const useTrialStore = defineStore("store", () => {
         if (isNewHighscore(data)) {
           syncHighscores();
         }
+      })
+      .mapErr((e) => {
+        notifyError(e, "failed to save trial result");
+        return e;
       });
   }
 
-  function getResult(id: string): ResultAsync<TrialResult, string> {
+  function getResult(id: string) {
     if (cacheResults[id]) {
-      return okAsync(cacheResults[id]);
+      return okAsync(cacheResults[id] as TrialResult);
     }
     return fromApi(apiClient.trial.results[":id"].$get({ param: { id } }))
-      .mapErr((e) => "trial.getResult: " + e.message)
       .andTee((data) => {
         cacheResults[id] = data;
+      })
+      .mapErr((e) => {
+        notifyError(e, "failed to load trial result");
+        return e;
       });
   }
 
-  function syncResults(): ResultAsync<Array<TrialResultSmall>, string> {
+  function syncResults() {
     return fromApi(apiClient.trial.results.$get())
-      .mapErr((e) => "trial.getResults: " + e.message)
       .andTee((data) => {
         results.value = data;
+      })
+      .mapErr((e) => {
+        notifyError(e, "failed to load trial history");
+        return e;
       });
   }
 
-  function syncHighscores(): ResultAsync<Array<TrialHighscore>, string> {
+  function syncHighscores() {
     return fromApi(apiClient.trial.highscores.$get())
-      .mapErr((e) => "trial.syncHighscores: " + e.message)
       .andTee((data) => {
         highscores.value = data;
+      })
+      .mapErr((e) => {
+        notifyError(e, "failed to load highscores");
+        return e;
       });
   }
 
@@ -88,8 +93,6 @@ export const useTrialStore = defineStore("store", () => {
   }
 
   return {
-    mode,
-    region,
     results,
     highscores,
     latest,

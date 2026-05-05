@@ -57,8 +57,7 @@
 <script setup lang="ts">
 import Highscore from "./Highscore.vue";
 import { useTrialStore } from "@/stores/trial";
-import type { Region } from "@/types/trial";
-import { regionLengths, regions } from "@/types/trial";
+import { regionLengths, regions, type Region } from "@/types/common";
 import { computed } from "vue";
 
 const trialStore = useTrialStore();

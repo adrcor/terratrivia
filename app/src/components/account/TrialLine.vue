@@ -26,7 +26,6 @@ import type { TrialResultSmall } from "@/types/trial";
 
 function formatTime(iso: string) {
   // format iso string to 01 jan 2026 - 13:31
-  console.log(iso);
   return new Date(iso).toLocaleString("en-GB", {
     year: "numeric",
     month: "short",

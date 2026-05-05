@@ -7,6 +7,8 @@ const errorStatusMap = {
   forbidden: 403,
   not_found: 404,
   validation_error: 400,
+  json_error: 400,
+  sync_error: 409,
   db_error: 500,
   internal_error: 500,
 } as const;

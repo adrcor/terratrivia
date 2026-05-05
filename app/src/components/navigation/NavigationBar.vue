@@ -5,6 +5,7 @@
   >
     <HomeButton />
     <div class="flex flex-row items-center justify-between gap-8">
+      <Link to="/practice" icon="anron-gestalt:planet" label="practice"></Link>
       <Link
         v-if="auth.id"
         to="/account"
@@ -22,6 +23,7 @@
     <HomeButton />
 
     <div class="flex flex-row items-center justify-between gap-8">
+      <Link to="/practice" icon="anron-gestalt:planet"></Link>
       <Link v-if="auth.id" to="/account" icon="anron-gestalt:user"></Link>
       <Link v-else to="/login" icon="anron-gestalt:log-in"></Link>
     </div>
@@ -35,15 +37,16 @@ import { useAuthStore } from "@/stores/auth";
 import { useStatusStore } from "@/stores/status";
 import { useWindowSize } from "@vueuse/core";
 import { onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const auth = useAuthStore();
 const status = useStatusStore();
 const router = useRouter();
+const route = useRoute();
 const { width } = useWindowSize();
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === "Escape" && !status.running) {
+  if (e.key === "Escape" && !status.running && route.name != "practice") {
     router.push("/");
   }
 }

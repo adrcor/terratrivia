@@ -9,6 +9,7 @@ Atlas generates a SQL migration from the diff. Kysely's migrator applies those
 | Command                  | What it does                                           |
 | ------------------------ | ------------------------------------------------------ |
 | `bun db:migrate`         | Apply pending migrations (runs in production at boot)  |
+| `bun db:down`            | Revert the latest migration (dev only)                 |
 | `bun db:generate <name>` | Generate a new migration from `schema.sql` deltas      |
 | `bun db:diff`            | Show drift between `schema.sql` and migrations         |
 | `bun db:hash`            | Recompute `atlas.sum` (after hand-editing a migration) |
@@ -50,14 +51,19 @@ To rename safely:
 
 ### Rollbacks
 
-Atlas don't generate down migrations, so rollback must be handled manually.
-Forward migration rollbacks are recommended over deleting the migration file & patching the kysely migration table.
+Atlas doesn't generate down migrations, so rollback must be handled manually.
+Forward migration rollbacks are recommended over deleting the migration file
+& patching the kysely migration table.
 
-SQL to revert to a specific migration can be generated with:
+The rollback SQL can be generated with:
 
 ```bash
 atlas schema diff --from "file://db/migrations?format=atlas" --to "file://db/migrations?format=atlas&version=<version>" --env local -c file://db/atlas.hcl
 ```
+
+**For devevlopment**, `bun db:down` reverts the latest migration: it computes the diff
+to the previous migration via Atlas, applies it, and removes the row from
+`kysely_migration`. Not recommended for production as it uses the Atlas's CLI.
 
 ### Better-Auth schema generation
 

@@ -11,9 +11,7 @@ type ErrorTagOf<T> = T extends { tag: infer K extends string; message: string }
   ? K
   : never;
 
-export function fromApi<
-  T extends Promise<ClientResponse<object, number, "json">>,
->(
+export function fromApi<T extends Promise<ClientResponse<any, number, "json">>>(
   request: T,
 ): ResultAsync<
   SuccessOf<DataOf<Awaited<T>>>,

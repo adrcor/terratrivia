@@ -2,6 +2,7 @@ import { useAuthStore } from "@/stores/auth";
 import Account from "@/views/Account.vue";
 import Home from "@/views/Home.vue";
 import NotFound from "@/views/NotFound.vue";
+import Practice from "@/views/Practice.vue";
 import Trial from "@/views/TrialResult.vue";
 import ForgotPassword from "@/views/auth/ForgotPassword.vue";
 import Login from "@/views/auth/Login.vue";
@@ -59,6 +60,12 @@ const router = createRouter({
       path: "/trial/:id",
       name: "trial",
       component: Trial,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/practice",
+      name: "practice",
+      component: Practice,
       meta: { requiresAuth: true },
     },
     {

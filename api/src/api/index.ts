@@ -3,10 +3,13 @@ import { newMiddleware, serve } from "./utils";
 import { auth, type Session, type User } from "@/auth";
 import { APP_URL, VERSION } from "@/env";
 import { getCountries } from "@/modules/geo";
+import { deletePracticeUnit, getAllPracticeUnits, postPracticeUnit } from "@/modules/practice";
 import { getHighscores, getResultById, getResults, postResult } from "@/modules/trial";
+import { Er } from "@/utils/er";
 import { type Context, Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
+import { ResultAsync } from "neverthrow";
 
 // ============================================================================
 // App
@@ -24,7 +27,7 @@ function newApi() {
         cors({
           origin: APP_URL,
           allowHeaders: ["Content-Type", "Authorization"],
-          allowMethods: ["POST", "GET", "OPTIONS"],
+          allowMethods: ["POST", "GET", "DELETE", "OPTIONS"],
           exposeHeaders: ["Content-Length"],
           maxAge: 600,
           credentials: true,
@@ -54,6 +57,23 @@ function newApi() {
       })
       .get("/trial/highscores", (h: Context) => {
         return serve(h, withAuthAndDatabase, getHighscores);
+      })
+
+      // practice routes
+      .post("/practice/units", (h: Context) => {
+        return serve(h, withAuthAndDatabase, (ctx) =>
+          ResultAsync.fromPromise(h.req.json(), () =>
+            Er.new("json_error", "Failed to parse JSON"),
+          ).andThen((practiceUnit) => postPracticeUnit({ ...ctx, practiceUnit })),
+        );
+      })
+      .get("/practice/units", (h: Context) => {
+        return serve(h, withAuthAndDatabase, getAllPracticeUnits);
+      })
+      .delete("/practice/units/:region/:mode", (h: Context) => {
+        return serve(h, withAuthAndDatabase, (ctx) =>
+          deletePracticeUnit({ ...ctx, region: h.req.param("region"), mode: h.req.param("mode") }),
+        );
       })
 
       .on(["POST", "GET"], "/auth/*", (h) => {

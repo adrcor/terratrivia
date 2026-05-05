@@ -20,7 +20,7 @@ CREATE TABLE trial_results (
 	id text PRIMARY KEY,
 	id_user text REFERENCES "user"(id) ON DELETE CASCADE,
 
-	region text NOT NULL, -- world | as | af | eu | na | oc | sa
+	region text NOT NULL, -- af | am | as | eu | oc | world
 	mode text NOT NULL, -- capitals | flags
 	length integer NOT NULL,
 	correct integer NOT NULL,
@@ -32,13 +32,22 @@ CREATE TABLE trial_results (
 
 CREATE TABLE trial_highscores (
 	id_user text REFERENCES "user"(id) ON DELETE CASCADE,
-	region text, -- world | as | af | eu | na | oc | sa
+	region text, -- af | am | as | eu | oc | world
 	mode text, -- capitals | flags
 
 	id_result text REFERENCES trial_results(id) ON DELETE CASCADE,
 	length integer NOT NULL,
 	correct integer NOT NULL,
 	time integer NOT NULL, -- ms
+
+	PRIMARY KEY (id_user, region, mode)
+);
+
+CREATE TABLE practice_units (
+	id_user text REFERENCES "user"(id) ON DELETE CASCADE,
+	region text NOT NULL, -- af | am | as | eu | oc | world
+	mode text NOT NULL, -- capitals | flags
+	unit jsonb NOT NULL, -- {region, mode, count, discovered, countries, countryStats}
 
 	PRIMARY KEY (id_user, region, mode)
 );

@@ -7,14 +7,24 @@
       v-model="message"
       placeholder=""
     />
-    <div class="self-center text-lg text-neutral-500">
-      {{ hint ? expected : "\u00A0" }}
+    <div v-if="hint" class="self-center text-lg text-neutral-500">
+      {{ expected }}
+    </div>
+    <div
+      v-else
+      class="text-dimmed self-center text-lg transition-opacity duration-500"
+      :class="{ 'opacity-0': !showPrompt }"
+    >
+      <span
+        >press <span class="text-default font-bold">/</span> to reveal the
+        answer</span
+      >
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { InputAnswer } from "@/types/trial";
+import type { InputAnswer } from "@/types/common";
 import { onMounted, ref, watch } from "vue";
 
 const message = ref("");
@@ -23,7 +33,9 @@ const refInput = ref<HTMLInputElement>();
 let startingTime = 0;
 let reactionTime = 0;
 let totalTime = 0;
+let promptTimeout = 0;
 const hint = ref(false);
+const showPrompt = ref(false);
 
 const props = defineProps<{
   expected: string;
@@ -38,6 +50,7 @@ watch(
   () => {
     reset();
     startingTime = Date.now();
+    schedulePrompt();
   },
 );
 
@@ -51,6 +64,8 @@ watch(message, (newVal: string) => {
     message.value = message.value.replace("/", "");
     return;
   }
+  showPrompt.value = false;
+  schedulePrompt();
   if (
     reactionTime === 0 &&
     normalize(newVal.charAt(0)) === normalize(props.expected.charAt(0))
@@ -87,8 +102,20 @@ function focus() {
 function reset() {
   message.value = "";
   hint.value = false;
+  showPrompt.value = false;
   startingTime = 0;
   reactionTime = 0;
   totalTime = 0;
+  clearTimeout(promptTimeout);
+}
+
+function schedulePrompt() {
+  clearTimeout(promptTimeout);
+  if (props.expected.length === 0) {
+    return;
+  }
+  promptTimeout = window.setTimeout(() => {
+    showPrompt.value = true;
+  }, 3000);
 }
 </script>

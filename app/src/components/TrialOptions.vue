@@ -3,7 +3,7 @@
     class="flex flex-col items-center gap-2 transition-opacity duration-300"
     :class="{ 'opacity-0': !show }"
   >
-    <div class="flex flex-col items-center gap-4">
+    <div class="flex flex-row items-center gap-4">
       <UTooltip
         text="mode"
         :kbds="['m']"
@@ -18,7 +18,7 @@
           :items="modeItems"
           v-model="
             // syntax highlighting workaround
-            trialStore.mode as Mode
+            settings.mode as Mode
           "
           :content="false"
           color="neutral"
@@ -38,7 +38,7 @@
           :items="regionItems"
           v-model="
             // syntax highlighting workaround
-            trialStore.region as Region
+            settings.region as Region
           "
           :content="false"
           color="neutral"
@@ -49,13 +49,13 @@
 </template>
 
 <script setup lang="ts">
-import { useTrialStore } from "@/stores/trial";
-import { modes, regions, type Mode, type Region } from "@/types/trial";
+import { useSettingsStore } from "@/stores/settings";
+import { modes, regions, type Mode, type Region } from "@/types/common";
 import UTabs from "@nuxt/ui/components/Tabs.vue";
 import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { onMounted, onUnmounted } from "vue";
 
-const trialStore = useTrialStore();
+const settings = useSettingsStore();
 const modeItems = modes.map((m) => ({ label: m, value: m }));
 const regionItems = regions.map((r) => ({ label: r, value: r }));
 
@@ -87,15 +87,15 @@ function nextMode() {
   if (!props.show) {
     return;
   }
-  const index = modes.indexOf(trialStore.mode);
-  trialStore.mode = modes[(index + 1) % modes.length] as Mode;
+  const index = modes.indexOf(settings.mode);
+  settings.mode = modes[(index + 1) % modes.length] as Mode;
 }
 
 function nextRegion() {
   if (!props.show) {
     return;
   }
-  const index = regions.indexOf(trialStore.region);
-  trialStore.region = regions[(index + 1) % regions.length] as Region;
+  const index = regions.indexOf(settings.region);
+  settings.region = regions[(index + 1) % regions.length] as Region;
 }
 </script>

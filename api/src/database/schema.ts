@@ -51,3 +51,28 @@ export interface TrialHighscoresTable {
   correct: number;
   time: number;
 }
+
+export interface CountryStats {
+  country: string;
+  cca2: string;
+  answer: string;
+  reaction_time: number;
+  wpm: number;
+  count: number;
+}
+
+export interface PracticeUnit {
+  region: Region;
+  mode: Mode;
+  count: number;
+  discovered: number;
+  countries: string[];
+  countryStats: Record<string, CountryStats>;
+}
+
+export interface PracticeUnitTable {
+  id_user: string;
+  region: Region;
+  mode: Mode;
+  unit: PracticeUnit;
+}

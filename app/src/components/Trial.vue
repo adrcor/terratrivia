@@ -36,7 +36,6 @@
       press <span class="text-neutral-300 underline">tab</span> to start
     </div>
     <GameInput
-      ref="refInput"
       class="mb-16 w-full"
       :expected="trial.pair.value?.expected || ''"
       @answer="onAnswer"
@@ -51,19 +50,17 @@ import TrialOptions from "@/components/TrialOptions.vue";
 import TrialResult from "@/components/trial/TrialResult.vue";
 import { useTimer } from "@/composables/timer";
 import { useTrial } from "@/composables/trial";
-import { useGeoStore } from "@/stores/geo";
+import { useSettingsStore } from "@/stores/settings";
 import { useTrialStore } from "@/stores/trial";
-import type { InputAnswer } from "@/types/trial";
+import type { InputAnswer } from "@/types/common";
 import { onMounted, onUnmounted } from "vue";
-
-const geo = useGeoStore();
 
 const timer = useTimer();
 const trial = useTrial();
 const trialStore = useTrialStore();
+const settings = useSettingsStore();
 
 onMounted(async () => {
-  geo.sync();
   window.addEventListener("keydown", eventListener);
 });
 
@@ -89,7 +86,7 @@ async function start() {
     return;
   }
   reset();
-  const result = await trial.start(trialStore.mode, trialStore.region);
+  const result = await trial.start(settings.mode, settings.region);
   if (result.isOk()) {
     timer.start();
   }
