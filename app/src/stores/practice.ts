@@ -55,9 +55,8 @@ function newPracticeUnit(mode: Mode, region: Region): PracticeUnit {
   };
 }
 
-const apiClient = useApi();
-
 export const usePracticeStore = defineStore("practice", () => {
+  const apiClient = useApi();
   const units = useLocalStorage<PracticeUnits>("practice", {});
 
   const summary = ref<UnitSummary | null>(null);

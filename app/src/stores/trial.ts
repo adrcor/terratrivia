@@ -11,9 +11,8 @@ import { okAsync, type ResultAsync } from "neverthrow";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-const apiClient = useApi();
-
 export const useTrialStore = defineStore("store", () => {
+  const apiClient = useApi();
   const results = useLocalStorage<Array<TrialResultSmall>>("results", []);
   const highscores = useLocalStorage<Array<TrialHighscore>>("highscores", []);
   const latest = ref<TrialResult | TrialResultLocal | null>(null);
