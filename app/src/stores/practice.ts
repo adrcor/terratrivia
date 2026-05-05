@@ -124,10 +124,12 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function _postUnit(unit: PracticeUnit) {
-    return fromApi(apiClient.practice.units.$post({ json: unit })).mapErr((e) => {
-      notifyError(e, "failed to save progress");
-      return e;
-    });
+    return fromApi(apiClient.practice.units.$post({ json: unit })).mapErr(
+      (e) => {
+        notifyError(e, "failed to save progress");
+        return e;
+      },
+    );
   }
 
   function _deleteUnit(mode: Mode, region: Region) {
@@ -192,7 +194,7 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function sync() {
-    units.value = {}
+    units.value = {};
     return fromApi(apiClient.practice.units.$get())
       .map((data) => {
         for (const unit of data) {
