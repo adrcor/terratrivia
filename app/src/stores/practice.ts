@@ -139,6 +139,7 @@ export const usePracticeStore = defineStore("practice", () => {
     const stats: PracticeStats = {
       validated: 0,
       completed: 0,
+      average_score: 0,
       average_reaction_time: 0,
       average_wpm: 0,
     };
@@ -155,12 +156,14 @@ export const usePracticeStore = defineStore("practice", () => {
       if (scoreValue === 100) {
         stats.completed++;
       }
+      stats.average_score += scoreValue;
       stats.average_reaction_time += score.reaction_time;
       stats.average_wpm += score.wpm;
     }
     if (denominator > 0) {
       stats.average_reaction_time /= denominator;
       stats.average_wpm /= denominator;
+      stats.average_score /= unit.countries.length;
     }
     return stats;
   }

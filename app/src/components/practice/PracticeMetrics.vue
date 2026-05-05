@@ -16,6 +16,11 @@
       tooltip="completed countries"
     />
     <SingleMetric
+      icon="anron-gestalt:atom"
+      :label="`${(practiceStore.stats?.average_score ?? 0).toFixed(1)}%`"
+      tooltip="global score"
+    />
+    <SingleMetric
       icon="anron-gestalt:speed"
       :label="`${Math.floor(practiceStore.stats?.average_reaction_time ?? 0)}ms`"
       tooltip="average reaction time"

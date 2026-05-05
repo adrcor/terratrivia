@@ -31,6 +31,7 @@ export interface PracticeAnswer {
 export interface PracticeStats {
   validated: number;
   completed: number;
+  average_score: number;
   average_reaction_time: number;
   average_wpm: number;
 }

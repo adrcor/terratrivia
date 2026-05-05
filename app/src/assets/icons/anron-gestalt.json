@@ -1,7 +1,10 @@
 {
   "prefix": "anron-gestalt",
-  "lastModified": 1777915214,
+  "lastModified": 1777966790,
   "icons": {
+    "atom": {
+      "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 19.59c-1.428-.855-2.878-1.983-4.243-3.348C3.071 11.556 1.172 5.858 3.515 3.514s8.041-.443 12.728 4.243 6.586 10.385 4.242 12.728C19.314 21.657 17.304 21.767 15 21M12 4.409c3.477-2.085 6.824-2.556 8.485-.895 2.343 2.344.444 8.042-4.242 12.728-4.686 4.687-10.385 6.586-12.728 4.243S3.07 12.443 7.757 7.757Q8.15 7.365 8.55 7M12 12h.01m.49 0a.5.5 0 11-1 0 .5.5 0 011 0\"/>"
+    },
     "code": {
       "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"m8 6-6 6m6 6-4-4m12-8 4 4m2 2-6 6\"/>"
     },

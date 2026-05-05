@@ -3,9 +3,9 @@
     <div
       v-if="practice.status.value === 'idle'"
       key="idle"
-      class="flex min-w-96 flex-col items-center justify-center gap-2"
+      class="flex min-w-96 flex-col items-center justify-center gap-4"
     >
-      <TrialOptions class="mb-4" :show="true" />
+      <TrialOptions :show="true" />
       <PracticeMetrics :practice="practice" />
       <State :unit="practice.state.value" />
     </div>
