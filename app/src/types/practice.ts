@@ -14,7 +14,6 @@ export interface UnitState {
   mode: Mode;
   count: number;
   discovered: number;
-  validated: number;
   countries: Array<string>;
   scores: Record<string, CountryScore>;
 }

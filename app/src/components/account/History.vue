@@ -18,6 +18,12 @@
       :result="result"
       :key="result.id"
     />
+    <div
+      v-if="trialStore.results.length === 0"
+      class="flex flex-col items-center justify-center"
+    >
+      <div class="text-dimmed text-center">no results yet</div>
+    </div>
   </div>
 </template>
 

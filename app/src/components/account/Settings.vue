@@ -42,19 +42,18 @@ import { useRouter } from "@/router";
 import { useAuthStore } from "@/stores/auth";
 import { usePracticeStore } from "@/stores/practice";
 import { useSettingsStore } from "@/stores/settings";
-import { useTrialStore } from "@/stores/trial";
+import { clearAll } from "@/utils/sync";
 import UButton from "@nuxt/ui/components/Button.vue";
 import USeparator from "@nuxt/ui/components/Separator.vue";
 
 const auth = useAuthStore();
-const trial = useTrialStore();
 const router = useRouter();
 const practice = usePracticeStore();
 const settings = useSettingsStore();
 
 async function onLogout() {
-  trial.clear();
   await auth.signOut();
+  clearAll();
   router.push({ name: "login" });
 }
 

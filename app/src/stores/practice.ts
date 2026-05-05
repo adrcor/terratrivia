@@ -48,7 +48,6 @@ function newUnitState(region: Region): UnitState {
     mode: "capitals",
     count: 0,
     discovered: 5,
-    validated: 0,
     countries: countries.map((c) => c.cca2),
     scores: scores,
   };
@@ -131,7 +130,6 @@ export const usePracticeStore = defineStore("practice", () => {
         validCount++;
       }
     }
-    unit.validated = validCount;
     unit.discovered = Math.max(unit.discovered, validCount + DISCOVERED_COUNT);
   }
 
@@ -178,6 +176,13 @@ export const usePracticeStore = defineStore("practice", () => {
     setStats(state.value[`${mode}:${region}`]!);
   }
 
+  function clear(): void {
+    state.value = {};
+    stats.value = null;
+  }
+
+  function sync(): void {}
+
   return {
     state,
     stats,
@@ -186,5 +191,7 @@ export const usePracticeStore = defineStore("practice", () => {
     getShuffledCountries,
     pushAnswers,
     reset,
+    clear,
+    sync,
   };
 });

@@ -24,6 +24,7 @@
 import NavigationBar from "@/components/navigation/NavigationBar.vue";
 import { useAuthStore } from "@/stores/auth";
 import { useGeoStore } from "@/stores/geo";
+import { usePracticeStore } from "@/stores/practice";
 import { useTrialStore } from "@/stores/trial";
 import Footer from "@/views/Footer.vue";
 import UApp from "@nuxt/ui/components/App.vue";
@@ -32,11 +33,13 @@ import { onMounted } from "vue";
 const authStore = useAuthStore();
 const trialStore = useTrialStore();
 const geoStore = useGeoStore();
+const practiceStore = usePracticeStore();
 
 onMounted(async () => {
   await authStore.sync();
   geoStore.sync();
   trialStore.syncHighscores();
   trialStore.syncResults();
+  practiceStore.sync();
 });
 </script>
