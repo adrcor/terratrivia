@@ -8,6 +8,9 @@
       <TrialOptions :show="true" />
       <PracticeMetrics :practice="practice" />
       <State :unit="practice.state.value" />
+      <div class="weight-bold text-2xl text-neutral-500">
+        press <span class="text-neutral-300 underline">tab</span> to start
+      </div>
     </div>
     <div
       v-else
