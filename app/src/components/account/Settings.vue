@@ -1,5 +1,19 @@
 <template>
   <div class="flex w-full flex-col gap-4">
+    <h2 class="weight-bold text-muted text-xl">practice settings</h2>
+    <div class="ml-4 flex flex-col gap-4">
+      <h3 class="weight-bold text-muted text-lg">reset practice</h3>
+      <div class="flex flex-row justify-between gap-2">
+        <TrialOptions :show="true" />
+        <UButton
+          class="self-end text-center"
+          @click="onResetPractice"
+          color="error"
+          >reset region + mode</UButton
+        >
+      </div>
+    </div>
+    <USeparator />
     <h2 class="weight-bold text-muted text-xl">account settings</h2>
     <div class="ml-4 flex flex-col gap-4">
       <div class="flex flex-row justify-between gap-2">
@@ -16,17 +30,6 @@
           variant="solid"
           @click="onLogout"
         />
-      </div>
-    </div>
-    <USeparator />
-    <h2 class="weight-bold text-muted text-xl">practice settings</h2>
-    <div class="ml-4 flex flex-col gap-4">
-      <h3 class="weight-bold text-muted text-lg">reset practice</h3>
-      <div class="flex flex-row justify-between gap-2">
-        <TrialOptions :show="true" />
-        <UButton class="self-end text-center" @click="onResetPractice"
-          >reset region + mode</UButton
-        >
       </div>
     </div>
     <USeparator />
