@@ -5,7 +5,7 @@ export interface CountryScore {
   cca2: string;
   answer: string;
   reaction_time: number;
-  typing_time: number;
+  wpm: number;
   count: number;
 }
 

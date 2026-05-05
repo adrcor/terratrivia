@@ -2,7 +2,7 @@ import {
   VALID_THRESHOLD,
   DISCOVERED_COUNT,
   REACTION_INVALID,
-  WRITING_TIME_INVALID,
+  WPM_INVALID,
   EXPONENTIAL_WEIGHT,
 } from "./constants";
 import { useGeoStore } from "./geo";
@@ -39,7 +39,7 @@ function newUnitState(region: Region): UnitState {
       cca2: country.cca2,
       answer: country.capital,
       reaction_time: 0,
-      typing_time: 0,
+      wpm: 0,
       count: 0,
     };
   }
@@ -103,16 +103,14 @@ export const usePracticeStore = defineStore("practice", () => {
       const reaction_time = answer.valid
         ? Math.min(answer.reaction_time, REACTION_INVALID)
         : REACTION_INVALID;
-      const typing_time = answer.valid
-        ? Math.min(answer.typing_time, WRITING_TIME_INVALID)
-        : WRITING_TIME_INVALID;
+      const answerWpm = answer.valid
+        ? wpm(answer.typing_time, score.answer.length)
+        : WPM_INVALID;
 
       score.reaction_time = Math.floor(
         (score.reaction_time * weight + reaction_time) / (weight + 1),
       );
-      score.typing_time = Math.floor(
-        (score.typing_time * weight + typing_time) / (weight + 1),
-      );
+      score.wpm = Math.floor((score.wpm * weight + answerWpm) / (weight + 1));
       score.count++;
     }
     unit.count++;
@@ -158,7 +156,7 @@ export const usePracticeStore = defineStore("practice", () => {
         stats.completed++;
       }
       stats.average_reaction_time += score.reaction_time;
-      stats.average_wpm += wpm(score.typing_time, score.answer.length);
+      stats.average_wpm += score.wpm;
     }
     if (denominator > 0) {
       stats.average_reaction_time /= denominator;

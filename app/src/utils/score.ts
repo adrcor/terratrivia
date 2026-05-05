@@ -5,7 +5,6 @@ import {
   WPM_TARGET,
   WPM_FLOOR,
 } from "@/stores/constants";
-import { wpm } from "@/utils/cpm";
 import { ilerp } from "@/utils/lerp";
 
 export function ilerpReactionTime(reactionTime: number) {
@@ -21,7 +20,7 @@ export function scoreTotal(score: CountryScore) {
     return 0;
   }
   const reactionPct = ilerpReactionTime(score.reaction_time);
-  const typingPct = ilerpWpm(wpm(score.typing_time, score.answer.length));
+  const typingPct = ilerpWpm(score.wpm);
   const out = (reactionPct + typingPct) * 50;
   if (score.count < 4) {
     return Math.floor(out / (5 - score.count));

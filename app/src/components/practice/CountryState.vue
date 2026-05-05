@@ -51,9 +51,9 @@
 </template>
 
 <script setup lang="ts">
+import { VALID_THRESHOLD } from "@/stores/constants";
 import type { Country } from "@/types/common";
 import type { CountryScore } from "@/types/practice";
-import { wpm } from "@/utils/cpm";
 import { ilerpReactionTime, ilerpWpm, scoreTotal } from "@/utils/score";
 import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { computed } from "vue";
@@ -71,11 +71,13 @@ function getColor(score: number) {
   if (score == 0) {
     return "var(--color-neutral-600)";
   }
-  if (score < 80) {
-    const pct = (score / 80) * 100;
+  if (score < VALID_THRESHOLD) {
+    const pct = (score / VALID_THRESHOLD) * 100;
     return `color-mix(in oklch, var(--color-emerald-700) ${Math.max(20, pct)}%, transparent)`;
   }
-  const pct = Math.floor((score - 80) * 5);
+  const pct = Math.floor(
+    ((score - VALID_THRESHOLD) / (100 - VALID_THRESHOLD)) * 100,
+  );
   return `color-mix(in oklch, var(--color-primary-800) ${100 - pct}%, var(--color-primary-700) ${pct}%)`;
 }
 
@@ -112,10 +114,8 @@ const typingScore = computed<DisplayScore>(() => {
     };
   }
   return {
-    value: `${wpm(props.score.typing_time, props.score.answer.length)}wpm`,
-    score: Math.floor(
-      ilerpWpm(wpm(props.score.typing_time, props.score.answer.length)) * 100,
-    ),
+    value: `${props.score.wpm}wpm`,
+    score: Math.floor(ilerpWpm(props.score.wpm) * 100),
   };
 });
 
