@@ -1,1 +1,1789 @@
-[{"name":"Afghanistan","capital":"Kabul","region":"as","cca2":"AF","cca3":"AFG","flag":"🇦🇫","borders":["IRN","PAK","TKM","UZB","TJK","CHN"]},{"name":"Albania","capital":"Tirana","region":"eu","cca2":"AL","cca3":"ALB","flag":"🇦🇱","borders":["MNE","GRC","MKD","UNK"]},{"name":"Algeria","capital":"Algiers","region":"af","cca2":"DZ","cca3":"DZA","flag":"🇩🇿","borders":["TUN","LBY","NER","ESH","MRT","MLI","MAR"]},{"name":"Andorra","capital":"Andorra la Vella","region":"eu","cca2":"AD","cca3":"AND","flag":"🇦🇩","borders":["FRA","ESP"]},{"name":"Angola","capital":"Luanda","region":"af","cca2":"AO","cca3":"AGO","flag":"🇦🇴","borders":["COG","COD","ZMB","NAM"]},{"name":"Antigua and Barbuda","capital":"Saint John's","region":"am","cca2":"AG","cca3":"ATG","flag":"🇦🇬","borders":[]},{"name":"Argentina","capital":"Buenos Aires","region":"am","cca2":"AR","cca3":"ARG","flag":"🇦🇷","borders":["BOL","BRA","CHL","PRY","URY"]},{"name":"Armenia","capital":"Yerevan","region":"as","cca2":"AM","cca3":"ARM","flag":"🇦🇲","borders":["AZE","GEO","IRN","TUR"]},{"name":"Australia","capital":"Canberra","region":"oc","cca2":"AU","cca3":"AUS","flag":"🇦🇺","borders":[]},{"name":"Austria","capital":"Vienna","region":"eu","cca2":"AT","cca3":"AUT","flag":"🇦🇹","borders":["CZE","DEU","HUN","ITA","LIE","SVK","SVN","CHE"]},{"name":"Azerbaijan","capital":"Baku","region":"as","cca2":"AZ","cca3":"AZE","flag":"🇦🇿","borders":["ARM","GEO","IRN","RUS","TUR"]},{"name":"Bahamas","capital":"Nassau","region":"am","cca2":"BS","cca3":"BHS","flag":"🇧🇸","borders":[]},{"name":"Bahrain","capital":"Manama","region":"as","cca2":"BH","cca3":"BHR","flag":"🇧🇭","borders":[]},{"name":"Bangladesh","capital":"Dhaka","region":"as","cca2":"BD","cca3":"BGD","flag":"🇧🇩","borders":["MMR","IND"]},{"name":"Barbados","capital":"Bridgetown","region":"am","cca2":"BB","cca3":"BRB","flag":"🇧🇧","borders":[]},{"name":"Belarus","capital":"Minsk","region":"eu","cca2":"BY","cca3":"BLR","flag":"🇧🇾","borders":["LVA","LTU","POL","RUS","UKR"]},{"name":"Belgium","capital":"Brussels","region":"eu","cca2":"BE","cca3":"BEL","flag":"🇧🇪","borders":["FRA","DEU","LUX","NLD"]},{"name":"Belize","capital":"Belmopan","region":"am","cca2":"BZ","cca3":"BLZ","flag":"🇧🇿","borders":["GTM","MEX"]},{"name":"Benin","capital":"Porto-Novo","region":"af","cca2":"BJ","cca3":"BEN","flag":"🇧🇯","borders":["BFA","NER","NGA","TGO"]},{"name":"Bhutan","capital":"Thimphu","region":"as","cca2":"BT","cca3":"BTN","flag":"🇧🇹","borders":["CHN","IND"]},{"name":"Bolivia","capital":"Sucre","region":"am","cca2":"BO","cca3":"BOL","flag":"🇧🇴","borders":["ARG","BRA","CHL","PRY","PER"]},{"name":"Bosnia and Herzegovina","capital":"Sarajevo","region":"eu","cca2":"BA","cca3":"BIH","flag":"🇧🇦","borders":["HRV","MNE","SRB"]},{"name":"Botswana","capital":"Gaborone","region":"af","cca2":"BW","cca3":"BWA","flag":"🇧🇼","borders":["NAM","ZAF","ZMB","ZWE"]},{"name":"Brazil","capital":"Brasília","region":"am","cca2":"BR","cca3":"BRA","flag":"🇧🇷","borders":["ARG","BOL","COL","GUF","GUY","PRY","PER","SUR","URY","VEN"]},{"name":"Brunei","capital":"Bandar Seri Begawan","region":"as","cca2":"BN","cca3":"BRN","flag":"🇧🇳","borders":["MYS"]},{"name":"Bulgaria","capital":"Sofia","region":"eu","cca2":"BG","cca3":"BGR","flag":"🇧🇬","borders":["GRC","MKD","ROU","SRB","TUR"]},{"name":"Burkina Faso","capital":"Ouagadougou","region":"af","cca2":"BF","cca3":"BFA","flag":"🇧🇫","borders":["BEN","CIV","GHA","MLI","NER","TGO"]},{"name":"Burundi","capital":"Gitega","region":"af","cca2":"BI","cca3":"BDI","flag":"🇧🇮","borders":["COD","RWA","TZA"]},{"name":"Cambodia","capital":"Phnom Penh","region":"as","cca2":"KH","cca3":"KHM","flag":"🇰🇭","borders":["LAO","THA","VNM"]},{"name":"Cameroon","capital":"Yaoundé","region":"af","cca2":"CM","cca3":"CMR","flag":"🇨🇲","borders":["CAF","TCD","COG","GNQ","GAB","NGA"]},{"name":"Canada","capital":"Ottawa","region":"am","cca2":"CA","cca3":"CAN","flag":"🇨🇦","borders":["USA"]},{"name":"Cape Verde","capital":"Praia","region":"af","cca2":"CV","cca3":"CPV","flag":"🇨🇻","borders":[]},{"name":"Central African Republic","capital":"Bangui","region":"af","cca2":"CF","cca3":"CAF","flag":"🇨🇫","borders":["CMR","TCD","COD","COG","SSD","SDN"]},{"name":"Chad","capital":"N'Djamena","region":"af","cca2":"TD","cca3":"TCD","flag":"🇹🇩","borders":["CMR","CAF","LBY","NER","NGA","SDN"]},{"name":"Chile","capital":"Santiago","region":"am","cca2":"CL","cca3":"CHL","flag":"🇨🇱","borders":["ARG","BOL","PER"]},{"name":"China","capital":"Beijing","region":"as","cca2":"CN","cca3":"CHN","flag":"🇨🇳","borders":["AFG","BTN","MMR","HKG","IND","KAZ","NPL","PRK","KGZ","LAO","MAC","MNG","PAK","RUS","TJK","VNM"]},{"name":"Colombia","capital":"Bogotá","region":"am","cca2":"CO","cca3":"COL","flag":"🇨🇴","borders":["BRA","ECU","PAN","PER","VEN"]},{"name":"Comoros","capital":"Moroni","region":"af","cca2":"KM","cca3":"COM","flag":"🇰🇲","borders":[]},{"name":"Costa Rica","capital":"San José","region":"am","cca2":"CR","cca3":"CRI","flag":"🇨🇷","borders":["NIC","PAN"]},{"name":"Croatia","capital":"Zagreb","region":"eu","cca2":"HR","cca3":"HRV","flag":"🇭🇷","borders":["BIH","HUN","MNE","SRB","SVN"]},{"name":"Cuba","capital":"Havana","region":"am","cca2":"CU","cca3":"CUB","flag":"🇨🇺","borders":[]},{"name":"Cyprus","capital":"Nicosia","region":"eu","cca2":"CY","cca3":"CYP","flag":"🇨🇾","borders":[]},{"name":"Czechia","capital":"Prague","region":"eu","cca2":"CZ","cca3":"CZE","flag":"🇨🇿","borders":["AUT","DEU","POL","SVK"]},{"name":"Denmark","capital":"Copenhagen","region":"eu","cca2":"DK","cca3":"DNK","flag":"🇩🇰","borders":["DEU"]},{"name":"Djibouti","capital":"Djibouti","region":"af","cca2":"DJ","cca3":"DJI","flag":"🇩🇯","borders":["ERI","ETH","SOM"]},{"name":"Dominica","capital":"Roseau","region":"am","cca2":"DM","cca3":"DMA","flag":"🇩🇲","borders":[]},{"name":"Dominican Republic","capital":"Santo Domingo","region":"am","cca2":"DO","cca3":"DOM","flag":"🇩🇴","borders":["HTI"]},{"name":"DR Congo","capital":"Kinshasa","region":"af","cca2":"CD","cca3":"COD","flag":"🇨🇩","borders":["AGO","BDI","CAF","COG","RWA","SSD","TZA","UGA","ZMB"]},{"name":"Ecuador","capital":"Quito","region":"am","cca2":"EC","cca3":"ECU","flag":"🇪🇨","borders":["COL","PER"]},{"name":"Egypt","capital":"Cairo","region":"af","cca2":"EG","cca3":"EGY","flag":"🇪🇬","borders":["ISR","LBY","PSE","SDN"]},{"name":"El Salvador","capital":"San Salvador","region":"am","cca2":"SV","cca3":"SLV","flag":"🇸🇻","borders":["GTM","HND"]},{"name":"Equatorial Guinea","capital":"Malabo","region":"af","cca2":"GQ","cca3":"GNQ","flag":"🇬🇶","borders":["CMR","GAB"]},{"name":"Eritrea","capital":"Asmara","region":"af","cca2":"ER","cca3":"ERI","flag":"🇪🇷","borders":["DJI","ETH","SDN"]},{"name":"Estonia","capital":"Tallinn","region":"eu","cca2":"EE","cca3":"EST","flag":"🇪🇪","borders":["LVA","RUS"]},{"name":"Eswatini","capital":"Mbabane","region":"af","cca2":"SZ","cca3":"SWZ","flag":"🇸🇿","borders":["MOZ","ZAF"]},{"name":"Ethiopia","capital":"Addis Ababa","region":"af","cca2":"ET","cca3":"ETH","flag":"🇪🇹","borders":["DJI","ERI","KEN","SOM","SSD","SDN"]},{"name":"Fiji","capital":"Suva","region":"oc","cca2":"FJ","cca3":"FJI","flag":"🇫🇯","borders":[]},{"name":"Finland","capital":"Helsinki","region":"eu","cca2":"FI","cca3":"FIN","flag":"🇫🇮","borders":["NOR","SWE","RUS"]},{"name":"France","capital":"Paris","region":"eu","cca2":"FR","cca3":"FRA","flag":"🇫🇷","borders":["AND","BEL","DEU","ITA","LUX","MCO","ESP","CHE"]},{"name":"Gabon","capital":"Libreville","region":"af","cca2":"GA","cca3":"GAB","flag":"🇬🇦","borders":["CMR","COG","GNQ"]},{"name":"Gambia","capital":"Banjul","region":"af","cca2":"GM","cca3":"GMB","flag":"🇬🇲","borders":["SEN"]},{"name":"Georgia","capital":"Tbilisi","region":"as","cca2":"GE","cca3":"GEO","flag":"🇬🇪","borders":["ARM","AZE","RUS","TUR"]},{"name":"Germany","capital":"Berlin","region":"eu","cca2":"DE","cca3":"DEU","flag":"🇩🇪","borders":["AUT","BEL","CZE","DNK","FRA","LUX","NLD","POL","CHE"]},{"name":"Ghana","capital":"Accra","region":"af","cca2":"GH","cca3":"GHA","flag":"🇬🇭","borders":["BFA","CIV","TGO"]},{"name":"Greece","capital":"Athens","region":"eu","cca2":"GR","cca3":"GRC","flag":"🇬🇷","borders":["ALB","BGR","TUR","MKD"]},{"name":"Grenada","capital":"St. George's","region":"am","cca2":"GD","cca3":"GRD","flag":"🇬🇩","borders":[]},{"name":"Guatemala","capital":"Guatemala City","region":"am","cca2":"GT","cca3":"GTM","flag":"🇬🇹","borders":["BLZ","SLV","HND","MEX"]},{"name":"Guinea","capital":"Conakry","region":"af","cca2":"GN","cca3":"GIN","flag":"🇬🇳","borders":["CIV","GNB","LBR","MLI","SEN","SLE"]},{"name":"Guinea-Bissau","capital":"Bissau","region":"af","cca2":"GW","cca3":"GNB","flag":"🇬🇼","borders":["GIN","SEN"]},{"name":"Guyana","capital":"Georgetown","region":"am","cca2":"GY","cca3":"GUY","flag":"🇬🇾","borders":["BRA","SUR","VEN"]},{"name":"Haiti","capital":"Port-au-Prince","region":"am","cca2":"HT","cca3":"HTI","flag":"🇭🇹","borders":["DOM"]},{"name":"Honduras","capital":"Tegucigalpa","region":"am","cca2":"HN","cca3":"HND","flag":"🇭🇳","borders":["GTM","SLV","NIC"]},{"name":"Hungary","capital":"Budapest","region":"eu","cca2":"HU","cca3":"HUN","flag":"🇭🇺","borders":["AUT","HRV","ROU","SRB","SVK","SVN","UKR"]},{"name":"Iceland","capital":"Reykjavik","region":"eu","cca2":"IS","cca3":"ISL","flag":"🇮🇸","borders":[]},{"name":"India","capital":"New Delhi","region":"as","cca2":"IN","cca3":"IND","flag":"🇮🇳","borders":["BGD","BTN","MMR","CHN","NPL","PAK"]},{"name":"Indonesia","capital":"Jakarta","region":"as","cca2":"ID","cca3":"IDN","flag":"🇮🇩","borders":["TLS","MYS","PNG"]},{"name":"Iran","capital":"Tehran","region":"as","cca2":"IR","cca3":"IRN","flag":"🇮🇷","borders":["AFG","ARM","AZE","IRQ","PAK","TUR","TKM"]},{"name":"Iraq","capital":"Baghdad","region":"as","cca2":"IQ","cca3":"IRQ","flag":"🇮🇶","borders":["IRN","JOR","KWT","SAU","SYR","TUR"]},{"name":"Ireland","capital":"Dublin","region":"eu","cca2":"IE","cca3":"IRL","flag":"🇮🇪","borders":["GBR"]},{"name":"Israel","capital":"Jerusalem","region":"as","cca2":"IL","cca3":"ISR","flag":"🇮🇱","borders":["EGY","JOR","LBN","PSE","SYR"]},{"name":"Italy","capital":"Rome","region":"eu","cca2":"IT","cca3":"ITA","flag":"🇮🇹","borders":["AUT","FRA","SMR","SVN","CHE","VAT"]},{"name":"Ivory Coast","capital":"Yamoussoukro","region":"af","cca2":"CI","cca3":"CIV","flag":"🇨🇮","borders":["BFA","GHA","GIN","LBR","MLI"]},{"name":"Jamaica","capital":"Kingston","region":"am","cca2":"JM","cca3":"JAM","flag":"🇯🇲","borders":[]},{"name":"Japan","capital":"Tokyo","region":"as","cca2":"JP","cca3":"JPN","flag":"🇯🇵","borders":[]},{"name":"Jordan","capital":"Amman","region":"as","cca2":"JO","cca3":"JOR","flag":"🇯🇴","borders":["IRQ","ISR","PSE","SAU","SYR"]},{"name":"Kazakhstan","capital":"Astana","region":"as","cca2":"KZ","cca3":"KAZ","flag":"🇰🇿","borders":["CHN","KGZ","RUS","TKM","UZB"]},{"name":"Kenya","capital":"Nairobi","region":"af","cca2":"KE","cca3":"KEN","flag":"🇰🇪","borders":["ETH","SOM","SSD","TZA","UGA"]},{"name":"Kiribati","capital":"South Tarawa","region":"oc","cca2":"KI","cca3":"KIR","flag":"🇰🇮","borders":[]},{"name":"Kuwait","capital":"Kuwait City","region":"as","cca2":"KW","cca3":"KWT","flag":"🇰🇼","borders":["IRQ","SAU"]},{"name":"Kyrgyzstan","capital":"Bishkek","region":"as","cca2":"KG","cca3":"KGZ","flag":"🇰🇬","borders":["CHN","KAZ","TJK","UZB"]},{"name":"Laos","capital":"Vientiane","region":"as","cca2":"LA","cca3":"LAO","flag":"🇱🇦","borders":["MMR","KHM","CHN","THA","VNM"]},{"name":"Latvia","capital":"Riga","region":"eu","cca2":"LV","cca3":"LVA","flag":"🇱🇻","borders":["BLR","EST","LTU","RUS"]},{"name":"Lebanon","capital":"Beirut","region":"as","cca2":"LB","cca3":"LBN","flag":"🇱🇧","borders":["ISR","SYR"]},{"name":"Lesotho","capital":"Maseru","region":"af","cca2":"LS","cca3":"LSO","flag":"🇱🇸","borders":["ZAF"]},{"name":"Liberia","capital":"Monrovia","region":"af","cca2":"LR","cca3":"LBR","flag":"🇱🇷","borders":["GIN","CIV","SLE"]},{"name":"Libya","capital":"Tripoli","region":"af","cca2":"LY","cca3":"LBY","flag":"🇱🇾","borders":["DZA","TCD","EGY","NER","SDN","TUN"]},{"name":"Liechtenstein","capital":"Vaduz","region":"eu","cca2":"LI","cca3":"LIE","flag":"🇱🇮","borders":["AUT","CHE"]},{"name":"Lithuania","capital":"Vilnius","region":"eu","cca2":"LT","cca3":"LTU","flag":"🇱🇹","borders":["BLR","LVA","POL","RUS"]},{"name":"Luxembourg","capital":"Luxembourg","region":"eu","cca2":"LU","cca3":"LUX","flag":"🇱🇺","borders":["BEL","FRA","DEU"]},{"name":"Madagascar","capital":"Antananarivo","region":"af","cca2":"MG","cca3":"MDG","flag":"🇲🇬","borders":[]},{"name":"Malawi","capital":"Lilongwe","region":"af","cca2":"MW","cca3":"MWI","flag":"🇲🇼","borders":["MOZ","TZA","ZMB"]},{"name":"Malaysia","capital":"Kuala Lumpur","region":"as","cca2":"MY","cca3":"MYS","flag":"🇲🇾","borders":["BRN","IDN","THA"]},{"name":"Maldives","capital":"Malé","region":"as","cca2":"MV","cca3":"MDV","flag":"🇲🇻","borders":[]},{"name":"Mali","capital":"Bamako","region":"af","cca2":"ML","cca3":"MLI","flag":"🇲🇱","borders":["DZA","BFA","GIN","CIV","MRT","NER","SEN"]},{"name":"Malta","capital":"Valletta","region":"eu","cca2":"MT","cca3":"MLT","flag":"🇲🇹","borders":[]},{"name":"Marshall Islands","capital":"Majuro","region":"oc","cca2":"MH","cca3":"MHL","flag":"🇲🇭","borders":[]},{"name":"Mauritania","capital":"Nouakchott","region":"af","cca2":"MR","cca3":"MRT","flag":"🇲🇷","borders":["DZA","MLI","SEN","ESH"]},{"name":"Mauritius","capital":"Port Louis","region":"af","cca2":"MU","cca3":"MUS","flag":"🇲🇺","borders":[]},{"name":"Mexico","capital":"Mexico City","region":"am","cca2":"MX","cca3":"MEX","flag":"🇲🇽","borders":["BLZ","GTM","USA"]},{"name":"Micronesia","capital":"Palikir","region":"oc","cca2":"FM","cca3":"FSM","flag":"🇫🇲","borders":[]},{"name":"Moldova","capital":"Chișinău","region":"eu","cca2":"MD","cca3":"MDA","flag":"🇲🇩","borders":["ROU","UKR"]},{"name":"Monaco","capital":"Monaco","region":"eu","cca2":"MC","cca3":"MCO","flag":"🇲🇨","borders":["FRA"]},{"name":"Mongolia","capital":"Ulan Bator","region":"as","cca2":"MN","cca3":"MNG","flag":"🇲🇳","borders":["CHN","RUS"]},{"name":"Montenegro","capital":"Podgorica","region":"eu","cca2":"ME","cca3":"MNE","flag":"🇲🇪","borders":["ALB","BIH","HRV","UNK","SRB"]},{"name":"Morocco","capital":"Rabat","region":"af","cca2":"MA","cca3":"MAR","flag":"🇲🇦","borders":["DZA","ESH","ESP"]},{"name":"Mozambique","capital":"Maputo","region":"af","cca2":"MZ","cca3":"MOZ","flag":"🇲🇿","borders":["MWI","ZAF","SWZ","TZA","ZMB","ZWE"]},{"name":"Myanmar","capital":"Naypyidaw","region":"as","cca2":"MM","cca3":"MMR","flag":"🇲🇲","borders":["BGD","CHN","IND","LAO","THA"]},{"name":"Namibia","capital":"Windhoek","region":"af","cca2":"NA","cca3":"NAM","flag":"🇳🇦","borders":["AGO","BWA","ZAF","ZMB"]},{"name":"Nauru","capital":"Yaren","region":"oc","cca2":"NR","cca3":"NRU","flag":"🇳🇷","borders":[]},{"name":"Nepal","capital":"Kathmandu","region":"as","cca2":"NP","cca3":"NPL","flag":"🇳🇵","borders":["CHN","IND"]},{"name":"Netherlands","capital":"Amsterdam","region":"eu","cca2":"NL","cca3":"NLD","flag":"🇳🇱","borders":["BEL","DEU"]},{"name":"New Zealand","capital":"Wellington","region":"oc","cca2":"NZ","cca3":"NZL","flag":"🇳🇿","borders":[]},{"name":"Nicaragua","capital":"Managua","region":"am","cca2":"NI","cca3":"NIC","flag":"🇳🇮","borders":["CRI","HND"]},{"name":"Niger","capital":"Niamey","region":"af","cca2":"NE","cca3":"NER","flag":"🇳🇪","borders":["DZA","BEN","BFA","TCD","LBY","MLI","NGA"]},{"name":"Nigeria","capital":"Abuja","region":"af","cca2":"NG","cca3":"NGA","flag":"🇳🇬","borders":["BEN","CMR","TCD","NER"]},{"name":"North Korea","capital":"Pyongyang","region":"as","cca2":"KP","cca3":"PRK","flag":"🇰🇵","borders":["CHN","KOR","RUS"]},{"name":"North Macedonia","capital":"Skopje","region":"eu","cca2":"MK","cca3":"MKD","flag":"🇲🇰","borders":["ALB","BGR","GRC","UNK","SRB"]},{"name":"Norway","capital":"Oslo","region":"eu","cca2":"NO","cca3":"NOR","flag":"🇳🇴","borders":["FIN","SWE","RUS"]},{"name":"Oman","capital":"Muscat","region":"as","cca2":"OM","cca3":"OMN","flag":"🇴🇲","borders":["SAU","ARE","YEM"]},{"name":"Pakistan","capital":"Islamabad","region":"as","cca2":"PK","cca3":"PAK","flag":"🇵🇰","borders":["AFG","CHN","IND","IRN"]},{"name":"Palau","capital":"Ngerulmud","region":"oc","cca2":"PW","cca3":"PLW","flag":"🇵🇼","borders":[]},{"name":"Palestine","capital":"Jerusalem","region":"as","cca2":"PS","cca3":"PSE","flag":"🇵🇸","borders":["ISR","EGY","JOR"]},{"name":"Panama","capital":"Panama City","region":"am","cca2":"PA","cca3":"PAN","flag":"🇵🇦","borders":["COL","CRI"]},{"name":"Papua New Guinea","capital":"Port Moresby","region":"oc","cca2":"PG","cca3":"PNG","flag":"🇵🇬","borders":["IDN"]},{"name":"Paraguay","capital":"Asunción","region":"am","cca2":"PY","cca3":"PRY","flag":"🇵🇾","borders":["ARG","BOL","BRA"]},{"name":"Peru","capital":"Lima","region":"am","cca2":"PE","cca3":"PER","flag":"🇵🇪","borders":["BOL","BRA","CHL","COL","ECU"]},{"name":"Philippines","capital":"Manila","region":"as","cca2":"PH","cca3":"PHL","flag":"🇵🇭","borders":[]},{"name":"Poland","capital":"Warsaw","region":"eu","cca2":"PL","cca3":"POL","flag":"🇵🇱","borders":["BLR","CZE","DEU","LTU","RUS","SVK","UKR"]},{"name":"Portugal","capital":"Lisbon","region":"eu","cca2":"PT","cca3":"PRT","flag":"🇵🇹","borders":["ESP"]},{"name":"Qatar","capital":"Doha","region":"as","cca2":"QA","cca3":"QAT","flag":"🇶🇦","borders":["SAU"]},{"name":"Republic of the Congo","capital":"Brazzaville","region":"af","cca2":"CG","cca3":"COG","flag":"🇨🇬","borders":["AGO","CMR","CAF","COD","GAB"]},{"name":"Romania","capital":"Bucharest","region":"eu","cca2":"RO","cca3":"ROU","flag":"🇷🇴","borders":["BGR","HUN","MDA","SRB","UKR"]},{"name":"Russia","capital":"Moscow","region":"eu","cca2":"RU","cca3":"RUS","flag":"🇷🇺","borders":["AZE","BLR","CHN","EST","FIN","GEO","KAZ","PRK","LVA","LTU","MNG","NOR","POL","UKR"]},{"name":"Rwanda","capital":"Kigali","region":"af","cca2":"RW","cca3":"RWA","flag":"🇷🇼","borders":["BDI","COD","TZA","UGA"]},{"name":"Saint Kitts and Nevis","capital":"Basseterre","region":"am","cca2":"KN","cca3":"KNA","flag":"🇰🇳","borders":[]},{"name":"Saint Lucia","capital":"Castries","region":"am","cca2":"LC","cca3":"LCA","flag":"🇱🇨","borders":[]},{"name":"Saint Vincent and the Grenadines","capital":"Kingstown","region":"am","cca2":"VC","cca3":"VCT","flag":"🇻🇨","borders":[]},{"name":"Samoa","capital":"Apia","region":"oc","cca2":"WS","cca3":"WSM","flag":"🇼🇸","borders":[]},{"name":"San Marino","capital":"San Marino","region":"eu","cca2":"SM","cca3":"SMR","flag":"🇸🇲","borders":["ITA"]},{"name":"São Tomé and Príncipe","capital":"São Tomé","region":"af","cca2":"ST","cca3":"STP","flag":"🇸🇹","borders":[]},{"name":"Saudi Arabia","capital":"Riyadh","region":"as","cca2":"SA","cca3":"SAU","flag":"🇸🇦","borders":["IRQ","JOR","KWT","OMN","QAT","ARE","YEM"]},{"name":"Senegal","capital":"Dakar","region":"af","cca2":"SN","cca3":"SEN","flag":"🇸🇳","borders":["GMB","GIN","GNB","MLI","MRT"]},{"name":"Serbia","capital":"Belgrade","region":"eu","cca2":"RS","cca3":"SRB","flag":"🇷🇸","borders":["BIH","BGR","HRV","HUN","UNK","MKD","MNE","ROU"]},{"name":"Seychelles","capital":"Victoria","region":"af","cca2":"SC","cca3":"SYC","flag":"🇸🇨","borders":[]},{"name":"Sierra Leone","capital":"Freetown","region":"af","cca2":"SL","cca3":"SLE","flag":"🇸🇱","borders":["GIN","LBR"]},{"name":"Singapore","capital":"Singapore","region":"as","cca2":"SG","cca3":"SGP","flag":"🇸🇬","borders":[]},{"name":"Slovakia","capital":"Bratislava","region":"eu","cca2":"SK","cca3":"SVK","flag":"🇸🇰","borders":["AUT","CZE","HUN","POL","UKR"]},{"name":"Slovenia","capital":"Ljubljana","region":"eu","cca2":"SI","cca3":"SVN","flag":"🇸🇮","borders":["AUT","HRV","ITA","HUN"]},{"name":"Solomon Islands","capital":"Honiara","region":"oc","cca2":"SB","cca3":"SLB","flag":"🇸🇧","borders":[]},{"name":"Somalia","capital":"Mogadishu","region":"af","cca2":"SO","cca3":"SOM","flag":"🇸🇴","borders":["DJI","ETH","KEN"]},{"name":"South Africa","capital":"Pretoria","region":"af","cca2":"ZA","cca3":"ZAF","flag":"🇿🇦","borders":["BWA","LSO","MOZ","NAM","SWZ","ZWE"]},{"name":"South Korea","capital":"Seoul","region":"as","cca2":"KR","cca3":"KOR","flag":"🇰🇷","borders":["PRK"]},{"name":"South Sudan","capital":"Juba","region":"af","cca2":"SS","cca3":"SSD","flag":"🇸🇸","borders":["CAF","COD","ETH","KEN","SDN","UGA"]},{"name":"Spain","capital":"Madrid","region":"eu","cca2":"ES","cca3":"ESP","flag":"🇪🇸","borders":["AND","FRA","GIB","PRT","MAR"]},{"name":"Sri Lanka","capital":"Colombo","region":"as","cca2":"LK","cca3":"LKA","flag":"🇱🇰","borders":[]},{"name":"Sudan","capital":"Khartoum","region":"af","cca2":"SD","cca3":"SDN","flag":"🇸🇩","borders":["CAF","TCD","EGY","ERI","ETH","LBY","SSD"]},{"name":"Suriname","capital":"Paramaribo","region":"am","cca2":"SR","cca3":"SUR","flag":"🇸🇷","borders":["BRA","GUF","GUY"]},{"name":"Sweden","capital":"Stockholm","region":"eu","cca2":"SE","cca3":"SWE","flag":"🇸🇪","borders":["FIN","NOR"]},{"name":"Switzerland","capital":"Bern","region":"eu","cca2":"CH","cca3":"CHE","flag":"🇨🇭","borders":["AUT","FRA","ITA","LIE","DEU"]},{"name":"Syria","capital":"Damascus","region":"as","cca2":"SY","cca3":"SYR","flag":"🇸🇾","borders":["IRQ","ISR","JOR","LBN","TUR"]},{"name":"Tajikistan","capital":"Dushanbe","region":"as","cca2":"TJ","cca3":"TJK","flag":"🇹🇯","borders":["AFG","CHN","KGZ","UZB"]},{"name":"Tanzania","capital":"Dodoma","region":"af","cca2":"TZ","cca3":"TZA","flag":"🇹🇿","borders":["BDI","COD","KEN","MWI","MOZ","RWA","UGA","ZMB"]},{"name":"Thailand","capital":"Bangkok","region":"as","cca2":"TH","cca3":"THA","flag":"🇹🇭","borders":["MMR","KHM","LAO","MYS"]},{"name":"Timor-Leste","capital":"Dili","region":"as","cca2":"TL","cca3":"TLS","flag":"🇹🇱","borders":["IDN"]},{"name":"Togo","capital":"Lomé","region":"af","cca2":"TG","cca3":"TGO","flag":"🇹🇬","borders":["BEN","BFA","GHA"]},{"name":"Tonga","capital":"Nuku'alofa","region":"oc","cca2":"TO","cca3":"TON","flag":"🇹🇴","borders":[]},{"name":"Trinidad and Tobago","capital":"Port of Spain","region":"am","cca2":"TT","cca3":"TTO","flag":"🇹🇹","borders":[]},{"name":"Tunisia","capital":"Tunis","region":"af","cca2":"TN","cca3":"TUN","flag":"🇹🇳","borders":["DZA","LBY"]},{"name":"Turkey","capital":"Ankara","region":"as","cca2":"TR","cca3":"TUR","flag":"🇹🇷","borders":["ARM","AZE","BGR","GEO","GRC","IRN","IRQ","SYR"]},{"name":"Turkmenistan","capital":"Ashgabat","region":"as","cca2":"TM","cca3":"TKM","flag":"🇹🇲","borders":["AFG","IRN","KAZ","UZB"]},{"name":"Tuvalu","capital":"Funafuti","region":"oc","cca2":"TV","cca3":"TUV","flag":"🇹🇻","borders":[]},{"name":"Uganda","capital":"Kampala","region":"af","cca2":"UG","cca3":"UGA","flag":"🇺🇬","borders":["COD","KEN","RWA","SSD","TZA"]},{"name":"Ukraine","capital":"Kyiv","region":"eu","cca2":"UA","cca3":"UKR","flag":"🇺🇦","borders":["BLR","HUN","MDA","POL","ROU","RUS","SVK"]},{"name":"United Arab Emirates","capital":"Abu Dhabi","region":"as","cca2":"AE","cca3":"ARE","flag":"🇦🇪","borders":["OMN","SAU"]},{"name":"United Kingdom","capital":"London","region":"eu","cca2":"GB","cca3":"GBR","flag":"🇬🇧","borders":["IRL"]},{"name":"United States","capital":"Washington","region":"am","cca2":"US","cca3":"USA","flag":"🇺🇸","borders":["CAN","MEX"]},{"name":"Uruguay","capital":"Montevideo","region":"am","cca2":"UY","cca3":"URY","flag":"🇺🇾","borders":["ARG","BRA"]},{"name":"Uzbekistan","capital":"Tashkent","region":"as","cca2":"UZ","cca3":"UZB","flag":"🇺🇿","borders":["AFG","KAZ","KGZ","TJK","TKM"]},{"name":"Vanuatu","capital":"Port Vila","region":"oc","cca2":"VU","cca3":"VUT","flag":"🇻🇺","borders":[]},{"name":"Vatican City","capital":"Vatican City","region":"eu","cca2":"VA","cca3":"VAT","flag":"🇻🇦","borders":["ITA"]},{"name":"Venezuela","capital":"Caracas","region":"am","cca2":"VE","cca3":"VEN","flag":"🇻🇪","borders":["BRA","COL","GUY"]},{"name":"Vietnam","capital":"Hanoi","region":"as","cca2":"VN","cca3":"VNM","flag":"🇻🇳","borders":["KHM","CHN","LAO"]},{"name":"Yemen","capital":"Sana'a","region":"as","cca2":"YE","cca3":"YEM","flag":"🇾🇪","borders":["OMN","SAU"]},{"name":"Zambia","capital":"Lusaka","region":"af","cca2":"ZM","cca3":"ZMB","flag":"🇿🇲","borders":["AGO","BWA","COD","MWI","MOZ","NAM","TZA","ZWE"]},{"name":"Zimbabwe","capital":"Harare","region":"af","cca2":"ZW","cca3":"ZWE","flag":"🇿🇼","borders":["BWA","MOZ","ZAF","ZMB"]}]
+[
+  {
+    "name": "Afghanistan",
+    "capital": "Kabul",
+    "region": "as",
+    "cca2": "AF",
+    "cca3": "AFG",
+    "flag": "🇦🇫",
+    "borders": ["IRN", "PAK", "TKM", "UZB", "TJK", "CHN"]
+  },
+  {
+    "name": "Albania",
+    "capital": "Tirana",
+    "region": "eu",
+    "cca2": "AL",
+    "cca3": "ALB",
+    "flag": "🇦🇱",
+    "borders": ["MNE", "GRC", "MKD", "UNK"]
+  },
+  {
+    "name": "Algeria",
+    "capital": "Algiers",
+    "region": "af",
+    "cca2": "DZ",
+    "cca3": "DZA",
+    "flag": "🇩🇿",
+    "borders": ["TUN", "LBY", "NER", "ESH", "MRT", "MLI", "MAR"]
+  },
+  {
+    "name": "Andorra",
+    "capital": "Andorra la Vella",
+    "region": "eu",
+    "cca2": "AD",
+    "cca3": "AND",
+    "flag": "🇦🇩",
+    "borders": ["FRA", "ESP"]
+  },
+  {
+    "name": "Angola",
+    "capital": "Luanda",
+    "region": "af",
+    "cca2": "AO",
+    "cca3": "AGO",
+    "flag": "🇦🇴",
+    "borders": ["COG", "COD", "ZMB", "NAM"]
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "capital": "Saint John's",
+    "region": "am",
+    "cca2": "AG",
+    "cca3": "ATG",
+    "flag": "🇦🇬",
+    "borders": []
+  },
+  {
+    "name": "Argentina",
+    "capital": "Buenos Aires",
+    "region": "am",
+    "cca2": "AR",
+    "cca3": "ARG",
+    "flag": "🇦🇷",
+    "borders": ["BOL", "BRA", "CHL", "PRY", "URY"]
+  },
+  {
+    "name": "Armenia",
+    "capital": "Yerevan",
+    "region": "as",
+    "cca2": "AM",
+    "cca3": "ARM",
+    "flag": "🇦🇲",
+    "borders": ["AZE", "GEO", "IRN", "TUR"]
+  },
+  {
+    "name": "Australia",
+    "capital": "Canberra",
+    "region": "oc",
+    "cca2": "AU",
+    "cca3": "AUS",
+    "flag": "🇦🇺",
+    "borders": []
+  },
+  {
+    "name": "Austria",
+    "capital": "Vienna",
+    "region": "eu",
+    "cca2": "AT",
+    "cca3": "AUT",
+    "flag": "🇦🇹",
+    "borders": ["CZE", "DEU", "HUN", "ITA", "LIE", "SVK", "SVN", "CHE"]
+  },
+  {
+    "name": "Azerbaijan",
+    "capital": "Baku",
+    "region": "as",
+    "cca2": "AZ",
+    "cca3": "AZE",
+    "flag": "🇦🇿",
+    "borders": ["ARM", "GEO", "IRN", "RUS", "TUR"]
+  },
+  {
+    "name": "Bahamas",
+    "capital": "Nassau",
+    "region": "am",
+    "cca2": "BS",
+    "cca3": "BHS",
+    "flag": "🇧🇸",
+    "borders": []
+  },
+  {
+    "name": "Bahrain",
+    "capital": "Manama",
+    "region": "as",
+    "cca2": "BH",
+    "cca3": "BHR",
+    "flag": "🇧🇭",
+    "borders": []
+  },
+  {
+    "name": "Bangladesh",
+    "capital": "Dhaka",
+    "region": "as",
+    "cca2": "BD",
+    "cca3": "BGD",
+    "flag": "🇧🇩",
+    "borders": ["MMR", "IND"]
+  },
+  {
+    "name": "Barbados",
+    "capital": "Bridgetown",
+    "region": "am",
+    "cca2": "BB",
+    "cca3": "BRB",
+    "flag": "🇧🇧",
+    "borders": []
+  },
+  {
+    "name": "Belarus",
+    "capital": "Minsk",
+    "region": "eu",
+    "cca2": "BY",
+    "cca3": "BLR",
+    "flag": "🇧🇾",
+    "borders": ["LVA", "LTU", "POL", "RUS", "UKR"]
+  },
+  {
+    "name": "Belgium",
+    "capital": "Brussels",
+    "region": "eu",
+    "cca2": "BE",
+    "cca3": "BEL",
+    "flag": "🇧🇪",
+    "borders": ["FRA", "DEU", "LUX", "NLD"]
+  },
+  {
+    "name": "Belize",
+    "capital": "Belmopan",
+    "region": "am",
+    "cca2": "BZ",
+    "cca3": "BLZ",
+    "flag": "🇧🇿",
+    "borders": ["GTM", "MEX"]
+  },
+  {
+    "name": "Benin",
+    "capital": "Porto-Novo",
+    "region": "af",
+    "cca2": "BJ",
+    "cca3": "BEN",
+    "flag": "🇧🇯",
+    "borders": ["BFA", "NER", "NGA", "TGO"]
+  },
+  {
+    "name": "Bhutan",
+    "capital": "Thimphu",
+    "region": "as",
+    "cca2": "BT",
+    "cca3": "BTN",
+    "flag": "🇧🇹",
+    "borders": ["CHN", "IND"]
+  },
+  {
+    "name": "Bolivia",
+    "capital": "Sucre",
+    "region": "am",
+    "cca2": "BO",
+    "cca3": "BOL",
+    "flag": "🇧🇴",
+    "borders": ["ARG", "BRA", "CHL", "PRY", "PER"]
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "capital": "Sarajevo",
+    "region": "eu",
+    "cca2": "BA",
+    "cca3": "BIH",
+    "flag": "🇧🇦",
+    "borders": ["HRV", "MNE", "SRB"]
+  },
+  {
+    "name": "Botswana",
+    "capital": "Gaborone",
+    "region": "af",
+    "cca2": "BW",
+    "cca3": "BWA",
+    "flag": "🇧🇼",
+    "borders": ["NAM", "ZAF", "ZMB", "ZWE"]
+  },
+  {
+    "name": "Brazil",
+    "capital": "Brasília",
+    "region": "am",
+    "cca2": "BR",
+    "cca3": "BRA",
+    "flag": "🇧🇷",
+    "borders": ["ARG", "BOL", "COL", "GUF", "GUY", "PRY", "PER", "SUR", "URY", "VEN"]
+  },
+  {
+    "name": "Brunei",
+    "capital": "Bandar Seri Begawan",
+    "region": "as",
+    "cca2": "BN",
+    "cca3": "BRN",
+    "flag": "🇧🇳",
+    "borders": ["MYS"]
+  },
+  {
+    "name": "Bulgaria",
+    "capital": "Sofia",
+    "region": "eu",
+    "cca2": "BG",
+    "cca3": "BGR",
+    "flag": "🇧🇬",
+    "borders": ["GRC", "MKD", "ROU", "SRB", "TUR"]
+  },
+  {
+    "name": "Burkina Faso",
+    "capital": "Ouagadougou",
+    "region": "af",
+    "cca2": "BF",
+    "cca3": "BFA",
+    "flag": "🇧🇫",
+    "borders": ["BEN", "CIV", "GHA", "MLI", "NER", "TGO"]
+  },
+  {
+    "name": "Burundi",
+    "capital": "Gitega",
+    "region": "af",
+    "cca2": "BI",
+    "cca3": "BDI",
+    "flag": "🇧🇮",
+    "borders": ["COD", "RWA", "TZA"]
+  },
+  {
+    "name": "Cambodia",
+    "capital": "Phnom Penh",
+    "region": "as",
+    "cca2": "KH",
+    "cca3": "KHM",
+    "flag": "🇰🇭",
+    "borders": ["LAO", "THA", "VNM"]
+  },
+  {
+    "name": "Cameroon",
+    "capital": "Yaoundé",
+    "region": "af",
+    "cca2": "CM",
+    "cca3": "CMR",
+    "flag": "🇨🇲",
+    "borders": ["CAF", "TCD", "COG", "GNQ", "GAB", "NGA"]
+  },
+  {
+    "name": "Canada",
+    "capital": "Ottawa",
+    "region": "am",
+    "cca2": "CA",
+    "cca3": "CAN",
+    "flag": "🇨🇦",
+    "borders": ["USA"]
+  },
+  {
+    "name": "Cape Verde",
+    "capital": "Praia",
+    "region": "af",
+    "cca2": "CV",
+    "cca3": "CPV",
+    "flag": "🇨🇻",
+    "borders": []
+  },
+  {
+    "name": "Central African Republic",
+    "capital": "Bangui",
+    "region": "af",
+    "cca2": "CF",
+    "cca3": "CAF",
+    "flag": "🇨🇫",
+    "borders": ["CMR", "TCD", "COD", "COG", "SSD", "SDN"]
+  },
+  {
+    "name": "Chad",
+    "capital": "N'Djamena",
+    "region": "af",
+    "cca2": "TD",
+    "cca3": "TCD",
+    "flag": "🇹🇩",
+    "borders": ["CMR", "CAF", "LBY", "NER", "NGA", "SDN"]
+  },
+  {
+    "name": "Chile",
+    "capital": "Santiago",
+    "region": "am",
+    "cca2": "CL",
+    "cca3": "CHL",
+    "flag": "🇨🇱",
+    "borders": ["ARG", "BOL", "PER"]
+  },
+  {
+    "name": "China",
+    "capital": "Beijing",
+    "region": "as",
+    "cca2": "CN",
+    "cca3": "CHN",
+    "flag": "🇨🇳",
+    "borders": [
+      "AFG",
+      "BTN",
+      "MMR",
+      "HKG",
+      "IND",
+      "KAZ",
+      "NPL",
+      "PRK",
+      "KGZ",
+      "LAO",
+      "MAC",
+      "MNG",
+      "PAK",
+      "RUS",
+      "TJK",
+      "VNM"
+    ]
+  },
+  {
+    "name": "Colombia",
+    "capital": "Bogotá",
+    "region": "am",
+    "cca2": "CO",
+    "cca3": "COL",
+    "flag": "🇨🇴",
+    "borders": ["BRA", "ECU", "PAN", "PER", "VEN"]
+  },
+  {
+    "name": "Comoros",
+    "capital": "Moroni",
+    "region": "af",
+    "cca2": "KM",
+    "cca3": "COM",
+    "flag": "🇰🇲",
+    "borders": []
+  },
+  {
+    "name": "Costa Rica",
+    "capital": "San José",
+    "region": "am",
+    "cca2": "CR",
+    "cca3": "CRI",
+    "flag": "🇨🇷",
+    "borders": ["NIC", "PAN"]
+  },
+  {
+    "name": "Croatia",
+    "capital": "Zagreb",
+    "region": "eu",
+    "cca2": "HR",
+    "cca3": "HRV",
+    "flag": "🇭🇷",
+    "borders": ["BIH", "HUN", "MNE", "SRB", "SVN"]
+  },
+  {
+    "name": "Cuba",
+    "capital": "Havana",
+    "region": "am",
+    "cca2": "CU",
+    "cca3": "CUB",
+    "flag": "🇨🇺",
+    "borders": []
+  },
+  {
+    "name": "Cyprus",
+    "capital": "Nicosia",
+    "region": "eu",
+    "cca2": "CY",
+    "cca3": "CYP",
+    "flag": "🇨🇾",
+    "borders": []
+  },
+  {
+    "name": "Czechia",
+    "capital": "Prague",
+    "region": "eu",
+    "cca2": "CZ",
+    "cca3": "CZE",
+    "flag": "🇨🇿",
+    "borders": ["AUT", "DEU", "POL", "SVK"]
+  },
+  {
+    "name": "Democratic Republic of the Congo",
+    "capital": "Kinshasa",
+    "region": "af",
+    "cca2": "CD",
+    "cca3": "COD",
+    "flag": "🇨🇩",
+    "borders": ["AGO", "BDI", "CAF", "COG", "RWA", "SSD", "TZA", "UGA", "ZMB"]
+  },
+  {
+    "name": "Denmark",
+    "capital": "Copenhagen",
+    "region": "eu",
+    "cca2": "DK",
+    "cca3": "DNK",
+    "flag": "🇩🇰",
+    "borders": ["DEU"]
+  },
+  {
+    "name": "Djibouti",
+    "capital": "Djibouti",
+    "region": "af",
+    "cca2": "DJ",
+    "cca3": "DJI",
+    "flag": "🇩🇯",
+    "borders": ["ERI", "ETH", "SOM"]
+  },
+  {
+    "name": "Dominica",
+    "capital": "Roseau",
+    "region": "am",
+    "cca2": "DM",
+    "cca3": "DMA",
+    "flag": "🇩🇲",
+    "borders": []
+  },
+  {
+    "name": "Dominican Republic",
+    "capital": "Santo Domingo",
+    "region": "am",
+    "cca2": "DO",
+    "cca3": "DOM",
+    "flag": "🇩🇴",
+    "borders": ["HTI"]
+  },
+  {
+    "name": "Ecuador",
+    "capital": "Quito",
+    "region": "am",
+    "cca2": "EC",
+    "cca3": "ECU",
+    "flag": "🇪🇨",
+    "borders": ["COL", "PER"]
+  },
+  {
+    "name": "Egypt",
+    "capital": "Cairo",
+    "region": "af",
+    "cca2": "EG",
+    "cca3": "EGY",
+    "flag": "🇪🇬",
+    "borders": ["ISR", "LBY", "PSE", "SDN"]
+  },
+  {
+    "name": "El Salvador",
+    "capital": "San Salvador",
+    "region": "am",
+    "cca2": "SV",
+    "cca3": "SLV",
+    "flag": "🇸🇻",
+    "borders": ["GTM", "HND"]
+  },
+  {
+    "name": "Equatorial Guinea",
+    "capital": "Ciudad de la Paz",
+    "region": "af",
+    "cca2": "GQ",
+    "cca3": "GNQ",
+    "flag": "🇬🇶",
+    "borders": ["CMR", "GAB"]
+  },
+  {
+    "name": "Eritrea",
+    "capital": "Asmara",
+    "region": "af",
+    "cca2": "ER",
+    "cca3": "ERI",
+    "flag": "🇪🇷",
+    "borders": ["DJI", "ETH", "SDN"]
+  },
+  {
+    "name": "Estonia",
+    "capital": "Tallinn",
+    "region": "eu",
+    "cca2": "EE",
+    "cca3": "EST",
+    "flag": "🇪🇪",
+    "borders": ["LVA", "RUS"]
+  },
+  {
+    "name": "Eswatini",
+    "capital": "Mbabane",
+    "region": "af",
+    "cca2": "SZ",
+    "cca3": "SWZ",
+    "flag": "🇸🇿",
+    "borders": ["MOZ", "ZAF"]
+  },
+  {
+    "name": "Ethiopia",
+    "capital": "Addis Ababa",
+    "region": "af",
+    "cca2": "ET",
+    "cca3": "ETH",
+    "flag": "🇪🇹",
+    "borders": ["DJI", "ERI", "KEN", "SOM", "SSD", "SDN"]
+  },
+  {
+    "name": "Fiji",
+    "capital": "Suva",
+    "region": "oc",
+    "cca2": "FJ",
+    "cca3": "FJI",
+    "flag": "🇫🇯",
+    "borders": []
+  },
+  {
+    "name": "Finland",
+    "capital": "Helsinki",
+    "region": "eu",
+    "cca2": "FI",
+    "cca3": "FIN",
+    "flag": "🇫🇮",
+    "borders": ["NOR", "SWE", "RUS"]
+  },
+  {
+    "name": "France",
+    "capital": "Paris",
+    "region": "eu",
+    "cca2": "FR",
+    "cca3": "FRA",
+    "flag": "🇫🇷",
+    "borders": ["AND", "BEL", "DEU", "ITA", "LUX", "MCO", "ESP", "CHE"]
+  },
+  {
+    "name": "Gabon",
+    "capital": "Libreville",
+    "region": "af",
+    "cca2": "GA",
+    "cca3": "GAB",
+    "flag": "🇬🇦",
+    "borders": ["CMR", "COG", "GNQ"]
+  },
+  {
+    "name": "Gambia",
+    "capital": "Banjul",
+    "region": "af",
+    "cca2": "GM",
+    "cca3": "GMB",
+    "flag": "🇬🇲",
+    "borders": ["SEN"]
+  },
+  {
+    "name": "Georgia",
+    "capital": "Tbilisi",
+    "region": "as",
+    "cca2": "GE",
+    "cca3": "GEO",
+    "flag": "🇬🇪",
+    "borders": ["ARM", "AZE", "RUS", "TUR"]
+  },
+  {
+    "name": "Germany",
+    "capital": "Berlin",
+    "region": "eu",
+    "cca2": "DE",
+    "cca3": "DEU",
+    "flag": "🇩🇪",
+    "borders": ["AUT", "BEL", "CZE", "DNK", "FRA", "LUX", "NLD", "POL", "CHE"]
+  },
+  {
+    "name": "Ghana",
+    "capital": "Accra",
+    "region": "af",
+    "cca2": "GH",
+    "cca3": "GHA",
+    "flag": "🇬🇭",
+    "borders": ["BFA", "CIV", "TGO"]
+  },
+  {
+    "name": "Greece",
+    "capital": "Athens",
+    "region": "eu",
+    "cca2": "GR",
+    "cca3": "GRC",
+    "flag": "🇬🇷",
+    "borders": ["ALB", "BGR", "TUR", "MKD"]
+  },
+  {
+    "name": "Grenada",
+    "capital": "Saint George's",
+    "region": "am",
+    "cca2": "GD",
+    "cca3": "GRD",
+    "flag": "🇬🇩",
+    "borders": []
+  },
+  {
+    "name": "Guatemala",
+    "capital": "Guatemala City",
+    "region": "am",
+    "cca2": "GT",
+    "cca3": "GTM",
+    "flag": "🇬🇹",
+    "borders": ["BLZ", "SLV", "HND", "MEX"]
+  },
+  {
+    "name": "Guinea",
+    "capital": "Conakry",
+    "region": "af",
+    "cca2": "GN",
+    "cca3": "GIN",
+    "flag": "🇬🇳",
+    "borders": ["CIV", "GNB", "LBR", "MLI", "SEN", "SLE"]
+  },
+  {
+    "name": "Guinea-Bissau",
+    "capital": "Bissau",
+    "region": "af",
+    "cca2": "GW",
+    "cca3": "GNB",
+    "flag": "🇬🇼",
+    "borders": ["GIN", "SEN"]
+  },
+  {
+    "name": "Guyana",
+    "capital": "Georgetown",
+    "region": "am",
+    "cca2": "GY",
+    "cca3": "GUY",
+    "flag": "🇬🇾",
+    "borders": ["BRA", "SUR", "VEN"]
+  },
+  {
+    "name": "Haiti",
+    "capital": "Port-au-Prince",
+    "region": "am",
+    "cca2": "HT",
+    "cca3": "HTI",
+    "flag": "🇭🇹",
+    "borders": ["DOM"]
+  },
+  {
+    "name": "Honduras",
+    "capital": "Tegucigalpa",
+    "region": "am",
+    "cca2": "HN",
+    "cca3": "HND",
+    "flag": "🇭🇳",
+    "borders": ["GTM", "SLV", "NIC"]
+  },
+  {
+    "name": "Hungary",
+    "capital": "Budapest",
+    "region": "eu",
+    "cca2": "HU",
+    "cca3": "HUN",
+    "flag": "🇭🇺",
+    "borders": ["AUT", "HRV", "ROU", "SRB", "SVK", "SVN", "UKR"]
+  },
+  {
+    "name": "Iceland",
+    "capital": "Reykjavik",
+    "region": "eu",
+    "cca2": "IS",
+    "cca3": "ISL",
+    "flag": "🇮🇸",
+    "borders": []
+  },
+  {
+    "name": "India",
+    "capital": "New Delhi",
+    "region": "as",
+    "cca2": "IN",
+    "cca3": "IND",
+    "flag": "🇮🇳",
+    "borders": ["BGD", "BTN", "MMR", "CHN", "NPL", "PAK"]
+  },
+  {
+    "name": "Indonesia",
+    "capital": "Jakarta",
+    "region": "as",
+    "cca2": "ID",
+    "cca3": "IDN",
+    "flag": "🇮🇩",
+    "borders": ["TLS", "MYS", "PNG"]
+  },
+  {
+    "name": "Iran",
+    "capital": "Tehran",
+    "region": "as",
+    "cca2": "IR",
+    "cca3": "IRN",
+    "flag": "🇮🇷",
+    "borders": ["AFG", "ARM", "AZE", "IRQ", "PAK", "TUR", "TKM"]
+  },
+  {
+    "name": "Iraq",
+    "capital": "Baghdad",
+    "region": "as",
+    "cca2": "IQ",
+    "cca3": "IRQ",
+    "flag": "🇮🇶",
+    "borders": ["IRN", "JOR", "KWT", "SAU", "SYR", "TUR"]
+  },
+  {
+    "name": "Ireland",
+    "capital": "Dublin",
+    "region": "eu",
+    "cca2": "IE",
+    "cca3": "IRL",
+    "flag": "🇮🇪",
+    "borders": ["GBR"]
+  },
+  {
+    "name": "Israel",
+    "capital": "Jerusalem",
+    "region": "as",
+    "cca2": "IL",
+    "cca3": "ISR",
+    "flag": "🇮🇱",
+    "borders": ["EGY", "JOR", "LBN", "PSE", "SYR"]
+  },
+  {
+    "name": "Italy",
+    "capital": "Rome",
+    "region": "eu",
+    "cca2": "IT",
+    "cca3": "ITA",
+    "flag": "🇮🇹",
+    "borders": ["AUT", "FRA", "SMR", "SVN", "CHE", "VAT"]
+  },
+  {
+    "name": "Ivory Coast",
+    "capital": "Yamoussoukro",
+    "region": "af",
+    "cca2": "CI",
+    "cca3": "CIV",
+    "flag": "🇨🇮",
+    "borders": ["BFA", "GHA", "GIN", "LBR", "MLI"]
+  },
+  {
+    "name": "Jamaica",
+    "capital": "Kingston",
+    "region": "am",
+    "cca2": "JM",
+    "cca3": "JAM",
+    "flag": "🇯🇲",
+    "borders": []
+  },
+  {
+    "name": "Japan",
+    "capital": "Tokyo",
+    "region": "as",
+    "cca2": "JP",
+    "cca3": "JPN",
+    "flag": "🇯🇵",
+    "borders": []
+  },
+  {
+    "name": "Jordan",
+    "capital": "Amman",
+    "region": "as",
+    "cca2": "JO",
+    "cca3": "JOR",
+    "flag": "🇯🇴",
+    "borders": ["IRQ", "ISR", "PSE", "SAU", "SYR"]
+  },
+  {
+    "name": "Kazakhstan",
+    "capital": "Astana",
+    "region": "as",
+    "cca2": "KZ",
+    "cca3": "KAZ",
+    "flag": "🇰🇿",
+    "borders": ["CHN", "KGZ", "RUS", "TKM", "UZB"]
+  },
+  {
+    "name": "Kenya",
+    "capital": "Nairobi",
+    "region": "af",
+    "cca2": "KE",
+    "cca3": "KEN",
+    "flag": "🇰🇪",
+    "borders": ["ETH", "SOM", "SSD", "TZA", "UGA"]
+  },
+  {
+    "name": "Kiribati",
+    "capital": "South Tarawa",
+    "region": "oc",
+    "cca2": "KI",
+    "cca3": "KIR",
+    "flag": "🇰🇮",
+    "borders": []
+  },
+  {
+    "name": "Kuwait",
+    "capital": "Kuwait City",
+    "region": "as",
+    "cca2": "KW",
+    "cca3": "KWT",
+    "flag": "🇰🇼",
+    "borders": ["IRQ", "SAU"]
+  },
+  {
+    "name": "Kyrgyzstan",
+    "capital": "Bishkek",
+    "region": "as",
+    "cca2": "KG",
+    "cca3": "KGZ",
+    "flag": "🇰🇬",
+    "borders": ["CHN", "KAZ", "TJK", "UZB"]
+  },
+  {
+    "name": "Laos",
+    "capital": "Vientiane",
+    "region": "as",
+    "cca2": "LA",
+    "cca3": "LAO",
+    "flag": "🇱🇦",
+    "borders": ["MMR", "KHM", "CHN", "THA", "VNM"]
+  },
+  {
+    "name": "Latvia",
+    "capital": "Riga",
+    "region": "eu",
+    "cca2": "LV",
+    "cca3": "LVA",
+    "flag": "🇱🇻",
+    "borders": ["BLR", "EST", "LTU", "RUS"]
+  },
+  {
+    "name": "Lebanon",
+    "capital": "Beirut",
+    "region": "as",
+    "cca2": "LB",
+    "cca3": "LBN",
+    "flag": "🇱🇧",
+    "borders": ["ISR", "SYR"]
+  },
+  {
+    "name": "Lesotho",
+    "capital": "Maseru",
+    "region": "af",
+    "cca2": "LS",
+    "cca3": "LSO",
+    "flag": "🇱🇸",
+    "borders": ["ZAF"]
+  },
+  {
+    "name": "Liberia",
+    "capital": "Monrovia",
+    "region": "af",
+    "cca2": "LR",
+    "cca3": "LBR",
+    "flag": "🇱🇷",
+    "borders": ["GIN", "CIV", "SLE"]
+  },
+  {
+    "name": "Libya",
+    "capital": "Tripoli",
+    "region": "af",
+    "cca2": "LY",
+    "cca3": "LBY",
+    "flag": "🇱🇾",
+    "borders": ["DZA", "TCD", "EGY", "NER", "SDN", "TUN"]
+  },
+  {
+    "name": "Liechtenstein",
+    "capital": "Vaduz",
+    "region": "eu",
+    "cca2": "LI",
+    "cca3": "LIE",
+    "flag": "🇱🇮",
+    "borders": ["AUT", "CHE"]
+  },
+  {
+    "name": "Lithuania",
+    "capital": "Vilnius",
+    "region": "eu",
+    "cca2": "LT",
+    "cca3": "LTU",
+    "flag": "🇱🇹",
+    "borders": ["BLR", "LVA", "POL", "RUS"]
+  },
+  {
+    "name": "Luxembourg",
+    "capital": "Luxembourg",
+    "region": "eu",
+    "cca2": "LU",
+    "cca3": "LUX",
+    "flag": "🇱🇺",
+    "borders": ["BEL", "FRA", "DEU"]
+  },
+  {
+    "name": "Madagascar",
+    "capital": "Antananarivo",
+    "region": "af",
+    "cca2": "MG",
+    "cca3": "MDG",
+    "flag": "🇲🇬",
+    "borders": []
+  },
+  {
+    "name": "Malawi",
+    "capital": "Lilongwe",
+    "region": "af",
+    "cca2": "MW",
+    "cca3": "MWI",
+    "flag": "🇲🇼",
+    "borders": ["MOZ", "TZA", "ZMB"]
+  },
+  {
+    "name": "Malaysia",
+    "capital": "Kuala Lumpur",
+    "region": "as",
+    "cca2": "MY",
+    "cca3": "MYS",
+    "flag": "🇲🇾",
+    "borders": ["BRN", "IDN", "THA"]
+  },
+  {
+    "name": "Maldives",
+    "capital": "Malé",
+    "region": "as",
+    "cca2": "MV",
+    "cca3": "MDV",
+    "flag": "🇲🇻",
+    "borders": []
+  },
+  {
+    "name": "Mali",
+    "capital": "Bamako",
+    "region": "af",
+    "cca2": "ML",
+    "cca3": "MLI",
+    "flag": "🇲🇱",
+    "borders": ["DZA", "BFA", "GIN", "CIV", "MRT", "NER", "SEN"]
+  },
+  {
+    "name": "Malta",
+    "capital": "Valletta",
+    "region": "eu",
+    "cca2": "MT",
+    "cca3": "MLT",
+    "flag": "🇲🇹",
+    "borders": []
+  },
+  {
+    "name": "Marshall Islands",
+    "capital": "Majuro",
+    "region": "oc",
+    "cca2": "MH",
+    "cca3": "MHL",
+    "flag": "🇲🇭",
+    "borders": []
+  },
+  {
+    "name": "Mauritania",
+    "capital": "Nouakchott",
+    "region": "af",
+    "cca2": "MR",
+    "cca3": "MRT",
+    "flag": "🇲🇷",
+    "borders": ["DZA", "MLI", "SEN", "ESH"]
+  },
+  {
+    "name": "Mauritius",
+    "capital": "Port Louis",
+    "region": "af",
+    "cca2": "MU",
+    "cca3": "MUS",
+    "flag": "🇲🇺",
+    "borders": []
+  },
+  {
+    "name": "Mexico",
+    "capital": "Mexico City",
+    "region": "am",
+    "cca2": "MX",
+    "cca3": "MEX",
+    "flag": "🇲🇽",
+    "borders": ["BLZ", "GTM", "USA"]
+  },
+  {
+    "name": "Micronesia",
+    "capital": "Palikir",
+    "region": "oc",
+    "cca2": "FM",
+    "cca3": "FSM",
+    "flag": "🇫🇲",
+    "borders": []
+  },
+  {
+    "name": "Moldova",
+    "capital": "Chișinău",
+    "region": "eu",
+    "cca2": "MD",
+    "cca3": "MDA",
+    "flag": "🇲🇩",
+    "borders": ["ROU", "UKR"]
+  },
+  {
+    "name": "Monaco",
+    "capital": "Monaco",
+    "region": "eu",
+    "cca2": "MC",
+    "cca3": "MCO",
+    "flag": "🇲🇨",
+    "borders": ["FRA"]
+  },
+  {
+    "name": "Mongolia",
+    "capital": "Ulaanbaatar",
+    "region": "as",
+    "cca2": "MN",
+    "cca3": "MNG",
+    "flag": "🇲🇳",
+    "borders": ["CHN", "RUS"]
+  },
+  {
+    "name": "Montenegro",
+    "capital": "Podgorica",
+    "region": "eu",
+    "cca2": "ME",
+    "cca3": "MNE",
+    "flag": "🇲🇪",
+    "borders": ["ALB", "BIH", "HRV", "UNK", "SRB"]
+  },
+  {
+    "name": "Morocco",
+    "capital": "Rabat",
+    "region": "af",
+    "cca2": "MA",
+    "cca3": "MAR",
+    "flag": "🇲🇦",
+    "borders": ["DZA", "ESH", "ESP"]
+  },
+  {
+    "name": "Mozambique",
+    "capital": "Maputo",
+    "region": "af",
+    "cca2": "MZ",
+    "cca3": "MOZ",
+    "flag": "🇲🇿",
+    "borders": ["MWI", "ZAF", "SWZ", "TZA", "ZMB", "ZWE"]
+  },
+  {
+    "name": "Myanmar",
+    "capital": "Naypyidaw",
+    "region": "as",
+    "cca2": "MM",
+    "cca3": "MMR",
+    "flag": "🇲🇲",
+    "borders": ["BGD", "CHN", "IND", "LAO", "THA"]
+  },
+  {
+    "name": "Namibia",
+    "capital": "Windhoek",
+    "region": "af",
+    "cca2": "NA",
+    "cca3": "NAM",
+    "flag": "🇳🇦",
+    "borders": ["AGO", "BWA", "ZAF", "ZMB"]
+  },
+  {
+    "name": "Nauru",
+    "capital": "Yaren",
+    "region": "oc",
+    "cca2": "NR",
+    "cca3": "NRU",
+    "flag": "🇳🇷",
+    "borders": []
+  },
+  {
+    "name": "Nepal",
+    "capital": "Kathmandu",
+    "region": "as",
+    "cca2": "NP",
+    "cca3": "NPL",
+    "flag": "🇳🇵",
+    "borders": ["CHN", "IND"]
+  },
+  {
+    "name": "Netherlands",
+    "capital": "Amsterdam",
+    "region": "eu",
+    "cca2": "NL",
+    "cca3": "NLD",
+    "flag": "🇳🇱",
+    "borders": ["BEL", "DEU"]
+  },
+  {
+    "name": "New Zealand",
+    "capital": "Wellington",
+    "region": "oc",
+    "cca2": "NZ",
+    "cca3": "NZL",
+    "flag": "🇳🇿",
+    "borders": []
+  },
+  {
+    "name": "Nicaragua",
+    "capital": "Managua",
+    "region": "am",
+    "cca2": "NI",
+    "cca3": "NIC",
+    "flag": "🇳🇮",
+    "borders": ["CRI", "HND"]
+  },
+  {
+    "name": "Niger",
+    "capital": "Niamey",
+    "region": "af",
+    "cca2": "NE",
+    "cca3": "NER",
+    "flag": "🇳🇪",
+    "borders": ["DZA", "BEN", "BFA", "TCD", "LBY", "MLI", "NGA"]
+  },
+  {
+    "name": "Nigeria",
+    "capital": "Abuja",
+    "region": "af",
+    "cca2": "NG",
+    "cca3": "NGA",
+    "flag": "🇳🇬",
+    "borders": ["BEN", "CMR", "TCD", "NER"]
+  },
+  {
+    "name": "North Korea",
+    "capital": "Pyongyang",
+    "region": "as",
+    "cca2": "KP",
+    "cca3": "PRK",
+    "flag": "🇰🇵",
+    "borders": ["CHN", "KOR", "RUS"]
+  },
+  {
+    "name": "North Macedonia",
+    "capital": "Skopje",
+    "region": "eu",
+    "cca2": "MK",
+    "cca3": "MKD",
+    "flag": "🇲🇰",
+    "borders": ["ALB", "BGR", "GRC", "UNK", "SRB"]
+  },
+  {
+    "name": "Norway",
+    "capital": "Oslo",
+    "region": "eu",
+    "cca2": "NO",
+    "cca3": "NOR",
+    "flag": "🇳🇴",
+    "borders": ["FIN", "SWE", "RUS"]
+  },
+  {
+    "name": "Oman",
+    "capital": "Muscat",
+    "region": "as",
+    "cca2": "OM",
+    "cca3": "OMN",
+    "flag": "🇴🇲",
+    "borders": ["SAU", "ARE", "YEM"]
+  },
+  {
+    "name": "Pakistan",
+    "capital": "Islamabad",
+    "region": "as",
+    "cca2": "PK",
+    "cca3": "PAK",
+    "flag": "🇵🇰",
+    "borders": ["AFG", "CHN", "IND", "IRN"]
+  },
+  {
+    "name": "Palau",
+    "capital": "Ngerulmud",
+    "region": "oc",
+    "cca2": "PW",
+    "cca3": "PLW",
+    "flag": "🇵🇼",
+    "borders": []
+  },
+  {
+    "name": "Palestine",
+    "capital": "Jerusalem",
+    "region": "as",
+    "cca2": "PS",
+    "cca3": "PSE",
+    "flag": "🇵🇸",
+    "borders": ["ISR", "EGY", "JOR"]
+  },
+  {
+    "name": "Panama",
+    "capital": "Panama City",
+    "region": "am",
+    "cca2": "PA",
+    "cca3": "PAN",
+    "flag": "🇵🇦",
+    "borders": ["COL", "CRI"]
+  },
+  {
+    "name": "Papua New Guinea",
+    "capital": "Port Moresby",
+    "region": "oc",
+    "cca2": "PG",
+    "cca3": "PNG",
+    "flag": "🇵🇬",
+    "borders": ["IDN"]
+  },
+  {
+    "name": "Paraguay",
+    "capital": "Asunción",
+    "region": "am",
+    "cca2": "PY",
+    "cca3": "PRY",
+    "flag": "🇵🇾",
+    "borders": ["ARG", "BOL", "BRA"]
+  },
+  {
+    "name": "Peru",
+    "capital": "Lima",
+    "region": "am",
+    "cca2": "PE",
+    "cca3": "PER",
+    "flag": "🇵🇪",
+    "borders": ["BOL", "BRA", "CHL", "COL", "ECU"]
+  },
+  {
+    "name": "Philippines",
+    "capital": "Manila",
+    "region": "as",
+    "cca2": "PH",
+    "cca3": "PHL",
+    "flag": "🇵🇭",
+    "borders": []
+  },
+  {
+    "name": "Poland",
+    "capital": "Warsaw",
+    "region": "eu",
+    "cca2": "PL",
+    "cca3": "POL",
+    "flag": "🇵🇱",
+    "borders": ["BLR", "CZE", "DEU", "LTU", "RUS", "SVK", "UKR"]
+  },
+  {
+    "name": "Portugal",
+    "capital": "Lisbon",
+    "region": "eu",
+    "cca2": "PT",
+    "cca3": "PRT",
+    "flag": "🇵🇹",
+    "borders": ["ESP"]
+  },
+  {
+    "name": "Qatar",
+    "capital": "Doha",
+    "region": "as",
+    "cca2": "QA",
+    "cca3": "QAT",
+    "flag": "🇶🇦",
+    "borders": ["SAU"]
+  },
+  {
+    "name": "Republic of the Congo",
+    "capital": "Brazzaville",
+    "region": "af",
+    "cca2": "CG",
+    "cca3": "COG",
+    "flag": "🇨🇬",
+    "borders": ["AGO", "CMR", "CAF", "COD", "GAB"]
+  },
+  {
+    "name": "Romania",
+    "capital": "Bucharest",
+    "region": "eu",
+    "cca2": "RO",
+    "cca3": "ROU",
+    "flag": "🇷🇴",
+    "borders": ["BGR", "HUN", "MDA", "SRB", "UKR"]
+  },
+  {
+    "name": "Russia",
+    "capital": "Moscow",
+    "region": "eu",
+    "cca2": "RU",
+    "cca3": "RUS",
+    "flag": "🇷🇺",
+    "borders": [
+      "AZE",
+      "BLR",
+      "CHN",
+      "EST",
+      "FIN",
+      "GEO",
+      "KAZ",
+      "PRK",
+      "LVA",
+      "LTU",
+      "MNG",
+      "NOR",
+      "POL",
+      "UKR"
+    ]
+  },
+  {
+    "name": "Rwanda",
+    "capital": "Kigali",
+    "region": "af",
+    "cca2": "RW",
+    "cca3": "RWA",
+    "flag": "🇷🇼",
+    "borders": ["BDI", "COD", "TZA", "UGA"]
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "capital": "Basseterre",
+    "region": "am",
+    "cca2": "KN",
+    "cca3": "KNA",
+    "flag": "🇰🇳",
+    "borders": []
+  },
+  {
+    "name": "Saint Lucia",
+    "capital": "Castries",
+    "region": "am",
+    "cca2": "LC",
+    "cca3": "LCA",
+    "flag": "🇱🇨",
+    "borders": []
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "capital": "Kingstown",
+    "region": "am",
+    "cca2": "VC",
+    "cca3": "VCT",
+    "flag": "🇻🇨",
+    "borders": []
+  },
+  {
+    "name": "Samoa",
+    "capital": "Apia",
+    "region": "oc",
+    "cca2": "WS",
+    "cca3": "WSM",
+    "flag": "🇼🇸",
+    "borders": []
+  },
+  {
+    "name": "San Marino",
+    "capital": "City of San Marino",
+    "region": "eu",
+    "cca2": "SM",
+    "cca3": "SMR",
+    "flag": "🇸🇲",
+    "borders": ["ITA"]
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "capital": "São Tomé",
+    "region": "af",
+    "cca2": "ST",
+    "cca3": "STP",
+    "flag": "🇸🇹",
+    "borders": []
+  },
+  {
+    "name": "Saudi Arabia",
+    "capital": "Riyadh",
+    "region": "as",
+    "cca2": "SA",
+    "cca3": "SAU",
+    "flag": "🇸🇦",
+    "borders": ["IRQ", "JOR", "KWT", "OMN", "QAT", "ARE", "YEM"]
+  },
+  {
+    "name": "Senegal",
+    "capital": "Dakar",
+    "region": "af",
+    "cca2": "SN",
+    "cca3": "SEN",
+    "flag": "🇸🇳",
+    "borders": ["GMB", "GIN", "GNB", "MLI", "MRT"]
+  },
+  {
+    "name": "Serbia",
+    "capital": "Belgrade",
+    "region": "eu",
+    "cca2": "RS",
+    "cca3": "SRB",
+    "flag": "🇷🇸",
+    "borders": ["BIH", "BGR", "HRV", "HUN", "UNK", "MKD", "MNE", "ROU"]
+  },
+  {
+    "name": "Seychelles",
+    "capital": "Victoria",
+    "region": "af",
+    "cca2": "SC",
+    "cca3": "SYC",
+    "flag": "🇸🇨",
+    "borders": []
+  },
+  {
+    "name": "Sierra Leone",
+    "capital": "Freetown",
+    "region": "af",
+    "cca2": "SL",
+    "cca3": "SLE",
+    "flag": "🇸🇱",
+    "borders": ["GIN", "LBR"]
+  },
+  {
+    "name": "Singapore",
+    "capital": "Singapore",
+    "region": "as",
+    "cca2": "SG",
+    "cca3": "SGP",
+    "flag": "🇸🇬",
+    "borders": []
+  },
+  {
+    "name": "Slovakia",
+    "capital": "Bratislava",
+    "region": "eu",
+    "cca2": "SK",
+    "cca3": "SVK",
+    "flag": "🇸🇰",
+    "borders": ["AUT", "CZE", "HUN", "POL", "UKR"]
+  },
+  {
+    "name": "Slovenia",
+    "capital": "Ljubljana",
+    "region": "eu",
+    "cca2": "SI",
+    "cca3": "SVN",
+    "flag": "🇸🇮",
+    "borders": ["AUT", "HRV", "ITA", "HUN"]
+  },
+  {
+    "name": "Solomon Islands",
+    "capital": "Honiara",
+    "region": "oc",
+    "cca2": "SB",
+    "cca3": "SLB",
+    "flag": "🇸🇧",
+    "borders": []
+  },
+  {
+    "name": "Somalia",
+    "capital": "Mogadishu",
+    "region": "af",
+    "cca2": "SO",
+    "cca3": "SOM",
+    "flag": "🇸🇴",
+    "borders": ["DJI", "ETH", "KEN"]
+  },
+  {
+    "name": "South Africa",
+    "capital": "Pretoria",
+    "region": "af",
+    "cca2": "ZA",
+    "cca3": "ZAF",
+    "flag": "🇿🇦",
+    "borders": ["BWA", "LSO", "MOZ", "NAM", "SWZ", "ZWE"]
+  },
+  {
+    "name": "South Korea",
+    "capital": "Seoul",
+    "region": "as",
+    "cca2": "KR",
+    "cca3": "KOR",
+    "flag": "🇰🇷",
+    "borders": ["PRK"]
+  },
+  {
+    "name": "South Sudan",
+    "capital": "Juba",
+    "region": "af",
+    "cca2": "SS",
+    "cca3": "SSD",
+    "flag": "🇸🇸",
+    "borders": ["CAF", "COD", "ETH", "KEN", "SDN", "UGA"]
+  },
+  {
+    "name": "Spain",
+    "capital": "Madrid",
+    "region": "eu",
+    "cca2": "ES",
+    "cca3": "ESP",
+    "flag": "🇪🇸",
+    "borders": ["AND", "FRA", "GIB", "PRT", "MAR"]
+  },
+  {
+    "name": "Sri Lanka",
+    "capital": "Colombo",
+    "region": "as",
+    "cca2": "LK",
+    "cca3": "LKA",
+    "flag": "🇱🇰",
+    "borders": []
+  },
+  {
+    "name": "Sudan",
+    "capital": "Khartoum",
+    "region": "af",
+    "cca2": "SD",
+    "cca3": "SDN",
+    "flag": "🇸🇩",
+    "borders": ["CAF", "TCD", "EGY", "ERI", "ETH", "LBY", "SSD"]
+  },
+  {
+    "name": "Suriname",
+    "capital": "Paramaribo",
+    "region": "am",
+    "cca2": "SR",
+    "cca3": "SUR",
+    "flag": "🇸🇷",
+    "borders": ["BRA", "GUF", "GUY"]
+  },
+  {
+    "name": "Sweden",
+    "capital": "Stockholm",
+    "region": "eu",
+    "cca2": "SE",
+    "cca3": "SWE",
+    "flag": "🇸🇪",
+    "borders": ["FIN", "NOR"]
+  },
+  {
+    "name": "Switzerland",
+    "capital": "Bern",
+    "region": "eu",
+    "cca2": "CH",
+    "cca3": "CHE",
+    "flag": "🇨🇭",
+    "borders": ["AUT", "FRA", "ITA", "LIE", "DEU"]
+  },
+  {
+    "name": "Syria",
+    "capital": "Damascus",
+    "region": "as",
+    "cca2": "SY",
+    "cca3": "SYR",
+    "flag": "🇸🇾",
+    "borders": ["IRQ", "ISR", "JOR", "LBN", "TUR"]
+  },
+  {
+    "name": "Tajikistan",
+    "capital": "Dushanbe",
+    "region": "as",
+    "cca2": "TJ",
+    "cca3": "TJK",
+    "flag": "🇹🇯",
+    "borders": ["AFG", "CHN", "KGZ", "UZB"]
+  },
+  {
+    "name": "Tanzania",
+    "capital": "Dodoma",
+    "region": "af",
+    "cca2": "TZ",
+    "cca3": "TZA",
+    "flag": "🇹🇿",
+    "borders": ["BDI", "COD", "KEN", "MWI", "MOZ", "RWA", "UGA", "ZMB"]
+  },
+  {
+    "name": "Thailand",
+    "capital": "Bangkok",
+    "region": "as",
+    "cca2": "TH",
+    "cca3": "THA",
+    "flag": "🇹🇭",
+    "borders": ["MMR", "KHM", "LAO", "MYS"]
+  },
+  {
+    "name": "Timor-Leste",
+    "capital": "Dili",
+    "region": "as",
+    "cca2": "TL",
+    "cca3": "TLS",
+    "flag": "🇹🇱",
+    "borders": ["IDN"]
+  },
+  {
+    "name": "Togo",
+    "capital": "Lomé",
+    "region": "af",
+    "cca2": "TG",
+    "cca3": "TGO",
+    "flag": "🇹🇬",
+    "borders": ["BEN", "BFA", "GHA"]
+  },
+  {
+    "name": "Tonga",
+    "capital": "Nuku'alofa",
+    "region": "oc",
+    "cca2": "TO",
+    "cca3": "TON",
+    "flag": "🇹🇴",
+    "borders": []
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "capital": "Port of Spain",
+    "region": "am",
+    "cca2": "TT",
+    "cca3": "TTO",
+    "flag": "🇹🇹",
+    "borders": []
+  },
+  {
+    "name": "Tunisia",
+    "capital": "Tunis",
+    "region": "af",
+    "cca2": "TN",
+    "cca3": "TUN",
+    "flag": "🇹🇳",
+    "borders": ["DZA", "LBY"]
+  },
+  {
+    "name": "Turkey",
+    "capital": "Ankara",
+    "region": "as",
+    "cca2": "TR",
+    "cca3": "TUR",
+    "flag": "🇹🇷",
+    "borders": ["ARM", "AZE", "BGR", "GEO", "GRC", "IRN", "IRQ", "SYR"]
+  },
+  {
+    "name": "Turkmenistan",
+    "capital": "Ashgabat",
+    "region": "as",
+    "cca2": "TM",
+    "cca3": "TKM",
+    "flag": "🇹🇲",
+    "borders": ["AFG", "IRN", "KAZ", "UZB"]
+  },
+  {
+    "name": "Tuvalu",
+    "capital": "Funafuti",
+    "region": "oc",
+    "cca2": "TV",
+    "cca3": "TUV",
+    "flag": "🇹🇻",
+    "borders": []
+  },
+  {
+    "name": "Uganda",
+    "capital": "Kampala",
+    "region": "af",
+    "cca2": "UG",
+    "cca3": "UGA",
+    "flag": "🇺🇬",
+    "borders": ["COD", "KEN", "RWA", "SSD", "TZA"]
+  },
+  {
+    "name": "Ukraine",
+    "capital": "Kyiv",
+    "region": "eu",
+    "cca2": "UA",
+    "cca3": "UKR",
+    "flag": "🇺🇦",
+    "borders": ["BLR", "HUN", "MDA", "POL", "ROU", "RUS", "SVK"]
+  },
+  {
+    "name": "United Arab Emirates",
+    "capital": "Abu Dhabi",
+    "region": "as",
+    "cca2": "AE",
+    "cca3": "ARE",
+    "flag": "🇦🇪",
+    "borders": ["OMN", "SAU"]
+  },
+  {
+    "name": "United Kingdom",
+    "capital": "London",
+    "region": "eu",
+    "cca2": "GB",
+    "cca3": "GBR",
+    "flag": "🇬🇧",
+    "borders": ["IRL"]
+  },
+  {
+    "name": "United States",
+    "capital": "Washington, D.C.",
+    "region": "am",
+    "cca2": "US",
+    "cca3": "USA",
+    "flag": "🇺🇸",
+    "borders": ["CAN", "MEX"]
+  },
+  {
+    "name": "Uruguay",
+    "capital": "Montevideo",
+    "region": "am",
+    "cca2": "UY",
+    "cca3": "URY",
+    "flag": "🇺🇾",
+    "borders": ["ARG", "BRA"]
+  },
+  {
+    "name": "Uzbekistan",
+    "capital": "Tashkent",
+    "region": "as",
+    "cca2": "UZ",
+    "cca3": "UZB",
+    "flag": "🇺🇿",
+    "borders": ["AFG", "KAZ", "KGZ", "TJK", "TKM"]
+  },
+  {
+    "name": "Vanuatu",
+    "capital": "Port Vila",
+    "region": "oc",
+    "cca2": "VU",
+    "cca3": "VUT",
+    "flag": "🇻🇺",
+    "borders": []
+  },
+  {
+    "name": "Vatican City",
+    "capital": "Vatican City",
+    "region": "eu",
+    "cca2": "VA",
+    "cca3": "VAT",
+    "flag": "🇻🇦",
+    "borders": ["ITA"]
+  },
+  {
+    "name": "Venezuela",
+    "capital": "Caracas",
+    "region": "am",
+    "cca2": "VE",
+    "cca3": "VEN",
+    "flag": "🇻🇪",
+    "borders": ["BRA", "COL", "GUY"]
+  },
+  {
+    "name": "Vietnam",
+    "capital": "Hanoi",
+    "region": "as",
+    "cca2": "VN",
+    "cca3": "VNM",
+    "flag": "🇻🇳",
+    "borders": ["KHM", "CHN", "LAO"]
+  },
+  {
+    "name": "Yemen",
+    "capital": "Sana'a",
+    "region": "as",
+    "cca2": "YE",
+    "cca3": "YEM",
+    "flag": "🇾🇪",
+    "borders": ["OMN", "SAU"]
+  },
+  {
+    "name": "Zambia",
+    "capital": "Lusaka",
+    "region": "af",
+    "cca2": "ZM",
+    "cca3": "ZMB",
+    "flag": "🇿🇲",
+    "borders": ["AGO", "BWA", "COD", "MWI", "MOZ", "NAM", "TZA", "ZWE"]
+  },
+  {
+    "name": "Zimbabwe",
+    "capital": "Harare",
+    "region": "af",
+    "cca2": "ZW",
+    "cca3": "ZWE",
+    "flag": "🇿🇼",
+    "borders": ["BWA", "MOZ", "ZAF", "ZMB"]
+  }
+]
