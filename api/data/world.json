@@ -404,6 +404,15 @@
     "borders": ["AUT", "DEU", "POL", "SVK"]
   },
   {
+    "name": "Democratic Republic of the Congo",
+    "capital": "Kinshasa",
+    "region": "af",
+    "cca2": "CD",
+    "cca3": "COD",
+    "flag": "🇨🇩",
+    "borders": ["AGO", "BDI", "CAF", "COG", "RWA", "SSD", "TZA", "UGA", "ZMB"]
+  },
+  {
     "name": "Denmark",
     "capital": "Copenhagen",
     "region": "eu",
@@ -440,15 +449,6 @@
     "borders": ["HTI"]
   },
   {
-    "name": "DR Congo",
-    "capital": "Kinshasa",
-    "region": "af",
-    "cca2": "CD",
-    "cca3": "COD",
-    "flag": "🇨🇩",
-    "borders": ["AGO", "BDI", "CAF", "COG", "RWA", "SSD", "TZA", "UGA", "ZMB"]
-  },
-  {
     "name": "Ecuador",
     "capital": "Quito",
     "region": "am",
@@ -477,7 +477,7 @@
   },
   {
     "name": "Equatorial Guinea",
-    "capital": "Malabo",
+    "capital": "Ciudad de la Paz",
     "region": "af",
     "cca2": "GQ",
     "cca3": "GNQ",
@@ -603,7 +603,7 @@
   },
   {
     "name": "Grenada",
-    "capital": "St. George's",
+    "capital": "Saint George's",
     "region": "am",
     "cca2": "GD",
     "cca3": "GRD",
@@ -1026,7 +1026,7 @@
   },
   {
     "name": "Mongolia",
-    "capital": "Ulan Bator",
+    "capital": "Ulaanbaatar",
     "region": "as",
     "cca2": "MN",
     "cca3": "MNG",
@@ -1365,7 +1365,7 @@
   },
   {
     "name": "San Marino",
-    "capital": "San Marino",
+    "capital": "City of San Marino",
     "region": "eu",
     "cca2": "SM",
     "cca3": "SMR",
@@ -1698,7 +1698,7 @@
   },
   {
     "name": "United States",
-    "capital": "Washington",
+    "capital": "Washington, D.C.",
     "region": "am",
     "cca2": "US",
     "cca3": "USA",

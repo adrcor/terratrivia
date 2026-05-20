@@ -35,9 +35,12 @@ const COUNTRY_EXCEPTIONS = ["Palestine", "Vatican City", "Guinea-Bissau"];
 const CAPITAL_EXCEPTIONS: Record<string, string> = {
   Palestine: "Jerusalem",
   "Sri Lanka": "Colombo",
-  "South Africa": "Pretoria",
-  "San Marino": "San Marino",
-  "United States": "Washington",
+  Mongolia: "Ulaanbaatar",
+  Grenada: "Saint George's",
+};
+
+const COUNTRY_RENAMES: Record<string, string> = {
+  "DR Congo": "Democratic Republic of the Congo",
 };
 
 const REGION_MAP: Record<string, string> = {
@@ -63,7 +66,8 @@ function processCountries(apiCountries: ApiCountry[]): Result<Country[], string>
   const selected: Country[] = [];
 
   for (const country of apiCountries) {
-    const name = country.name.common;
+    let name = country.name.common;
+    name = COUNTRY_RENAMES[name] ?? name;
 
     if (!country.unMember && !COUNTRY_EXCEPTIONS.includes(name)) {
       continue;
