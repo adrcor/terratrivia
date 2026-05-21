@@ -17,7 +17,12 @@
       key="active"
       class="flex min-w-96 flex-col items-center justify-center gap-2"
     >
-      <Prompt :practice="practice" />
+      <Prompt
+        :status="practice.status.value"
+        :countdown="practice.countdown.value"
+        :pair="practice.pair.value"
+        :mode="practice.mode.value"
+      />
       <GameInput
         :expected="practice.pair.value?.expected || ''"
         @answer="onAnswer"
@@ -29,9 +34,9 @@
 <script setup lang="ts">
 import FadeTransition from "@/components/FadeTransition.vue";
 import GameInput from "@/components/GameInput.vue";
+import Prompt from "@/components/Prompt.vue";
 import TrialOptions from "@/components/TrialOptions.vue";
 import PracticeMetrics from "@/components/practice/PracticeMetrics.vue";
-import Prompt from "@/components/practice/Prompt.vue";
 import State from "@/components/practice/State.vue";
 import { usePractice } from "@/composables/practice";
 import type { InputAnswer } from "@/types/common";

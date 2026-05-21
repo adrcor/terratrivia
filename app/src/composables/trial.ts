@@ -1,10 +1,11 @@
+import { usePairCursor } from "./pair-cursor";
 import { useGeoStore } from "@/stores/geo";
 import { useStatusStore } from "@/stores/status";
 import { useTrialStore } from "@/stores/trial";
-import type { InputAnswer, Pair, Region, Mode, Country } from "@/types/common";
+import type { InputAnswer, Pair, Region, Mode } from "@/types/common";
 import type { TrialAnswer } from "@/types/trial";
 import { err, ok, ResultAsync, type Result } from "neverthrow";
-import { computed, ref, type Ref } from "vue";
+import { ref, type Ref } from "vue";
 
 type TrialStatus = "idle" | "countdown" | "running" | "done";
 
@@ -37,37 +38,12 @@ export interface Trial {
 export function useTrial(): Trial {
   const status = ref<TrialStatus>("idle");
   const countdown = ref<number | null>(null);
-  const countries = ref<Array<Country> | null>(null);
   const mode = ref<Mode | null>(null);
   const region = ref<Region | null>(null);
   const metrics = ref<TrialMetrics>(newMetrics());
 
-  const indexPair = ref<number | null>(null);
+  const pairCursor = usePairCursor();
   let startingTime = 0;
-
-  const pair = computed(() => {
-    if (countries.value === null || indexPair.value === null) {
-      return null;
-    }
-    const currentCountry = countries.value[indexPair.value];
-    if (currentCountry === undefined) {
-      return null;
-    }
-
-    if (mode.value === "capitals") {
-      return {
-        prompt: currentCountry.name,
-        expected: currentCountry.capital,
-      };
-    }
-    if (mode.value === "flags") {
-      return {
-        prompt: currentCountry.flag,
-        expected: currentCountry.name,
-      };
-    }
-    return null;
-  });
 
   const answers: Array<TrialAnswer> = [];
 
@@ -79,40 +55,45 @@ export function useTrial(): Trial {
     status.value = "countdown";
     countdown.value = 3;
     metrics.value = newMetrics();
-    setCountries(rg);
 
-    return ResultAsync.fromSafePromise(
-      (async () => {
-        while (countdown.value! > 0) {
-          await new Promise((resolve) => setTimeout(resolve, 500));
-          countdown.value!--;
+    return setCountries(md, rg)
+      .asyncAndThen(() =>
+        ResultAsync.fromSafePromise(
+          (async () => {
+            while (status.value === "countdown" && countdown.value! > 0) {
+              await new Promise((resolve) => setTimeout(resolve, 500));
+              countdown.value!--;
+            }
+          })(),
+        ),
+      )
+      .andThen(() => {
+        if (status.value === "countdown") {
+          return realStart();
         }
-      })(),
-    ).andThen(() => realStart());
+        return ok(null);
+      });
   }
 
-  function realStart(): Result<null, string> {
-    if (countries.value === null || countries.value.length === 0) {
-      return err("trial.start: no pairs");
-    }
-    startingTime = new Date().getTime();
-    indexPair.value = 0;
-    status.value = "running";
-    return ok(null);
-  }
-
-  function setCountries(rg: Region): Result<null, string> {
+  function setCountries(md: Mode, rg: Region): Result<null, string> {
     return useGeoStore()
       .getShuffledCountries(rg)
       .mapErr((e) => {
         console.error(e);
         return e;
       })
-      .map((cs) => {
-        countries.value = cs;
+      .andThen((cs) => {
         metrics.value.length = cs.length;
-        return null;
+        return pairCursor.set(cs, md);
       });
+  }
+
+  function realStart(): Result<null, string> {
+    return pairCursor.start().map(() => {
+      startingTime = new Date().getTime();
+      status.value = "running";
+      return null;
+    });
   }
 
   function reset(): void {
@@ -120,31 +101,24 @@ export function useTrial(): Trial {
     answers.length = 0;
     status.value = "idle";
     countdown.value = null;
-    indexPair.value = null;
     mode.value = null;
     region.value = null;
-    countries.value = null;
+    pairCursor.reset();
     startingTime = 0;
     metrics.value = newMetrics();
   }
 
-  // return true if trial is done
   function answer(answer: InputAnswer): Result<boolean, string> {
-    if (indexPair.value === null || countries.value === null) {
-      return err("trial.answer: no indexPair or pairs");
-    }
-
-    const country = countries.value[indexPair.value];
-    if (country === undefined) {
+    if (pairCursor.country.value === null) {
       return err("trial.answer: no country");
     }
+    const country = pairCursor.country.value;
 
     if (answer.valid) {
       metrics.value.correct++;
     } else {
       metrics.value.error++;
     }
-    indexPair.value++;
 
     answers.push({
       country: country.name,
@@ -155,13 +129,14 @@ export function useTrial(): Trial {
       typing_time: answer.typing_time,
     });
 
-    if (indexPair.value === countries.value.length) {
-      return done();
-    }
-    return ok(false);
+    return pairCursor.next().andTee((isDone) => {
+      if (isDone) {
+        done();
+      }
+    });
   }
 
-  function done(): Result<boolean, string> {
+  function done(): void {
     useStatusStore().running = false;
     status.value = "done";
     useTrialStore().postResult({
@@ -172,13 +147,12 @@ export function useTrial(): Trial {
       answers: answers,
       time: new Date().getTime() - startingTime,
     });
-    return ok(true);
   }
 
   return {
     status,
     countdown,
-    pair,
+    pair: pairCursor.pair,
     mode,
     metrics,
 
