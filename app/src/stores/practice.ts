@@ -194,8 +194,8 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function sync() {
-    units.value = {};
     return fromApi(apiClient.practice.units.$get())
+      .andTee(() => clear())
       .map((data) => {
         for (const unit of data) {
           units.value[`${unit.mode}:${unit.region}`] = unit;
