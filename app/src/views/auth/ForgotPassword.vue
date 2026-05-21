@@ -38,6 +38,7 @@
 import ErrorMessage from "@/components/ErrorMessage.vue";
 import Link from "@/components/Link.vue";
 import { useAuthStore } from "@/stores/auth";
+import { notifyError } from "@/utils/toast";
 import UButton from "@nuxt/ui/components/Button.vue";
 import UForm from "@nuxt/ui/components/Form.vue";
 import UFormField from "@nuxt/ui/components/FormField.vue";
@@ -69,6 +70,10 @@ async function onSubmit() {
       submitted.value = true;
     },
     (error) => {
+      if (error.tag === "network_error") {
+        notifyError(error);
+        return;
+      }
       errorMsg.value = error.message.split(": ")[1] ?? "";
     },
   );
