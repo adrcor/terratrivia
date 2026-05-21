@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-40 flex-wrap content-start justify-center overflow-y-auto">
-    <CountryState
+    <Country
       v-for="(cca2, index) in unit.countries"
       :key="cca2"
       :country="geoStore.mapCountry[cca2]"
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import CountryState from "@/components/practice/CountryState.vue";
+import Country from "@/components/practice/Country.vue";
 import { useGeoStore } from "@/stores/geo";
 import type { PracticeUnit } from "@/types/practice";
 

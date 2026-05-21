@@ -4,7 +4,7 @@
     <div class="ml-4 flex flex-col gap-4">
       <h3 class="weight-bold text-muted text-lg">reset practice</h3>
       <div class="flex flex-row justify-between gap-2">
-        <TrialOptions :show="true" />
+        <Options :show="true" />
         <UButton
           class="self-end text-center"
           @click="onResetPractice"
@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import TrialOptions from "@/components/TrialOptions.vue";
+import Options from "@/components/game/Options.vue";
 import { useRouter } from "@/router";
 import { useAuthStore } from "@/stores/auth";
 import { usePracticeStore } from "@/stores/practice";

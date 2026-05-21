@@ -5,9 +5,9 @@
       key="idle"
       class="flex min-w-96 flex-col items-center justify-center gap-4"
     >
-      <TrialOptions :show="true" />
-      <PracticeMetrics :practice="practice" />
-      <State :unit="practice.unit.value" />
+      <Options :show="true" />
+      <Metrics :practice="practice" />
+      <Grid :unit="practice.unit.value" />
       <div class="weight-bold text-2xl text-neutral-500">
         press <span class="text-neutral-300 underline">tab</span> to start
       </div>
@@ -33,11 +33,11 @@
 
 <script setup lang="ts">
 import FadeTransition from "@/components/FadeTransition.vue";
-import GameInput from "@/components/GameInput.vue";
-import Prompt from "@/components/Prompt.vue";
-import TrialOptions from "@/components/TrialOptions.vue";
-import PracticeMetrics from "@/components/practice/PracticeMetrics.vue";
-import State from "@/components/practice/State.vue";
+import GameInput from "@/components/game/GameInput.vue";
+import Options from "@/components/game/Options.vue";
+import Prompt from "@/components/game/Prompt.vue";
+import Grid from "@/components/practice/Grid.vue";
+import Metrics from "@/components/practice/Metrics.vue";
 import { usePractice } from "@/composables/practice";
 import type { InputAnswer } from "@/types/common";
 import { onMounted, onUnmounted } from "vue";

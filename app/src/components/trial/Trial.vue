@@ -1,6 +1,6 @@
 <template>
   <FadeTransition>
-    <TrialResult
+    <Result
       v-if="trial.status.value === 'done' && trialStore.latest"
       :trialResult="trialStore.latest"
     />
@@ -8,8 +8,8 @@
       v-else
       class="flex min-w-96 flex-col items-center justify-center gap-2 text-white"
     >
-      <TrialOptions :show="trial.status.value === 'idle'" class="mb-4" />
-      <TrialMetrics
+      <Options :show="trial.status.value === 'idle'" class="mb-4" />
+      <Metrics
         :timer="timer.timer.value"
         :correct="trial.metrics.value.correct"
         :error="trial.metrics.value.error"
@@ -32,11 +32,11 @@
 
 <script setup lang="ts">
 import FadeTransition from "@/components/FadeTransition.vue";
-import GameInput from "@/components/GameInput.vue";
-import Prompt from "@/components/Prompt.vue";
-import TrialMetrics from "@/components/TrialMetrics.vue";
-import TrialOptions from "@/components/TrialOptions.vue";
-import TrialResult from "@/components/trial/TrialResult.vue";
+import GameInput from "@/components/game/GameInput.vue";
+import Options from "@/components/game/Options.vue";
+import Prompt from "@/components/game/Prompt.vue";
+import Metrics from "@/components/trial/Metrics.vue";
+import Result from "@/components/trial/Result.vue";
 import { useTimer } from "@/composables/timer";
 import { useTrial } from "@/composables/trial";
 import { useSettingsStore } from "@/stores/settings";

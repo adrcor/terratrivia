@@ -108,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import CountrySquare from "@/components/CountrySquare.vue";
+import CountrySquare from "@/components/trial/CountrySquare.vue";
 import Spinner from "@/components/Spinner.vue";
 import { useAuthStore } from "@/stores/auth";
 import {
