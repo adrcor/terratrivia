@@ -23,14 +23,14 @@ import { computed } from "vue";
 
 const props = defineProps<{
   cca2: string;
-  percent: number;
+  score: number;
 }>();
 
 const color = computed(() => {
-  const score = Math.floor((1 - props.percent) * 100);
-  if (score == 100) {
+  const pct = Math.floor(props.score * 100);
+  if (pct == 100) {
     return "var(--color-primary-600)";
   }
-  return `color-mix(in oklch, var(--color-orange-800) ${100 - score}%, var(--color-emerald-700) ${score}%)`;
+  return `color-mix(in oklch, var(--color-orange-800) ${100 - pct}%, var(--color-emerald-700) ${pct}%)`;
 });
 </script>

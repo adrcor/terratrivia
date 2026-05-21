@@ -18,7 +18,7 @@ import type {
 import { fromApi } from "@/utils/api";
 import { wpm } from "@/utils/cpm";
 import { weightedPick } from "@/utils/random";
-import { score } from "@/utils/score";
+import { countryScore } from "@/utils/score";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
@@ -83,7 +83,7 @@ export const usePracticeStore = defineStore("practice", () => {
     for (let i = 0; i < 10; i++) {
       const candidates = pool.filter((c) => !recent.includes(c.cca2));
       const weights = candidates.map(
-        (c) => 20 - 0.19 * score(unit.countryStats[c.cca2]),
+        (c) => 20 - 0.19 * countryScore(unit.countryStats[c.cca2]),
       );
       const picked = weightedPick(candidates, weights);
       result.push(picked);
@@ -157,7 +157,7 @@ export const usePracticeStore = defineStore("practice", () => {
         continue;
       }
       denominator += 1;
-      const value = score(stats);
+      const value = countryScore(stats);
       if (value >= VALID_THRESHOLD) {
         newSummary.validated++;
       }

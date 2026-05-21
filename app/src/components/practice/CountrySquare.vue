@@ -17,31 +17,31 @@
       >
         <div class="flex w-full flex-row justify-around gap-4 px-2">
           <span>{{ country.name }}</span>
-          <span>({{ stats.count }}) {{ score(stats) }}%</span>
+          <span>({{ stats.count }}) {{ countryScore(stats) }}%</span>
         </div>
         <div class="flex flex-row gap-4">
           <div
             class="flex flex-1 flex-col rounded-sm px-2 py-0.5 text-sm"
             :style="{
-              backgroundColor: getColor(reactionScore.score),
+              backgroundColor: getColor(reactionDisplay.score),
             }"
           >
             <div>reaction</div>
             <div class="flex flex-row justify-between gap-4">
-              <span>{{ reactionScore.value }}</span>
-              <span>{{ reactionScore.score }}%</span>
+              <span>{{ reactionDisplay.value }}</span>
+              <span>{{ reactionDisplay.score }}%</span>
             </div>
           </div>
           <div
             class="flex flex-1 flex-col rounded-sm px-2 py-0.5 text-sm"
             :style="{
-              backgroundColor: getColor(typingScore.score),
+              backgroundColor: getColor(typingDisplay.score),
             }"
           >
             <div>typing</div>
             <div class="flex flex-row justify-between gap-4">
-              <span>{{ typingScore.value }}</span>
-              <span>{{ typingScore.score }}%</span>
+              <span>{{ typingDisplay.value }}</span>
+              <span>{{ typingDisplay.score }}%</span>
             </div>
           </div>
         </div>
@@ -54,7 +54,8 @@
 import { VALID_THRESHOLD } from "@/stores/constants";
 import type { Country } from "@/types/common";
 import type { CountryStats } from "@/types/practice";
-import { ilerpReactionTime, ilerpWpm, score } from "@/utils/score";
+import { countryScore, reactionScore, wpmScore } from "@/utils/score";
+import { formatSeconds } from "@/utils/time";
 import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { computed } from "vue";
 
@@ -85,7 +86,7 @@ const color = computed(() => {
   if (!props.discovered) {
     return "var(--color-neutral-800)";
   }
-  return getColor(score(props.stats));
+  return getColor(countryScore(props.stats));
 });
 
 interface DisplayScore {
@@ -93,7 +94,7 @@ interface DisplayScore {
   score: number;
 }
 
-const reactionScore = computed<DisplayScore>(() => {
+const reactionDisplay = computed<DisplayScore>(() => {
   if (props.stats.count == 0) {
     return {
       value: "0s",
@@ -101,12 +102,12 @@ const reactionScore = computed<DisplayScore>(() => {
     };
   }
   return {
-    value: formatTime(props.stats.reaction_time),
-    score: Math.floor(ilerpReactionTime(props.stats.reaction_time) * 100),
+    value: `${formatSeconds(props.stats.reaction_time)}s`,
+    score: Math.floor(reactionScore(props.stats.reaction_time) * 100),
   };
 });
 
-const typingScore = computed<DisplayScore>(() => {
+const typingDisplay = computed<DisplayScore>(() => {
   if (props.stats.count == 0) {
     return {
       value: "0wpm",
@@ -115,12 +116,7 @@ const typingScore = computed<DisplayScore>(() => {
   }
   return {
     value: `${props.stats.wpm}wpm`,
-    score: Math.floor(ilerpWpm(props.stats.wpm) * 100),
+    score: Math.floor(wpmScore(props.stats.wpm) * 100),
   };
 });
-
-function formatTime(time: number) {
-  // format ms time into second with 2 decimal
-  return `${(time / 1000).toFixed(2)}s`;
-}
 </script>
