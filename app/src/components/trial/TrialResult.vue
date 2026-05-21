@@ -234,9 +234,9 @@ function tooltip(answer: TrialAnswer) {
   );
   const totalPct = (reactionPct + typingPct) / 2;
   return `${firstLine}
-  reaction - ${formatTime(answer.reaction_time)}s | ${Math.round((1 - reactionPct) * 100)}%
-  typing - ${wpm(answer.typing_time, answer.answer.length)}wpm | ${Math.round((1 - typingPct) * 100)}%
-  total - ${formatTime(answer.reaction_time + answer.typing_time)}s | ${Math.round((1 - totalPct) * 100)}%`;
+  reaction - ${formatTime(answer.reaction_time)}s | ${Math.floor((1 - reactionPct) * 100)}%
+  typing - ${wpm(answer.typing_time, answer.answer.length)}wpm | ${Math.floor((1 - typingPct) * 100)}%
+  total - ${formatTime(answer.reaction_time + answer.typing_time)}s | ${Math.floor((1 - totalPct) * 100)}%`;
 }
 
 function tooltipFailed(answer: TrialAnswer) {

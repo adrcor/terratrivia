@@ -1,7 +1,6 @@
 import { useApi } from "@/composables/api";
 import type { Country, Region } from "@/types/common";
 import { fromApi } from "@/utils/api";
-import { notifyError } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
 import { err, ok, type Result } from "neverthrow";
 import { defineStore } from "pinia";
@@ -23,14 +22,9 @@ export const useGeoStore = defineStore("geo", () => {
   });
 
   function sync() {
-    return fromApi(apiClient.geo.countries.$get())
-      .map((data) => {
-        countries.value = data as Array<Country>;
-      })
-      .mapErr((e) => {
-        notifyError(e, "failed to load country data");
-        return e;
-      });
+    return fromApi(apiClient.geo.countries.$get()).map((data) => {
+      countries.value = data as Array<Country>;
+    });
   }
 
   function getCountries(region: Region): Result<Array<Country>, string> {

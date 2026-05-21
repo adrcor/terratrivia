@@ -8,7 +8,7 @@
     <div class="text-right">
       {{
         correct + error > 0
-          ? padEmpty(Math.round((correct / (correct + error)) * 100), 3)
+          ? padEmpty(Math.floor((correct / (correct + error)) * 100), 3)
           : padEmpty(0, 3)
       }}%
     </div>
@@ -42,7 +42,7 @@ const digitLength = computed(() => {
 watch(
   () => props.timer,
   () => {
-    apm.value = Math.round(props.correct / (props.timer / 60));
+    apm.value = Math.floor(props.correct / (props.timer / 60));
   },
 );
 

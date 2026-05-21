@@ -82,7 +82,7 @@ const cpmTable = computed<TableEntry[]>(() => {
       .map((answer) => ({
         prompt: answer.country,
         expected: answer.answer,
-        value: Math.round(
+        value: Math.floor(
           ((60000 / answer.typing_time) * answer.answer.length) / 5,
         ),
         cca2: answer.cca2,

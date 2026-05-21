@@ -1,7 +1,6 @@
 import { API_URL } from "@/env";
 import { fromAuth } from "@/utils/auth";
 import { newEr, type Er } from "@/utils/errors";
-import { notifyError } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
 import { createAuthClient } from "better-auth/vue";
 import { ResultAsync } from "neverthrow";
@@ -38,18 +37,17 @@ export const useAuthStore = defineStore("auth", () => {
           "network_error",
           e instanceof Error ? e.message : "Network error",
         ),
-    )
-      .map((res) => {
-        if (res.data?.user) {
-          user.value = { id: res.data.user.id, email: res.data.user.email };
-        } else if (!res.error) {
-          user.value = null;
-        }
-      })
-      .mapErr((e) => {
-        notifyError(e, "failed to verify session");
-        return e;
-      });
+    ).map((res) => {
+      if (res.data?.user) {
+        user.value = { id: res.data.user.id, email: res.data.user.email };
+      } else if (!res.error) {
+        user.value = null;
+      }
+    });
+  }
+
+  function clear() {
+    user.value = null;
   }
 
   function signIn(emailArg: string, password: string) {
@@ -101,6 +99,7 @@ export const useAuthStore = defineStore("auth", () => {
     email,
     isAuthenticated,
     sync,
+    clear,
     signIn,
     signUp,
     signOut,

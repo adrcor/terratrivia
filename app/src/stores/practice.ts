@@ -200,10 +200,6 @@ export const usePracticeStore = defineStore("practice", () => {
         for (const unit of data) {
           units.value[`${unit.mode}:${unit.region}`] = unit;
         }
-      })
-      .mapErr((e) => {
-        notifyError(e, "failed to load practice");
-        return e;
       });
   }
 
