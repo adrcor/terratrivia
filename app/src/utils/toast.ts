@@ -10,18 +10,19 @@ export function notifySuccess(title: string, description?: string): void {
 }
 
 export function notifyError<K extends string>(er: Er<K>, title?: string): void {
-  if (er.tag === "sync_error") {
+  if (er.tag === "network_error") {
     useToast().add({
-      title: title ?? "out of sync",
-      description: er.message + " — refresh to reload",
+      title: "can't reach server",
+      description: "check your connection and refresh the page",
       color: "error",
-      duration: 0,
-      actions: [
-        {
-          label: "refresh",
-          onClick: () => window.location.reload(),
-        },
-      ],
+    });
+    return;
+  }
+  if (er.tag === "unauthorized") {
+    useToast().add({
+      title: "session expired",
+      description: "please log in again",
+      color: "error",
     });
     return;
   }

@@ -64,25 +64,15 @@ export const useTrialStore = defineStore("store", () => {
   }
 
   function syncResults() {
-    return fromApi(apiClient.trial.results.$get())
-      .andTee((data) => {
-        results.value = data;
-      })
-      .mapErr((e) => {
-        notifyError(e, "failed to load trial history");
-        return e;
-      });
+    return fromApi(apiClient.trial.results.$get()).andTee((data) => {
+      results.value = data;
+    });
   }
 
   function syncHighscores() {
-    return fromApi(apiClient.trial.highscores.$get())
-      .andTee((data) => {
-        highscores.value = data;
-      })
-      .mapErr((e) => {
-        notifyError(e, "failed to load highscores");
-        return e;
-      });
+    return fromApi(apiClient.trial.highscores.$get()).andTee((data) => {
+      highscores.value = data;
+    });
   }
 
   function clear(): void {
