@@ -21,7 +21,8 @@ import Banner from "@/components/account/Banner.vue";
 import History from "@/components/account/History.vue";
 import Settings from "@/components/account/Settings.vue";
 import UTabs from "@nuxt/ui/components/Tabs.vue";
-import { ref } from "vue";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 type Tab = "highscores" | "history" | "settings";
 
@@ -31,5 +32,16 @@ const tabs = [
   { label: "settings", value: "settings" as Tab },
 ];
 
-const activeTab = ref<Tab>("highscores");
+const route = useRoute();
+const router = useRouter();
+
+const isTab = (value: unknown): value is Tab =>
+  tabs.some((tab) => tab.value === value);
+
+const activeTab = computed<Tab>({
+  get: () => (isTab(route.query.tab) ? route.query.tab : "highscores"),
+  set: (tab) => {
+    router.push({ query: { ...route.query, tab } });
+  },
+});
 </script>
