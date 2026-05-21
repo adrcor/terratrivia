@@ -37,66 +37,52 @@
       </UTooltip>
     </div>
     <div class="flex flex-wrap items-center justify-center gap-1">
-      <UTooltip
+      <CountrySquare
         v-for="answer in validAnswers"
         :key="answer.cca2"
-        :delay-duration="100"
-        :text="tooltip(answer)"
-        :content="{ side: 'bottom' }"
-        :ui="{ content: 'h-fit' }"
-        :disable-closing-trigger="true"
+        :cca2="answer.cca2"
+        :percent="
+          {
+            reaction: ilerp(
+              REACTION_TARGET,
+              REACTION_FLOOR,
+              answer.reaction_time,
+            ),
+            typing: ilerp(
+              -WPM_TARGET,
+              -WPM_FLOOR,
+              -wpm(answer.typing_time, answer.answer.length),
+            ),
+            total:
+              (ilerp(REACTION_TARGET, REACTION_FLOOR, answer.reaction_time) +
+                ilerp(
+                  -WPM_TARGET,
+                  -WPM_FLOOR,
+                  -wpm(answer.typing_time, answer.answer.length),
+                )) /
+              2,
+          }[keyMetric]
+        "
       >
-        <CountrySquare
-          :cca2="answer.cca2"
-          :percent="
-            {
-              reaction: ilerp(
-                REACTION_TARGET,
-                REACTION_FLOOR,
-                answer.reaction_time,
-              ),
-              typing: ilerp(
-                -WPM_TARGET,
-                -WPM_FLOOR,
-                -wpm(answer.typing_time, answer.answer.length),
-              ),
-              total:
-                (ilerp(REACTION_TARGET, REACTION_FLOOR, answer.reaction_time) +
-                  ilerp(
-                    -WPM_TARGET,
-                    -WPM_FLOOR,
-                    -wpm(answer.typing_time, answer.answer.length),
-                  )) /
-                2,
-            }[keyMetric]
-          "
-        />
-        <template #content>
-          <span class="text-center font-mono text-sm whitespace-pre">{{
-            tooltip(answer)
-          }}</span>
-        </template>
-      </UTooltip>
+        <span class="text-center font-mono text-sm whitespace-pre">{{
+          tooltip(answer)
+        }}</span>
+      </CountrySquare>
     </div>
     <div
       class="flex flex-wrap items-center justify-center gap-1"
       v-if="failedAnswers"
     >
-      <UTooltip
+      <CountrySquare
         v-for="answer in failedAnswers"
         :key="answer.cca2"
-        :delay-duration="100"
-        :content="{ side: 'bottom' }"
-        :ui="{ content: 'h-fit' }"
-        :disable-closing-trigger="true"
+        :cca2="answer.cca2"
+        :percent="1"
       >
-        <CountrySquare :cca2="answer.cca2" :percent="1" />
-        <template #content>
-          <span class="text-center font-mono text-sm whitespace-pre">{{
-            tooltipFailed(answer)
-          }}</span>
-        </template>
-      </UTooltip>
+        <span class="text-center font-mono text-sm whitespace-pre">{{
+          tooltipFailed(answer)
+        }}</span>
+      </CountrySquare>
     </div>
     <div v-if="!auth.isAuthenticated">
       <p class="mt-4 text-center text-neutral-500">

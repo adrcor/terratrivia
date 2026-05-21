@@ -1,13 +1,24 @@
 <template>
-  <div
-    class="m-1 flex size-8 flex-col items-center justify-center rounded-xs select-none"
-    :style="{ backgroundColor: color }"
+  <UTooltip
+    :delay-duration="100"
+    :content="{ side: 'bottom' }"
+    :ui="{ content: 'h-fit' }"
+    :disable-closing-trigger="true"
   >
-    {{ props.cca2.toLowerCase() }}
-  </div>
+    <div
+      class="m-1 flex size-8 flex-col items-center justify-center rounded-xs select-none"
+      :style="{ backgroundColor: color }"
+    >
+      {{ props.cca2.toLowerCase() }}
+    </div>
+    <template #content>
+      <slot />
+    </template>
+  </UTooltip>
 </template>
 
 <script setup lang="ts">
+import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { computed } from "vue";
 
 const props = defineProps<{
