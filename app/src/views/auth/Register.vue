@@ -77,7 +77,7 @@ const errorMsg = ref("");
 async function onSubmit() {
   const result = await auth.signUp(state.email ?? "", state.password ?? "");
   result.match(
-    () => router.push({ name: "account" }),
+    () => router.push({ name: "home" }),
     (error) => {
       if (error.tag === "network_error") {
         notifyError(error);

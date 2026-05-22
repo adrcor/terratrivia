@@ -115,7 +115,7 @@ export function postPracticeUnit(
 ): ResultAsync<PracticeUnit, Er<"db_error" | "validation_error" | "sync_error">> {
   return toAsync(zodParse(practiceUnitSchema, ctx.practiceUnit)).andThen((parsed) =>
     selectPracticeUnit(ctx.db, ctx.user.id, parsed.region, parsed.mode).andThen((current) => {
-      if (parsed.count !== (current?.count ?? 0) + 1) {
+      if (current !== null && parsed.count !== current.count + 1) {
         return errAsync(Er.new("sync_error", "Practice unit count mismatch"));
       }
       return insertPracticeUnit(ctx.db, ctx.user.id, parsed);

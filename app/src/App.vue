@@ -17,17 +17,32 @@
         <Footer />
       </div>
     </div>
+    <MergeModal v-model:open="mergeOpen" />
   </UApp>
 </template>
 
 <script setup lang="ts">
+import MergeModal from "@/components/MergeModal.vue";
 import NavigationBar from "@/components/navigation/NavigationBar.vue";
+import { useAuthStore } from "@/stores/auth";
+import { hasPendingData } from "@/utils/merge";
 import { syncAll } from "@/utils/sync";
 import Footer from "@/views/Footer.vue";
 import UApp from "@nuxt/ui/components/App.vue";
-import { onMounted } from "vue";
+import { ref, watch } from "vue";
 
-onMounted(() => {
-  syncAll();
-});
+const auth = useAuthStore();
+const mergeOpen = ref(false);
+
+watch(
+  () => auth.isAuthenticated,
+  (next, prev) => {
+    if (next && !prev && hasPendingData()) {
+      mergeOpen.value = true;
+    } else {
+      syncAll();
+    }
+  },
+  { immediate: true },
+);
 </script>

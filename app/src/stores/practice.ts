@@ -1,3 +1,4 @@
+import { useAuthStore } from "./auth";
 import {
   VALID_THRESHOLD,
   NEW_DISCOVER_COUNT,
@@ -21,6 +22,7 @@ import { weightedPick } from "@/utils/random";
 import { countryScore } from "@/utils/score";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
+import { err, ok } from "neverthrow";
 import { defineStore } from "pinia";
 import { ref, type Ref } from "vue";
 
@@ -59,6 +61,7 @@ function newPracticeUnit(mode: Mode, region: Region): PracticeUnit {
 export const usePracticeStore = defineStore("practice", () => {
   const apiClient = useApi();
   const units = useLocalStorage<PracticeUnits>("practice", {});
+  const pendingKeys = useLocalStorage<Array<string>>("practice_pending", []);
 
   const summary = ref<UnitSummary | null>(null);
 
@@ -120,7 +123,14 @@ export const usePracticeStore = defineStore("practice", () => {
     answers.length = 0;
 
     _computeSummary(unit);
-    _postUnit(unit);
+    if (useAuthStore().isAuthenticated) {
+      _postUnit(unit);
+    } else {
+      const key = `${mode}:${region}`;
+      if (!pendingKeys.value.includes(key)) {
+        pendingKeys.value.push(key);
+      }
+    }
   }
 
   function _postUnit(unit: PracticeUnit) {
@@ -185,11 +195,18 @@ export const usePracticeStore = defineStore("practice", () => {
     const emptyUnit = newPracticeUnit(mode, region);
     units.value[`${mode}:${region}`] = emptyUnit;
     _computeSummary(emptyUnit);
-    _deleteUnit(mode, region);
+    if (useAuthStore().isAuthenticated) {
+      _deleteUnit(mode, region);
+    } else {
+      const key = `${mode}:${region}`;
+      const idx = pendingKeys.value.indexOf(key);
+      if (idx >= 0) pendingKeys.value.splice(idx, 1);
+    }
   }
 
   function clear(): void {
     units.value = {};
+    pendingKeys.value = [];
     summary.value = null;
   }
 
@@ -203,8 +220,29 @@ export const usePracticeStore = defineStore("practice", () => {
       });
   }
 
+  async function mergeLocalIntoServer() {
+    const serverResult = await fromApi(apiClient.practice.units.$get());
+    if (serverResult.isErr()) return err(serverResult.error);
+
+    const serverKeys = new Set(
+      serverResult.value.map((u) => `${u.mode}:${u.region}`),
+    );
+
+    for (const [key, local] of Object.entries(units.value)) {
+      if (!local || local.count === 0 || serverKeys.has(key)) continue;
+      const post = await fromApi(
+        apiClient.practice.units.$post({ json: local }),
+      );
+      if (post.isErr()) return err(post.error);
+      const idx = pendingKeys.value.indexOf(key);
+      if (idx >= 0) pendingKeys.value.splice(idx, 1);
+    }
+    return ok(undefined);
+  }
+
   return {
     units,
+    pendingKeys,
     summary,
 
     get,
@@ -213,5 +251,6 @@ export const usePracticeStore = defineStore("practice", () => {
     reset,
     clear,
     sync,
+    mergeLocalIntoServer,
   };
 });

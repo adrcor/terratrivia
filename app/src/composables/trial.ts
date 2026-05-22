@@ -146,6 +146,7 @@ export function useTrial(): Trial {
       length: metrics.value.length,
       answers: answers,
       time: new Date().getTime() - startingTime,
+      created: new Date().toISOString(),
     });
   }
 

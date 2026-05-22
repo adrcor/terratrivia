@@ -1,9 +1,9 @@
 import { useAuthStore } from "@/stores/auth";
 import Account from "@/views/Account.vue";
-import Home from "@/views/Home.vue";
 import NotFound from "@/views/NotFound.vue";
 import Practice from "@/views/Practice.vue";
-import Trial from "@/views/TrialResult.vue";
+import Trial from "@/views/Trial.vue";
+import TrialResult from "@/views/TrialResult.vue";
 import ForgotPassword from "@/views/auth/ForgotPassword.vue";
 import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
@@ -18,7 +18,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: Home,
+      component: Practice,
+    },
+    {
+      path: "/trial",
+      name: "trial",
+      component: Trial,
     },
     {
       path: "/account",
@@ -58,14 +63,8 @@ const router = createRouter({
     },
     {
       path: "/trial/:id",
-      name: "trial",
-      component: Trial,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: "/practice",
-      name: "practice",
-      component: Practice,
+      name: "trial-result",
+      component: TrialResult,
       meta: { requiresAuth: true },
     },
     {
