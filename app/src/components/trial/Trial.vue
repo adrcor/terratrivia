@@ -37,38 +37,22 @@ import Options from "@/components/game/Options.vue";
 import Prompt from "@/components/game/Prompt.vue";
 import Metrics from "@/components/trial/Metrics.vue";
 import Result from "@/components/trial/Result.vue";
+import { useKeydown } from "@/composables/keydown";
 import { useTimer } from "@/composables/timer";
 import { useTrial } from "@/composables/trial";
 import { useSettingsStore } from "@/stores/settings";
 import { useTrialStore } from "@/stores/trial";
 import type { InputAnswer } from "@/types/common";
-import { onMounted, onUnmounted } from "vue";
 
 const timer = useTimer();
 const trial = useTrial();
 const trialStore = useTrialStore();
 const settings = useSettingsStore();
 
-onMounted(async () => {
-  window.addEventListener("keydown", eventListener);
+useKeydown({
+  Tab: { handler: start, preventDefault: true, stopPropagation: true },
+  Escape: reset,
 });
-
-onUnmounted(() => {
-  window.removeEventListener("keydown", eventListener);
-});
-
-function eventListener(event: KeyboardEvent) {
-  if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) {
-    return;
-  }
-  if (event.key == "Tab") {
-    event.preventDefault();
-    event.stopPropagation();
-    start();
-  } else if (event.key == "Escape") {
-    reset();
-  }
-}
 
 async function start() {
   if (trial.status.value == "countdown") {

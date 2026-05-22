@@ -38,32 +38,16 @@ import Options from "@/components/game/Options.vue";
 import Prompt from "@/components/game/Prompt.vue";
 import Grid from "@/components/practice/Grid.vue";
 import Metrics from "@/components/practice/Metrics.vue";
+import { useKeydown } from "@/composables/keydown";
 import { usePractice } from "@/composables/practice";
 import type { InputAnswer } from "@/types/common";
-import { onMounted, onUnmounted } from "vue";
 
 const practice = usePractice();
 
-onMounted(async () => {
-  window.addEventListener("keydown", eventListener);
+useKeydown({
+  Tab: { handler: start, preventDefault: true, stopPropagation: true },
+  Escape: reset,
 });
-
-onUnmounted(() => {
-  window.removeEventListener("keydown", eventListener);
-});
-
-function eventListener(event: KeyboardEvent) {
-  if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) {
-    return;
-  }
-  if (event.key == "Tab") {
-    event.preventDefault();
-    event.stopPropagation();
-    start();
-  } else if (event.key == "Escape") {
-    reset();
-  }
-}
 
 async function start() {
   if (practice.status.value == "countdown") {
