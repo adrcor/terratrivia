@@ -96,7 +96,8 @@ const validSquares = computed(() =>
   props.trialResult.answers
     .filter((a) => a.valid)
     .sort(
-      (a, b) => answerScore(b, props.keyMetric) - answerScore(a, props.keyMetric),
+      (a, b) =>
+        answerScore(b, props.keyMetric) - answerScore(a, props.keyMetric),
     )
     .map((answer) => ({
       cca2: answer.cca2,

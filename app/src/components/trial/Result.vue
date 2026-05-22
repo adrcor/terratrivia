@@ -30,11 +30,7 @@ import Spinner from "@/components/Spinner.vue";
 import Grid from "@/components/trial/Grid.vue";
 import Summary from "@/components/trial/Summary.vue";
 import { useAuthStore } from "@/stores/auth";
-import type {
-  KeyMetric,
-  TrialResult,
-  TrialResultLocal,
-} from "@/types/trial";
+import type { KeyMetric, TrialResult, TrialResultLocal } from "@/types/trial";
 import UTabs from "@nuxt/ui/components/Tabs.vue";
 import { ref } from "vue";
 

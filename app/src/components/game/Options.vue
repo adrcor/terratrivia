@@ -4,12 +4,7 @@
     :class="{ 'opacity-0': !show }"
   >
     <div class="flex flex-row items-center gap-4">
-      <ShortcutTooltip
-        text="mode"
-        kbd="m"
-        :enabled="show"
-        @trigger="nextMode"
-      >
+      <ShortcutTooltip text="mode" kbd="m" :enabled="show" @trigger="nextMode">
         <UTabs
           :items="modeItems"
           v-model="
