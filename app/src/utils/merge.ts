@@ -7,8 +7,7 @@ export function hasPendingData(): boolean {
   const practiceStore = usePracticeStore();
 
   return (
-    trialStore.pendingResults.length > 0 ||
-    practiceStore.pendingKeys.length > 0
+    trialStore.pendingResults.length > 0 || practiceStore.pendingKeys.length > 0
   );
 }
 
