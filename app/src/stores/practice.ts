@@ -1,3 +1,4 @@
+import { useAuthStore } from "./auth";
 import {
   VALID_THRESHOLD,
   NEW_DISCOVER_COUNT,
@@ -120,7 +121,9 @@ export const usePracticeStore = defineStore("practice", () => {
     answers.length = 0;
 
     _computeSummary(unit);
-    _postUnit(unit);
+    if (useAuthStore().isAuthenticated) {
+      _postUnit(unit);
+    }
   }
 
   function _postUnit(unit: PracticeUnit) {
@@ -185,7 +188,9 @@ export const usePracticeStore = defineStore("practice", () => {
     const emptyUnit = newPracticeUnit(mode, region);
     units.value[`${mode}:${region}`] = emptyUnit;
     _computeSummary(emptyUnit);
-    _deleteUnit(mode, region);
+    if (useAuthStore().isAuthenticated) {
+      _deleteUnit(mode, region);
+    }
   }
 
   function clear(): void {

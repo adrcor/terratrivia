@@ -5,7 +5,7 @@
   >
     <HomeButton />
     <div class="flex flex-row items-center justify-between gap-8">
-      <Link to="/practice" icon="anron-gestalt:planet" label="practice"></Link>
+      <Link to="/trial" icon="anron-gestalt:clock" label="trial"></Link>
       <Link
         v-if="auth.id"
         to="/account"
@@ -23,7 +23,7 @@
     <HomeButton />
 
     <div class="flex flex-row items-center justify-between gap-8">
-      <Link to="/practice" icon="anron-gestalt:planet"></Link>
+      <Link to="/trial" icon="anron-gestalt:clock"></Link>
       <Link v-if="auth.id" to="/account" icon="anron-gestalt:user"></Link>
       <Link v-else to="/login" icon="anron-gestalt:log-in"></Link>
     </div>
@@ -47,7 +47,7 @@ const { width } = useWindowSize();
 
 useKeydown({
   Escape: () => {
-    if (!status.running && route.name != "practice") {
+    if (!status.running && route.name != "home") {
       router.push("/");
     }
   },

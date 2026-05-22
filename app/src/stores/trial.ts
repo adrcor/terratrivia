@@ -1,3 +1,4 @@
+import { useAuthStore } from "./auth";
 import { useApi } from "@/composables/api";
 import type {
   TrialResultLocal,
@@ -16,6 +17,10 @@ export const useTrialStore = defineStore("store", () => {
   const apiClient = useApi();
   const results = useLocalStorage<Array<TrialResultSmall>>("results", []);
   const highscores = useLocalStorage<Array<TrialHighscore>>("highscores", []);
+  const pendingResults = useLocalStorage<Array<TrialResultLocal>>(
+    "pending_results",
+    [],
+  );
   const latest = ref<TrialResult | TrialResultLocal | null>(null);
 
   let cacheResults: Record<string, TrialResult> = {};
@@ -33,6 +38,11 @@ export const useTrialStore = defineStore("store", () => {
 
   function postResult(result: TrialResultLocal) {
     latest.value = result;
+
+    if (!useAuthStore().isAuthenticated) {
+      pendingResults.value.push(result);
+      return;
+    }
 
     return fromApi(apiClient.trial.results.$post({ json: result }))
       .andTee((data) => {
@@ -78,6 +88,7 @@ export const useTrialStore = defineStore("store", () => {
   function clear(): void {
     results.value = [];
     highscores.value = [];
+    pendingResults.value = [];
     latest.value = null;
     cacheResults = {};
   }
@@ -85,6 +96,7 @@ export const useTrialStore = defineStore("store", () => {
   return {
     results,
     highscores,
+    pendingResults,
     latest,
 
     postResult,
