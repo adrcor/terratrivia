@@ -87,6 +87,10 @@ export const useTrialStore = defineStore("store", () => {
     return ok(undefined);
   }
 
+  function clearPending(): void {
+    pendingResults.value = [];
+  }
+
   function syncResults() {
     return fromApi(apiClient.trial.results.$get()).andTee((data) => {
       results.value = data;
@@ -116,6 +120,7 @@ export const useTrialStore = defineStore("store", () => {
     postResult,
     getResult,
     uploadPending,
+    clearPending,
     syncResults,
     syncHighscores,
     clear,
