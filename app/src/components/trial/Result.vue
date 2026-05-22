@@ -5,23 +5,14 @@
   >
     <Summary :trial-result="trialResult" />
     <div class="mt-8 flex flex-row items-center">
-      <UTooltip
-        text="metric"
-        :kbds="['m']"
-        :delay-duration="200"
-        :content="{ side: 'right' }"
-        :ui="{
-          content: 'text-sm bg-neutral-950 outline-1 outline-neutral-700',
-          kbdsSize: 'md',
-        }"
-      >
+      <ShortcutTooltip text="metric" kbd="m" @trigger="nextMetric">
         <UTabs
           :items="metricItems"
           v-model="keyMetric as KeyMetric"
           :content="false"
           color="neutral"
         />
-      </UTooltip>
+      </ShortcutTooltip>
     </div>
     <Grid :trial-result="trialResult" :key-metric="keyMetric" />
     <div v-if="!auth.isAuthenticated">
@@ -34,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import ShortcutTooltip from "@/components/ShortcutTooltip.vue";
 import Spinner from "@/components/Spinner.vue";
 import Grid from "@/components/trial/Grid.vue";
 import Summary from "@/components/trial/Summary.vue";
@@ -44,8 +36,7 @@ import type {
   TrialResultLocal,
 } from "@/types/trial";
 import UTabs from "@nuxt/ui/components/Tabs.vue";
-import UTooltip from "@nuxt/ui/components/Tooltip.vue";
-import { onMounted, onUnmounted, ref } from "vue";
+import { ref } from "vue";
 
 const auth = useAuthStore();
 
@@ -60,23 +51,6 @@ const metricItems = [
 ];
 
 const keyMetric = ref<KeyMetric>("total");
-
-onMounted(() => {
-  window.addEventListener("keydown", eventListener);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("keydown", eventListener);
-});
-
-function eventListener(event: KeyboardEvent) {
-  if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) {
-    return;
-  }
-  if (event.key == "m") {
-    nextMetric();
-  }
-}
 
 function nextMetric() {
   const index = metricItems.map((m) => m.value).indexOf(keyMetric.value);
