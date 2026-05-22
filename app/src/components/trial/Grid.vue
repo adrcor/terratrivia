@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import CountrySquare from "@/components/game/CountrySquare.vue";
+import { useScores } from "@/composables/score";
 import { useGeoStore } from "@/stores/geo";
 import type {
   KeyMetric,
@@ -31,11 +32,11 @@ import type {
 } from "@/types/trial";
 import { trialScoreColor } from "@/utils/color";
 import { wpm } from "@/utils/cpm";
-import { reactionScore, totalScore, typingScore } from "@/utils/score";
 import { formatSeconds } from "@/utils/time";
 import { computed } from "vue";
 
 const geoStore = useGeoStore();
+const { reactionScore, totalScore, typingScore } = useScores();
 
 const props = defineProps<{
   trialResult: TrialResult | TrialResultLocal;

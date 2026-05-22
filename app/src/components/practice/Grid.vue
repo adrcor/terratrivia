@@ -4,21 +4,21 @@
       v-for="sq in squares"
       :key="sq.cca2"
       v-bind="sq"
-      :box-color="practiceScoreColor"
+      :box-color="practiceColor"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import CountrySquare from "@/components/game/CountrySquare.vue";
+import { useScores } from "@/composables/score";
 import { useGeoStore } from "@/stores/geo";
 import type { CountryStats, PracticeUnit } from "@/types/practice";
-import { practiceScoreColor } from "@/utils/color";
-import { countryScore, reactionScore, wpmScore } from "@/utils/score";
 import { formatSeconds } from "@/utils/time";
 import { computed } from "vue";
 
 const geoStore = useGeoStore();
+const { reactionScore, wpmScore, countryScore, practiceColor } = useScores();
 
 const props = defineProps<{
   unit: PracticeUnit;
@@ -56,7 +56,7 @@ function buildSquare(cca2: string, discovered: boolean) {
   return {
     cca2,
     tileColor: discovered
-      ? practiceScoreColor(countryScore(stats))
+      ? practiceColor(countryScore(stats))
       : "var(--color-neutral-800)",
     header: geoStore.mapCountry[cca2]?.name ?? "",
     metrics: metricsFor(stats),

@@ -1,6 +1,7 @@
 import { useAuthStore } from "@/stores/auth";
 import { useGeoStore } from "@/stores/geo";
 import { usePracticeStore } from "@/stores/practice";
+import { useSettingsStore } from "@/stores/settings";
 import { useTrialStore } from "@/stores/trial";
 import type { Er } from "@/utils/errors";
 import { notifyError } from "@/utils/toast";
@@ -10,6 +11,7 @@ export async function syncAll() {
   const geoStore = useGeoStore();
   const trialStore = useTrialStore();
   const practiceStore = usePracticeStore();
+  const settingsStore = useSettingsStore();
 
   const authResult = await authStore.sync();
 
@@ -18,6 +20,7 @@ export async function syncAll() {
         trialStore.syncHighscores(),
         trialStore.syncResults(),
         practiceStore.sync(),
+        settingsStore.loadFromServer(),
       ]
     : [];
   const results = await Promise.all([geoStore.sync(), ...authedTasks]);
@@ -47,8 +50,10 @@ export function clearAll() {
   const authStore = useAuthStore();
   const trialStore = useTrialStore();
   const practiceStore = usePracticeStore();
+  const settingsStore = useSettingsStore();
 
   authStore.clear();
   trialStore.clear();
   practiceStore.clear();
+  settingsStore.reset();
 }
