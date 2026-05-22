@@ -1,19 +1,15 @@
 import type { CountryStats } from "../types/practice";
-import {
-  REACTION_FLOOR,
-  REACTION_TARGET,
-  WPM_TARGET,
-  WPM_FLOOR,
-} from "@/stores/constants";
+import { REACTION_TARGET, WPM_TARGET } from "@/stores/constants";
 import { wpm } from "@/utils/cpm";
-import { ilerp } from "@/utils/lerp";
 
 export function reactionScore(reactionTime: number): number {
-  return ilerp(-REACTION_FLOOR, -REACTION_TARGET, -reactionTime);
+  if (reactionTime <= 0) return 1;
+  return Math.min(1, REACTION_TARGET / reactionTime);
 }
 
 export function wpmScore(wpm: number): number {
-  return ilerp(WPM_FLOOR, WPM_TARGET, wpm);
+  if (wpm <= 0) return 0;
+  return Math.min(1, wpm / WPM_TARGET);
 }
 
 export function typingScore(typingTime: number, answerLength: number): number {
