@@ -51,18 +51,32 @@ function metricsFor(stats: CountryStats) {
   ];
 }
 
-const squares = computed(() =>
-  props.unit.countries.map((cca2, index) => {
-    const stats = props.unit.countryStats[cca2];
-    const discovered = index < props.unit.discovered;
-    return {
-      cca2,
-      tileColor: discovered
-        ? practiceScoreColor(countryScore(stats))
-        : "var(--color-neutral-800)",
-      header: geoStore.mapCountry[cca2]?.name ?? "",
-      metrics: metricsFor(stats),
-    };
-  }),
-);
+function buildSquare(cca2: string, discovered: boolean) {
+  const stats = props.unit.countryStats[cca2];
+  return {
+    cca2,
+    tileColor: discovered
+      ? practiceScoreColor(countryScore(stats))
+      : "var(--color-neutral-800)",
+    header: geoStore.mapCountry[cca2]?.name ?? "",
+    metrics: metricsFor(stats),
+  };
+}
+
+const squares = computed(() => {
+  const discovered = props.unit.countries.slice(0, props.unit.discovered);
+  const undiscovered = props.unit.countries.slice(props.unit.discovered);
+
+  const sortedDiscovered = [...discovered].sort((a, b) => {
+    const diff =
+      countryScore(props.unit.countryStats[b]) -
+      countryScore(props.unit.countryStats[a]);
+    return diff !== 0 ? diff : a.localeCompare(b);
+  });
+
+  return [
+    ...sortedDiscovered.map((c) => buildSquare(c, true)),
+    ...undiscovered.map((c) => buildSquare(c, false)),
+  ];
+});
 </script>

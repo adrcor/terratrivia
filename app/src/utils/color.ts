@@ -9,7 +9,7 @@ export function practiceScoreColor(value: number): string {
   }
   if (value < VALID_THRESHOLD) {
     const pct = (value / VALID_THRESHOLD) * 100;
-    return `color-mix(in oklch, var(--color-emerald-700) ${Math.max(20, pct)}%, transparent)`;
+    return `color-mix(in oklch, var(--color-orange-800) ${100 - pct}%, var(--color-emerald-700) ${pct}%)`;
   }
   const pct = Math.floor(
     ((value - VALID_THRESHOLD) / (100 - VALID_THRESHOLD)) * 100,
