@@ -58,10 +58,7 @@ const practiceStore = usePracticeStore();
 const loading = ref(false);
 
 const resultsCount = computed(() => trialStore.pendingResults.length);
-const unitsCount = computed(
-  () =>
-    Object.values(practiceStore.units).filter((u) => u && u.count > 0).length,
-);
+const unitsCount = computed(() => practiceStore.pendingKeys.length);
 
 async function onAccept() {
   loading.value = true;

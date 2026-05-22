@@ -6,11 +6,10 @@ export function hasPendingData(): boolean {
   const trialStore = useTrialStore();
   const practiceStore = usePracticeStore();
 
-  if (trialStore.pendingResults.length > 0) return true;
-  for (const unit of Object.values(practiceStore.units)) {
-    if (unit && unit.count > 0) return true;
-  }
-  return false;
+  return (
+    trialStore.pendingResults.length > 0 ||
+    practiceStore.pendingKeys.length > 0
+  );
 }
 
 export async function acceptMerge(): Promise<void> {

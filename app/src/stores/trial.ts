@@ -92,9 +92,11 @@ export const useTrialStore = defineStore("store", () => {
   }
 
   function syncResults() {
-    return fromApi(apiClient.trial.results.$get()).andTee((data) => {
-      results.value = data;
-    });
+    return fromApi(apiClient.trial.results.$get())
+      .map((data) => data.sort((a, b) => a.created.localeCompare(b.created)))
+      .andTee((data) => {
+        results.value = data;
+      });
   }
 
   function syncHighscores() {

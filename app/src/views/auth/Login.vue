@@ -74,7 +74,7 @@ watch(
   () => auth.isAuthenticated,
   (isAuthenticated) => {
     if (isAuthenticated) {
-      router.push({ name: "account" });
+      router.push({ name: "home" });
     }
   },
 );

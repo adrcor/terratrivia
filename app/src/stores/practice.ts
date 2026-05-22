@@ -61,6 +61,7 @@ function newPracticeUnit(mode: Mode, region: Region): PracticeUnit {
 export const usePracticeStore = defineStore("practice", () => {
   const apiClient = useApi();
   const units = useLocalStorage<PracticeUnits>("practice", {});
+  const pendingKeys = useLocalStorage<Array<string>>("practice_pending", []);
 
   const summary = ref<UnitSummary | null>(null);
 
@@ -124,6 +125,11 @@ export const usePracticeStore = defineStore("practice", () => {
     _computeSummary(unit);
     if (useAuthStore().isAuthenticated) {
       _postUnit(unit);
+    } else {
+      const key = `${mode}:${region}`;
+      if (!pendingKeys.value.includes(key)) {
+        pendingKeys.value.push(key);
+      }
     }
   }
 
@@ -191,11 +197,16 @@ export const usePracticeStore = defineStore("practice", () => {
     _computeSummary(emptyUnit);
     if (useAuthStore().isAuthenticated) {
       _deleteUnit(mode, region);
+    } else {
+      const key = `${mode}:${region}`;
+      const idx = pendingKeys.value.indexOf(key);
+      if (idx >= 0) pendingKeys.value.splice(idx, 1);
     }
   }
 
   function clear(): void {
     units.value = {};
+    pendingKeys.value = [];
     summary.value = null;
   }
 
@@ -223,12 +234,15 @@ export const usePracticeStore = defineStore("practice", () => {
         apiClient.practice.units.$post({ json: local }),
       );
       if (post.isErr()) return err(post.error);
+      const idx = pendingKeys.value.indexOf(key);
+      if (idx >= 0) pendingKeys.value.splice(idx, 1);
     }
     return ok(undefined);
   }
 
   return {
     units,
+    pendingKeys,
     summary,
 
     get,
