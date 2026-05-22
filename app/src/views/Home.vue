@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import Trial from "@/components/Trial.vue";
+import Trial from "@/components/trial/Trial.vue";
 </script>

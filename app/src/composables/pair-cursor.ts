@@ -65,6 +65,7 @@ export function usePairCursor() {
   return {
     pair,
     country,
+    mode,
 
     set,
     start,

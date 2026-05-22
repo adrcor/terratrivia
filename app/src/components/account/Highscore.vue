@@ -17,7 +17,7 @@
     <div
       class="weight-bold text-xl text-neutral-500 transition-colors group-hover:text-neutral-300"
     >
-      {{ time ? `${formatTime(time)}s` : "--" }}
+      {{ time ? `${formatSecondsInt(time)}s` : "--" }}
     </div>
   </RouterLink>
   <div
@@ -29,12 +29,13 @@
       {{ score ? `${score}%` : "--" }}
     </div>
     <div class="weight-bold text-xl text-neutral-500">
-      {{ time ? `${formatTime(time)}s` : "--" }}
+      {{ time ? `${formatSecondsInt(time)}s` : "--" }}
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { formatSecondsInt } from "@/utils/time";
 import { computed } from "vue";
 
 const props = defineProps<{
@@ -48,9 +49,4 @@ const props = defineProps<{
 const score = computed(() => {
   return Math.floor((props.numerator / props.denominator) * 100);
 });
-
-function formatTime(time: number) {
-  // format ms time into second with 2 decimal
-  return Math.floor(time / 1000).toFixed(0);
-}
 </script>

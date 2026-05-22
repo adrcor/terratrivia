@@ -4,16 +4,7 @@
     :class="{ 'opacity-0': !show }"
   >
     <div class="flex flex-row items-center gap-4">
-      <UTooltip
-        text="mode"
-        :kbds="['m']"
-        :delay-duration="200"
-        :content="{ side: 'right' }"
-        :ui="{
-          content: 'text-sm bg-neutral-950 outline-1 outline-neutral-700',
-          kbdsSize: 'md',
-        }"
-      >
+      <ShortcutTooltip text="mode" kbd="m" :enabled="show" @trigger="nextMode">
         <UTabs
           :items="modeItems"
           v-model="
@@ -23,16 +14,12 @@
           :content="false"
           color="neutral"
         />
-      </UTooltip>
-      <UTooltip
+      </ShortcutTooltip>
+      <ShortcutTooltip
         text="region"
-        :kbds="['r']"
-        :delay-duration="200"
-        :content="{ side: 'right' }"
-        :ui="{
-          content: 'text-sm bg-neutral-950 outline-1 outline-neutral-700',
-          kbdsSize: 'md',
-        }"
+        kbd="r"
+        :enabled="show"
+        @trigger="nextRegion"
       >
         <UTabs
           :items="regionItems"
@@ -43,58 +30,31 @@
           :content="false"
           color="neutral"
         />
-      </UTooltip>
+      </ShortcutTooltip>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import ShortcutTooltip from "@/components/ShortcutTooltip.vue";
 import { useSettingsStore } from "@/stores/settings";
 import { modes, regions, type Mode, type Region } from "@/types/common";
 import UTabs from "@nuxt/ui/components/Tabs.vue";
-import UTooltip from "@nuxt/ui/components/Tooltip.vue";
-import { onMounted, onUnmounted } from "vue";
 
 const settings = useSettingsStore();
 const modeItems = modes.map((m) => ({ label: m, value: m }));
 const regionItems = regions.map((r) => ({ label: r, value: r }));
 
-const props = defineProps<{
+defineProps<{
   show: boolean;
 }>();
 
-onMounted(() => {
-  window.addEventListener("keydown", eventListener);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("keydown", eventListener);
-});
-
-function eventListener(event: KeyboardEvent) {
-  if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) {
-    return;
-  }
-  if (event.key == "m") {
-    nextMode();
-  }
-  if (event.key == "r") {
-    nextRegion();
-  }
-}
-
 function nextMode() {
-  if (!props.show) {
-    return;
-  }
   const index = modes.indexOf(settings.mode);
   settings.mode = modes[(index + 1) % modes.length] as Mode;
 }
 
 function nextRegion() {
-  if (!props.show) {
-    return;
-  }
   const index = regions.indexOf(settings.region);
   settings.region = regions[(index + 1) % regions.length] as Region;
 }

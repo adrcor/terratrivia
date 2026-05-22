@@ -2,7 +2,7 @@ import { usePairCursor } from "./pair-cursor";
 import { usePracticeStore } from "@/stores/practice";
 import { useSettingsStore } from "@/stores/settings";
 import { useStatusStore } from "@/stores/status";
-import type { Country, InputAnswer, Pair } from "@/types/common";
+import type { Country, InputAnswer, Mode, Pair } from "@/types/common";
 import type { PracticeAnswer, PracticeUnit } from "@/types/practice";
 import { err, errAsync, ok, Result, ResultAsync } from "neverthrow";
 import { computed, ref, type Ref } from "vue";
@@ -15,6 +15,7 @@ export interface Practice {
   countdown: Ref<number | null>;
   pair: Ref<Pair | null>;
   country: Ref<Country | null>;
+  mode: Ref<Mode | null>;
 
   start: () => ResultAsync<null, string>;
   reset: () => void;
@@ -116,6 +117,7 @@ export function usePractice(): Practice {
     countdown,
     country: pairCursor.country,
     pair: pairCursor.pair,
+    mode: pairCursor.mode,
 
     start,
     reset,

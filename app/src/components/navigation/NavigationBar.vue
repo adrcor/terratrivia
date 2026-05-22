@@ -33,10 +33,10 @@
 <script setup lang="ts">
 import Link from "../Link.vue";
 import HomeButton from "./HomeButton.vue";
+import { useKeydown } from "@/composables/keydown";
 import { useAuthStore } from "@/stores/auth";
 import { useStatusStore } from "@/stores/status";
 import { useWindowSize } from "@vueuse/core";
-import { onMounted, onUnmounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const auth = useAuthStore();
@@ -45,12 +45,11 @@ const router = useRouter();
 const route = useRoute();
 const { width } = useWindowSize();
 
-function onKeydown(e: KeyboardEvent) {
-  if (e.key === "Escape" && !status.running && route.name != "practice") {
-    router.push("/");
-  }
-}
-
-onMounted(() => window.addEventListener("keydown", onKeydown));
-onUnmounted(() => window.removeEventListener("keydown", onKeydown));
+useKeydown({
+  Escape: () => {
+    if (!status.running && route.name != "practice") {
+      router.push("/");
+    }
+  },
+});
 </script>

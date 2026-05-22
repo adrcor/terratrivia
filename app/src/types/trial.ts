@@ -1,5 +1,7 @@
 import type { Mode, Region } from "@/types/common";
 
+export type KeyMetric = "total" | "reaction" | "typing";
+
 export interface TrialAnswer {
   country: string;
   cca2: string;

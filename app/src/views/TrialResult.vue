@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import Spinner from "@/components/Spinner.vue";
-import TrialResultComponent from "@/components/trial/TrialResult.vue";
+import TrialResultComponent from "@/components/trial/Result.vue";
 import { useTrialStore } from "@/stores/trial";
 import type { TrialResult } from "@/types/trial";
 import { onMounted, ref } from "vue";
