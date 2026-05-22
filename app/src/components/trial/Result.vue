@@ -38,30 +38,22 @@
     </div>
     <div class="flex flex-wrap items-center justify-center gap-1">
       <CountrySquare
-        v-for="answer in validAnswers"
-        :key="answer.cca2"
-        :cca2="answer.cca2"
-        :score="answerScore(answer, keyMetric)"
-      >
-        <span class="text-center font-mono text-sm whitespace-pre">{{
-          tooltip(answer)
-        }}</span>
-      </CountrySquare>
+        v-for="sq in validSquares"
+        :key="sq.cca2"
+        v-bind="sq"
+        :box-color="trialScoreColor"
+      />
     </div>
     <div
       class="flex flex-wrap items-center justify-center gap-1"
-      v-if="failedAnswers"
+      v-if="failedSquares.length"
     >
       <CountrySquare
-        v-for="answer in failedAnswers"
-        :key="answer.cca2"
-        :cca2="answer.cca2"
-        :score="0"
-      >
-        <span class="text-center font-mono text-sm whitespace-pre">{{
-          tooltipFailed(answer)
-        }}</span>
-      </CountrySquare>
+        v-for="sq in failedSquares"
+        :key="sq.cca2"
+        v-bind="sq"
+        :box-color="trialScoreColor"
+      />
     </div>
     <div v-if="!auth.isAuthenticated">
       <p class="mt-4 text-center text-neutral-500">
@@ -73,11 +65,12 @@
 </template>
 
 <script setup lang="ts">
-import CountrySquare from "@/components/trial/CountrySquare.vue";
 import Spinner from "@/components/Spinner.vue";
+import CountrySquare from "@/components/game/CountrySquare.vue";
 import { useAuthStore } from "@/stores/auth";
 import { useGeoStore } from "@/stores/geo";
 import type { TrialAnswer, TrialResult, TrialResultLocal } from "@/types/trial";
+import { trialScoreColor } from "@/utils/color";
 import { wpm } from "@/utils/cpm";
 import { reactionScore, totalScore, typingScore } from "@/utils/score";
 import { formatSeconds } from "@/utils/time";
@@ -140,38 +133,67 @@ function answerScore(answer: TrialAnswer, metric: KeyMetric): number {
   }
 }
 
-const validAnswers = computed(() => {
-  return props.trialResult.answers
-    .filter((a) => a.valid)
-    .sort(
-      (a, b) => answerScore(b, keyMetric.value) - answerScore(a, keyMetric.value),
-    );
-});
-
-function tooltip(answer: TrialAnswer) {
-  const firstLine =
-    props.trialResult.mode === "flags"
-      ? `${geoStore.mapCountry[answer.cca2]?.flag || ""} -> ${answer.answer}`
-      : `${answer.country} -> ${answer.answer}`;
-  const reaction = reactionScore(answer.reaction_time);
-  const typing = typingScore(answer.typing_time, answer.answer.length);
-  const total = (reaction + typing) / 2;
-  return `${firstLine}
-  reaction - ${formatSeconds(answer.reaction_time)}s | ${Math.floor(reaction * 100)}%
-  typing - ${wpm(answer.typing_time, answer.answer.length)}wpm | ${Math.floor(typing * 100)}%
-  total - ${formatSeconds(answer.reaction_time + answer.typing_time)}s | ${Math.floor(total * 100)}%`;
-}
-
-function tooltipFailed(answer: TrialAnswer) {
+function headerFor(answer: TrialAnswer): string {
   if (props.trialResult.mode === "flags") {
     return `${geoStore.mapCountry[answer.cca2]?.flag || ""} -> ${answer.answer}`;
   }
   return `${answer.country} -> ${answer.answer}`;
 }
 
-const failedAnswers = computed(() => {
-  return props.trialResult.answers
+function validMetrics(answer: TrialAnswer) {
+  return [
+    {
+      label: "reaction",
+      value: `${formatSeconds(answer.reaction_time)}s`,
+      score: Math.floor(reactionScore(answer.reaction_time) * 100),
+    },
+    {
+      label: "typing",
+      value: `${wpm(answer.typing_time, answer.answer.length)}wpm`,
+      score: Math.floor(
+        typingScore(answer.typing_time, answer.answer.length) * 100,
+      ),
+    },
+    {
+      label: "total",
+      value: `${formatSeconds(answer.reaction_time + answer.typing_time)}s`,
+      score: Math.floor(
+        totalScore(
+          answer.reaction_time,
+          answer.typing_time,
+          answer.answer.length,
+        ) * 100,
+      ),
+    },
+  ];
+}
+
+const validSquares = computed(() =>
+  props.trialResult.answers
+    .filter((a) => a.valid)
+    .sort(
+      (a, b) =>
+        answerScore(b, keyMetric.value) - answerScore(a, keyMetric.value),
+    )
+    .map((answer) => ({
+      cca2: answer.cca2,
+      tileColor: trialScoreColor(
+        Math.floor(answerScore(answer, keyMetric.value) * 100),
+      ),
+      header: headerFor(answer),
+      metrics: validMetrics(answer),
+    })),
+);
+
+const failedSquares = computed(() =>
+  props.trialResult.answers
     .filter((a) => !a.valid)
-    .sort((a, b) => a.cca2.localeCompare(b.cca2));
-});
+    .sort((a, b) => a.cca2.localeCompare(b.cca2))
+    .map((answer) => ({
+      cca2: answer.cca2,
+      tileColor: trialScoreColor(0),
+      header: headerFor(answer),
+      metrics: [],
+    })),
+);
 </script>
