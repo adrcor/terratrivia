@@ -51,3 +51,10 @@ CREATE TABLE practice_units (
 
 	PRIMARY KEY (id_user, region, mode)
 );
+
+CREATE TABLE user_settings (
+	id_user text PRIMARY KEY REFERENCES "user"(id) ON DELETE CASCADE,
+	settings jsonb NOT NULL DEFAULT '{}', -- {reactionTarget, wpmTarget, validationScore}
+
+	updated timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

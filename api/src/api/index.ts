@@ -4,6 +4,7 @@ import { auth, type Session, type User } from "@/auth";
 import { APP_URL, VERSION } from "@/env";
 import { getCountries } from "@/modules/geo";
 import { deletePracticeUnit, getAllPracticeUnits, postPracticeUnit } from "@/modules/practice";
+import { getUserSettings, patchUserSettings } from "@/modules/settings";
 import { getHighscores, getResultById, getResults, postResult } from "@/modules/trial";
 import { Er } from "@/utils/er";
 import { type Context, Hono } from "hono";
@@ -27,7 +28,7 @@ function newApi() {
         cors({
           origin: APP_URL,
           allowHeaders: ["Content-Type", "Authorization"],
-          allowMethods: ["POST", "GET", "DELETE", "OPTIONS"],
+          allowMethods: ["POST", "GET", "PATCH", "DELETE", "OPTIONS"],
           exposeHeaders: ["Content-Length"],
           maxAge: 600,
           credentials: true,
@@ -73,6 +74,18 @@ function newApi() {
       .delete("/practice/units/:region/:mode", (h: Context) => {
         return serve(h, withAuthAndDatabase, (ctx) =>
           deletePracticeUnit({ ...ctx, region: h.req.param("region"), mode: h.req.param("mode") }),
+        );
+      })
+
+      // user settings routes
+      .get("/user/settings", (h: Context) => {
+        return serve(h, withAuthAndDatabase, getUserSettings);
+      })
+      .patch("/user/settings", (h: Context) => {
+        return serve(h, withAuthAndDatabase, (ctx) =>
+          ResultAsync.fromPromise(h.req.json(), () =>
+            Er.new("json_error", "Failed to parse JSON"),
+          ).andThen((patch) => patchUserSettings({ ...ctx, patch })),
         );
       })
 
