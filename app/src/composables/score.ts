@@ -8,8 +8,7 @@ export function useScores() {
   return {
     reactionScore: (rt: number) =>
       Score.reactionScore(rt, settings.scoring.reactionTarget),
-    wpmScore: (wpm: number) =>
-      Score.wpmScore(wpm, settings.scoring.wpmTarget),
+    wpmScore: (wpm: number) => Score.wpmScore(wpm, settings.scoring.wpmTarget),
     typingScore: (tt: number, len: number) =>
       Score.typingScore(tt, len, settings.scoring.wpmTarget),
     totalScore: (rt: number, tt: number, len: number) =>

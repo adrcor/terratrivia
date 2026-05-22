@@ -72,9 +72,7 @@ interface SettingsCtx {
   user: User;
 }
 
-export function getUserSettings(
-  ctx: SettingsCtx,
-): ResultAsync<UserSettings, Er<"db_error">> {
+export function getUserSettings(ctx: SettingsCtx): ResultAsync<UserSettings, Er<"db_error">> {
   return selectUserSettings(ctx.db, ctx.user.id).map((stored) => ({
     ...STANDARD_SETTINGS,
     ...stored,

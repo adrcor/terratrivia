@@ -23,14 +23,14 @@
           variant="ghost"
           color="neutral"
           :icon="
-            advancedOpen
-              ? 'i-lucide-chevron-down'
-              : 'i-lucide-chevron-right'
+            advancedOpen ? 'i-lucide-chevron-down' : 'i-lucide-chevron-right'
           "
           >advanced</UButton
         >
         <template #content>
-          <div class="mt-2 grid grid-cols-[auto_8rem] items-center gap-x-4 gap-y-2">
+          <div
+            class="mt-2 grid grid-cols-[auto_8rem] items-center gap-x-4 gap-y-2"
+          >
             <label class="text-muted text-sm">reaction target (ms)</label>
             <UInputNumber
               v-model="settings.scoring.reactionTarget"
