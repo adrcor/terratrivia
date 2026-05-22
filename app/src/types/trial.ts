@@ -18,6 +18,7 @@ export interface TrialResultLocal {
   correct: number;
   time: number;
   answers: Array<TrialAnswer>;
+  created: string;
 }
 
 export interface TrialResultSmall {

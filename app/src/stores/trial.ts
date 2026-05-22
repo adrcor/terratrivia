@@ -9,7 +9,7 @@ import type {
 import { fromApi } from "@/utils/api";
 import { notifyError } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
-import { okAsync } from "neverthrow";
+import { err, ok, okAsync } from "neverthrow";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -41,6 +41,9 @@ export const useTrialStore = defineStore("store", () => {
 
     if (!useAuthStore().isAuthenticated) {
       pendingResults.value.push(result);
+      if (pendingResults.value.length > 10) {
+        pendingResults.value.shift();
+      }
       return;
     }
 
@@ -73,6 +76,17 @@ export const useTrialStore = defineStore("store", () => {
       });
   }
 
+  async function uploadPending() {
+    while (pendingResults.value.length > 0) {
+      const r = await fromApi(
+        apiClient.trial.results.$post({ json: pendingResults.value[0]! }),
+      );
+      if (r.isErr()) return err(r.error);
+      pendingResults.value.shift();
+    }
+    return ok(undefined);
+  }
+
   function syncResults() {
     return fromApi(apiClient.trial.results.$get()).andTee((data) => {
       results.value = data;
@@ -101,6 +115,7 @@ export const useTrialStore = defineStore("store", () => {
 
     postResult,
     getResult,
+    uploadPending,
     syncResults,
     syncHighscores,
     clear,

@@ -28,6 +28,7 @@ const newTrialResultSchema = z.object({
   correct: z.int().min(0),
   time: z.int().min(0),
   answers: z.array(trialAnswerSchema),
+  created: z.iso.datetime().optional(),
 });
 
 type NewTrialResultInput = z.infer<typeof newTrialResultSchema>;
@@ -53,6 +54,7 @@ function addResult(
         correct: input.correct,
         time: input.time,
         answers: JSON.stringify(input.answers) as any,
+        ...(input.created ? { created: new Date(input.created) } : {}),
       })
       .returningAll()
       .executeTakeFirstOrThrow(),

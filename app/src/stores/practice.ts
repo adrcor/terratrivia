@@ -22,6 +22,7 @@ import { weightedPick } from "@/utils/random";
 import { countryScore } from "@/utils/score";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useLocalStorage } from "@vueuse/core";
+import { err, ok } from "neverthrow";
 import { defineStore } from "pinia";
 import { ref, type Ref } from "vue";
 
@@ -208,6 +209,24 @@ export const usePracticeStore = defineStore("practice", () => {
       });
   }
 
+  async function mergeLocalIntoServer() {
+    const serverResult = await fromApi(apiClient.practice.units.$get());
+    if (serverResult.isErr()) return err(serverResult.error);
+
+    const serverKeys = new Set(
+      serverResult.value.map((u) => `${u.mode}:${u.region}`),
+    );
+
+    for (const [key, local] of Object.entries(units.value)) {
+      if (!local || local.count === 0 || serverKeys.has(key)) continue;
+      const post = await fromApi(
+        apiClient.practice.units.$post({ json: local }),
+      );
+      if (post.isErr()) return err(post.error);
+    }
+    return ok(undefined);
+  }
+
   return {
     units,
     summary,
@@ -218,5 +237,6 @@ export const usePracticeStore = defineStore("practice", () => {
     reset,
     clear,
     sync,
+    mergeLocalIntoServer,
   };
 });
