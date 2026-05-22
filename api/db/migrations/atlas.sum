@@ -1,4 +1,5 @@
-h1:b9/viecVBu8r0Mc+3F3zIIUPdYuaSUzkCum2d5SvtQ0=
+h1:AVidTCXNpxUY8/0QewKznYaYdpDruzklK6PcIhSznJ8=
 20260501112028_initial_schema.sql h1:q32a36rV85sHR890ayVMgy9WcdYJRyGm32pCv+K/zRY=
 20260502105942_fix_timezone_trial.sql h1:wjbUSczpNmQ4vUfOBGk21SFofvOIlMm6lPc3Dy4gkjA=
 20260505123832_add_practice_units.sql h1:AZjubN1lj9essq/X2xlHdEb8+bsVVyWHGyLW2kMWFg8=
+20260522160902_add_user_settings_table.sql h1:j4XZXOhv+laFp7kLTFE1+KMyk/+VpEn2IO/ASOVLx7c=

@@ -1,12 +1,12 @@
 import { useAuthStore } from "./auth";
 import {
-  VALID_THRESHOLD,
   NEW_DISCOVER_COUNT,
   REACTION_INVALID,
   WPM_INVALID,
   EXPONENTIAL_WEIGHT,
 } from "./constants";
 import { useGeoStore } from "./geo";
+import { useSettingsStore } from "./settings";
 import { useApi } from "@/composables/api";
 import type { Country, Mode, Region } from "@/types/common";
 import type {
@@ -75,6 +75,7 @@ export const usePracticeStore = defineStore("practice", () => {
 
   function getShuffledCountries(mode: Mode, region: Region) {
     const geoStore = useGeoStore();
+    const settings = useSettingsStore();
     const unit = get(mode, region);
     const pool = unit.countries
       .slice(0, unit.discovered)
@@ -86,7 +87,14 @@ export const usePracticeStore = defineStore("practice", () => {
     for (let i = 0; i < 10; i++) {
       const candidates = pool.filter((c) => !recent.includes(c.cca2));
       const weights = candidates.map(
-        (c) => 20 - 0.19 * countryScore(unit.countryStats[c.cca2]),
+        (c) =>
+          20 -
+          0.19 *
+            countryScore(
+              unit.countryStats[c.cca2],
+              settings.scoring.reactionTarget,
+              settings.scoring.wpmTarget,
+            ),
       );
       const picked = weightedPick(candidates, weights);
       result.push(picked);
@@ -154,6 +162,7 @@ export const usePracticeStore = defineStore("practice", () => {
   }
 
   function _computeSummary(unit: PracticeUnit): UnitSummary {
+    const settings = useSettingsStore();
     const newSummary: UnitSummary = {
       validated: 0,
       completed: 0,
@@ -167,8 +176,12 @@ export const usePracticeStore = defineStore("practice", () => {
         continue;
       }
       denominator += 1;
-      const value = countryScore(stats);
-      if (value >= VALID_THRESHOLD) {
+      const value = countryScore(
+        stats,
+        settings.scoring.reactionTarget,
+        settings.scoring.wpmTarget,
+      );
+      if (value >= settings.scoring.validationScore) {
         newSummary.validated++;
       }
       if (value === 100) {

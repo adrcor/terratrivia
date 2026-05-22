@@ -3,6 +3,7 @@ import type {
   TrialResultsTable,
   TrialHighscoresTable,
   PracticeUnitTable,
+  UserSettingsTable,
 } from "./schema";
 import { DATABASE_URL, DEBUG } from "@/env";
 import { PostgresDialect, Kysely } from "kysely";
@@ -13,6 +14,7 @@ export interface Database {
   trial_results: TrialResultsTable;
   trial_highscores: TrialHighscoresTable;
   practice_units: PracticeUnitTable;
+  user_settings: UserSettingsTable;
 }
 
 export const pool = new Pool({

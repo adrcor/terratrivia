@@ -76,3 +76,15 @@ export interface PracticeUnitTable {
   mode: Mode;
   unit: PracticeUnit;
 }
+
+export interface UserSettings {
+  reactionTarget: number;
+  wpmTarget: number;
+  validationScore: number;
+}
+
+export interface UserSettingsTable {
+  id_user: string;
+  settings: Partial<UserSettings>;
+  updated: Generated<Date>;
+}
