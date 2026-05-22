@@ -3,20 +3,12 @@
     v-model:open="open"
     :dismissible="false"
     :close="false"
-    title="save your progress?"
+    title="save local progress ?"
   >
     <template #body>
       <div class="flex flex-col gap-2 text-neutral-300">
-        <p>
-          you have
-          <span class="weight-bold text-white">{{ resultsCount }}</span>
-          unsaved trial
-          {{ resultsCount === 1 ? "result" : "results" }} and
-          <span class="weight-bold text-white">{{ unitsCount }}</span>
-          local practice
-          {{ unitsCount === 1 ? "unit" : "units" }}.
-        </p>
-        <p>save them to your account?</p>
+        <p>do you want to save your local progress to your account ?</p>
+        <p class="text-muted text-sm">(existing practice progress on your account won't be overwritten)</p>
       </div>
     </template>
     <template #footer>
