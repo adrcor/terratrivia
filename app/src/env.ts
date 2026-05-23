@@ -7,4 +7,4 @@ const schema = z.object({
 const env = schema.parse(import.meta.env);
 
 export const API_URL = env.VITE_API_URL;
-export const VERSION = "v1.2.1";
+export const VERSION = "v1.3.0";
