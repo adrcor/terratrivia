@@ -21,4 +21,4 @@ export const API_URL = env.API_URL;
 export const BETTER_AUTH_SECRET = env.BETTER_AUTH_SECRET;
 export const RESEND_API_KEY = env.RESEND_API_KEY;
 export const EMAIL_FROM = env.EMAIL_FROM;
-export const VERSION = "v1.2.1";
+export const VERSION = "v1.3.0";
